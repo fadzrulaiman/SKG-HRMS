@@ -1,253 +1,221 @@
 <?php
-/********************************************************************************* 
- *  This file is part of Sentrifugo.
- *  Copyright (C) 2015 Sapplica
- *   
- *  Sentrifugo is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  Sentrifugo is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Sentrifugo.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Sentrifugo Support <support@sentrifugo.com>
- ********************************************************************************/ 
 ?>
 </div>
 </div>
 <script type="text/javascript" src="<?php echo MEDIA_PATH; ?>jquery/js/jquery.blockUI_2.64.js"></script><!-- added on 07-aug-2013 by rama krishna -->
-<script  language="JavaScript" type="text/javascript" src="<?php echo MEDIA_PATH;?>jquery/js/customSelect.js" ></script>
+<script language="JavaScript" type="text/javascript" src="<?php echo MEDIA_PATH; ?>jquery/js/customSelect.js"></script>
 <div class="login-footer">
-	<div class="footer-text"><div class="">
-        	<div class="copy-center"><span class="copy_left">&copy; Sentrifugo, <?php echo date('Y');?></span><span class="copy_right">Powered By <a href="http://www.sapplica.com" target="new" style="text-decoration: none; color: #3a8cb1">Sapplica</a></span></div>	
-         </div></div>
-</div> 
-<script type="text/javascript" language="javascript">       	  
-      $(document).click(function(e) {
-	  
-		var clicked=$(e.target); // get the element clicked
-        var controllername = '<?php echo $controllerName; ?>';
-		if( clicked.parents().is('#loginpopdiv') || e.target.id == 'loginbutton') {
-		   if($("#loginpopdiv").is(":visible") && e.target.id == 'loginbutton')
-			{
-				if(controllername !='')
-				{
-				  if(controllername == 'index')
-					{
-					 $("#loginbutton").removeClass("active");
-					 $("#hometab").addClass("active");
-					} 
-				
+	<div class="footer-text">
+		<div class="">
+			<div class="copy-center"><span class="copy_left">&copy;<a href="https://www.sawitkinabalu.com.my/" target="new" style="text-decoration: none; color: #3a8cb1">Sawit Kinabalu, </a> <?php echo date('Y'); ?></span><span class="copy_right">Information Technology Unit</span></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" language="javascript">
+	$(document).click(function(e) {
+
+		var clicked = $(e.target); // get the element clicked
+		var controllername = '<?php echo $controllerName; ?>';
+		if (clicked.parents().is('#loginpopdiv') || e.target.id == 'loginbutton') {
+			if ($("#loginpopdiv").is(":visible") && e.target.id == 'loginbutton') {
+				if (controllername != '') {
+					if (controllername == 'index') {
+						$("#loginbutton").removeClass("active");
+						$("#hometab").addClass("active");
+					}
+
 				}
-			      
-						document.getElementById('username').value= '';
-						document.getElementById('password').value= '';
-						document.getElementById('emailaddress').value= '';
-                if(navigator.userAgent.match(/msie/i) == 'MSIE')
-	 			  placeholder_helper(); 
-					 $('#username').removeClass("text_color");
-					 $('#password').removeClass("text_color");
-					 $('#emailaddress').removeClass("text_color");
-				 if($("#errrMsg").is(":visible"))
-					$("#errrMsg").hide();
-				 if($("#usernameerror").is(":visible"))
-					$("#usernameerror").hide();
-				 if($("#pwderror").is(":visible"))
-					$("#pwderror").hide();
-				 if($("#forgotpassworddiv").is(":visible"))
-					$("#forgotpassworddiv").hide();	
-				 if($("#forgot_error_message").is(":visible"))
-					   $("#forgot_error_message").hide(); 				
-				  $("#loginpopdiv").hide();
-			}
-			else
-			{
-			  if(controllername !='')
-				{
-				  if(controllername == 'index')
-					{
-					 $("#hometab").removeClass("active");
-					 $("#loginbutton").addClass("active");
-					} 
-				
-				} 
-			  				   
-               $("#loginpopdiv").show();
-			} 
-		}else {
-			if($("#loginpopdiv").is(":visible"))
-			{
-			   if(controllername !='')
-				{
-				  if(controllername == 'index')
-					{
-					 $("#loginbutton").removeClass("active");
-					 $("#hometab").addClass("active");
-					} 
-				
-				}
-                    document.getElementById('username').value= '';
-					document.getElementById('password').value= '';
-					document.getElementById('emailaddress').value= '';					   
-               if(navigator.userAgent.match(/msie/i) == 'MSIE')
-	 			  placeholder_helper();                            
+
+				document.getElementById('username').value = '';
+				document.getElementById('password').value = '';
+				document.getElementById('emailaddress').value = '';
+				if (navigator.userAgent.match(/msie/i) == 'MSIE')
+					placeholder_helper();
 				$('#username').removeClass("text_color");
-				  $('#password').removeClass("text_color");
-				  $('#emailaddress').removeClass("text_color");
-			   if($("#errrMsg").is(":visible"))
-				$("#errrMsg").hide();
-			  if($("#usernameerror").is(":visible"))
-				$("#usernameerror").hide();
-			  if($("#pwderror").is(":visible"))
-				$("#pwderror").hide();
-			  if($("#forgotpassworddiv").is(":visible"))
-				$("#forgotpassworddiv").hide();	
-			  if($("#forgot_error_message").is(":visible"))
-	               $("#forgot_error_message").hide();	
-			  if($("#loginpopdiv").is(":visible"))
+				$('#password').removeClass("text_color");
+				$('#emailaddress').removeClass("text_color");
+				if ($("#errrMsg").is(":visible"))
+					$("#errrMsg").hide();
+				if ($("#usernameerror").is(":visible"))
+					$("#usernameerror").hide();
+				if ($("#pwderror").is(":visible"))
+					$("#pwderror").hide();
+				if ($("#forgotpassworddiv").is(":visible"))
+					$("#forgotpassworddiv").hide();
+				if ($("#forgot_error_message").is(":visible"))
+					$("#forgot_error_message").hide();
 				$("#loginpopdiv").hide();
+			} else {
+				if (controllername != '') {
+					if (controllername == 'index') {
+						$("#hometab").removeClass("active");
+						$("#loginbutton").addClass("active");
+					}
+
+				}
+
+				$("#loginpopdiv").show();
 			}
-			
+		} else {
+			if ($("#loginpopdiv").is(":visible")) {
+				if (controllername != '') {
+					if (controllername == 'index') {
+						$("#loginbutton").removeClass("active");
+						$("#hometab").addClass("active");
+					}
+
+				}
+				document.getElementById('username').value = '';
+				document.getElementById('password').value = '';
+				document.getElementById('emailaddress').value = '';
+				if (navigator.userAgent.match(/msie/i) == 'MSIE')
+					placeholder_helper();
+				$('#username').removeClass("text_color");
+				$('#password').removeClass("text_color");
+				$('#emailaddress').removeClass("text_color");
+				if ($("#errrMsg").is(":visible"))
+					$("#errrMsg").hide();
+				if ($("#usernameerror").is(":visible"))
+					$("#usernameerror").hide();
+				if ($("#pwderror").is(":visible"))
+					$("#pwderror").hide();
+				if ($("#forgotpassworddiv").is(":visible"))
+					$("#forgotpassworddiv").hide();
+				if ($("#forgot_error_message").is(":visible"))
+					$("#forgot_error_message").hide();
+				if ($("#loginpopdiv").is(":visible"))
+					$("#loginpopdiv").hide();
+			}
+
 		}
 
 
-    });
-	
+	});
+
 	$('#username').blur(function(e) {
-	  var usernameval = $.trim($('#username').val());
-	  if(usernameval == '' || usernameval == 'Enter your username or email')
-	    {
-	     $('#username').removeClass("text_color");
-		 $('#username').val('');
-		} 
-		
-		if($.trim($('#username').val())){
-		   	$('#username').siblings('.errorMsg').html('&nbsp;');
-			$('#username').siblings('.errorMsg').css('display','none');			
-		}else{
+		var usernameval = $.trim($('#username').val());
+		if (usernameval == '' || usernameval == 'Enter your username or email') {
+			$('#username').removeClass("text_color");
+			$('#username').val('');
+		}
+
+		if ($.trim($('#username').val())) {
+			$('#username').siblings('.errorMsg').html('&nbsp;');
+			$('#username').siblings('.errorMsg').css('display', 'none');
+		} else {
 			$('#username').siblings('.errorMsg').html('Please enter username or email.');
-			$('#username').siblings('.errorMsg').css('display','block');
+			$('#username').siblings('.errorMsg').css('display', 'block');
 			$('#username').siblings('#errrMsg').html('');
 			return false;
 		}
-		
+
 	});
 	$('#password').blur(function(e) {
-	    var passwordval = $.trim($('#password').val());
-	    if(passwordval == '' || passwordval == 'Enter your password')
-		{
-	     $('#password').removeClass("text_color");
-		 $('#password').val('');
-		} 
-		 
-		if($.trim($('#password').val())){
+		var passwordval = $.trim($('#password').val());
+		if (passwordval == '' || passwordval == 'Enter your password') {
+			$('#password').removeClass("text_color");
+			$('#password').val('');
+		}
+
+		if ($.trim($('#password').val())) {
 			$('#password').siblings('.errorMsg').html('&nbsp;');
-			$('#password').siblings('.errorMsg').css('display','none');
-		}else{
+			$('#password').siblings('.errorMsg').css('display', 'none');
+		} else {
 			$('#password').siblings('.errorMsg').html('Please enter password.');
-			$('#password').siblings('.errorMsg').css('display','block');
+			$('#password').siblings('.errorMsg').css('display', 'block');
 			return false;
 		}
 	});
 
 	$('#loginsubmit').click(function(e) {
-		
+
 		var username = $.trim($('#username').val());
 		var password = $.trim($('#password').val());
-		
-		 var flag = 'yes';
-		if(username == undefined || username == '' || username == null || username == 'Enter your username or email'){
-		    
-			$('#username').siblings('.errorMsg').css('display','block');
+
+		var flag = 'yes';
+		if (username == undefined || username == '' || username == null || username == 'Enter your username or email') {
+
+			$('#username').siblings('.errorMsg').css('display', 'block');
 			$('#username').siblings('.errorMsg').html('Please enter username or email.');
-			
+
 			flag = 'no';
 		}
-		
-		if(password == undefined || password == '' || password == null || password == 'Enter your password'){
-		    
-		    $('#password').siblings('.errorMsg').css('display','block');
+
+		if (password == undefined || password == '' || password == null || password == 'Enter your password') {
+
+			$('#password').siblings('.errorMsg').css('display', 'block');
 			$('#password').siblings('.errorMsg').html('Please enter password.');
-			
+
 			flag = 'no';
 		}
-		
-       
-                if(flag == 'no')
-                    return false;
-                else 
-                    return true;
-                
+
+
+		if (flag == 'no')
+			return false;
+		else
+			return true;
+
 	});
-	
-	
+
+
 	$('#forgotpwdtext').click(function(e) {
-	   
-		  
-		$("#forgotpassworddiv").toggle();  
-		  
-		if($("#forgot_error_message").is(":visible"))  
-		  $("#forgot_error_message").hide();
-		  
+
+
+		$("#forgotpassworddiv").toggle();
+
+		if ($("#forgot_error_message").is(":visible"))
+			$("#forgot_error_message").hide();
+
 	});
-	
+
 	$('#emailaddress').blur(function(e) {
-	    
-	    var sEmail = $.trim($('#emailaddress').val());
-		if(sEmail == '' || sEmail == 'Enter your email')
-	     $('#emailaddress').removeClass("text_color");
-		
+
+		var sEmail = $.trim($('#emailaddress').val());
+		if (sEmail == '' || sEmail == 'Enter your email')
+			$('#emailaddress').removeClass("text_color");
+
 		var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-			if(sEmail !='' && sEmail != 'Enter your email')
-			{
-				if (filter.test(sEmail)) {
-					if($("#forgot_error_message").is(":visible"))
-					   $("#forgot_error_message").hide();
-					return true;
-				}
-				else {
-					$("#forgot_error_message").show();
-					$("#forgot_error_message").html("Please enter valid email.");
-					return false;
-				}
-			}else
-            {
-			     $("#forgot_error_message").show();
-				 $("#forgot_error_message").html("Please enter email.");
-					return false;
-            } 			
+		if (sEmail != '' && sEmail != 'Enter your email') {
+			if (filter.test(sEmail)) {
+				if ($("#forgot_error_message").is(":visible"))
+					$("#forgot_error_message").hide();
+				return true;
+			} else {
+				$("#forgot_error_message").show();
+				$("#forgot_error_message").html("Please enter valid email.");
+				return false;
+			}
+		} else {
+			$("#forgot_error_message").show();
+			$("#forgot_error_message").html("Please enter email.");
+			return false;
+		}
 	});
-	
-	$("#username").focus( function() {
-     $('#username').addClass("text_color");
-   });
-    
-	$("#password").focus( function() {
-     $('#password').addClass("text_color");
-   });
-   
-   $("#emailaddress").focus( function() {
-     $('#emailaddress').addClass("text_color");
-   });
-/* Start - Script for placeholder	
-   This script is for placeholder not working in IE8 and IE9
-*/
+
+	$("#username").focus(function() {
+		$('#username').addClass("text_color");
+	});
+
+	$("#password").focus(function() {
+		$('#password').addClass("text_color");
+	});
+
+	$("#emailaddress").focus(function() {
+		$('#emailaddress').addClass("text_color");
+	});
+	/* Start - Script for placeholder	
+	   This script is for placeholder not working in IE8 and IE9
+	*/
 	var _debug = false;
-    var _placeholderSupport = function() {
-    var t = document.createElement("input");
-    t.type = "text";
-    return (typeof t.placeholder !== "undefined");
-    }();
+	var _placeholderSupport = function() {
+		var t = document.createElement("input");
+		t.type = "text";
+		return (typeof t.placeholder !== "undefined");
+	}();
 
 	window.onload = placeholder_helper();
-                
-            function placeholder_helper() {
+
+	function placeholder_helper() {
 		var arrInputs = document.getElementsByTagName("input");
 		for (var i = 0; i < arrInputs.length; i++) {
 			var curInput = arrInputs[i];
@@ -264,16 +232,15 @@
 					oForm.attachEvent("onsubmit", function() {
 						PlaceholderFormSubmit(oForm);
 					});
-				}
-				else if (oForm.addEventListener)
+				} else if (oForm.addEventListener)
 					oForm.addEventListener("submit", function() {
 						PlaceholderFormSubmit(oForm);
 					}, false);
 			}
 		}
-    };
+	};
 
-	function PlaceholderFormSubmit(oForm) {    
+	function PlaceholderFormSubmit(oForm) {
 		for (var i = 0; i < oForm.elements.length; i++) {
 			var curElement = oForm.elements[i];
 			HandlePlaceholderItemSubmit(curElement);
@@ -299,7 +266,7 @@
 		oTextbox.type = "text";
 		oTextbox.id = oPasswordTextbox.id;
 		oTextbox.name = oPasswordTextbox.name;
-		
+
 		oTextbox.className = oPasswordTextbox.className;
 		for (var i = 0; i < oPasswordTextbox.attributes.length; i++) {
 			var curName = oPasswordTextbox.attributes.item(i).nodeName;
@@ -349,12 +316,10 @@
 						_this.value = curPlaceholder;
 					}
 				};
-			}
-			else {
+			} else {
 				Debug("input box '" + oTextbox.name + "' does not have placeholder attribute");
 			}
-		}
-		else {
+		} else {
 			Debug("browser has native support for placeholder");
 		}
 	}
@@ -370,9 +335,10 @@
 			oConsole.innerHTML += msg + "<br />";
 		}
 	}
-	
-/* End Script for placeholder */	
+
+	/* End Script for placeholder */
 </script>
-  
+
 </body>
+
 </html>
