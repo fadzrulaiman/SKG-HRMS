@@ -1,0 +1,5 @@
+{
+    "require": {
+        "zendframework/zend-mvc": "^3.1"
+    }
+}
