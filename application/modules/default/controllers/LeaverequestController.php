@@ -368,6 +368,7 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		
 		$id = $this->_request->getParam('id'); 
 		$reason = $this->_request->getParam('reason'); // reason
+		$attachment = $this->_request->getParam('attachment'); // reason
 		$leavetypeparam = $this->_request->getParam('leavetypeid');
 		if(isset($leavetypeparam) && $leavetypeparam !='')
 		{
@@ -558,6 +559,7 @@ class Default_LeaverequestController extends Zend_Controller_Action
 				$tableid  = ''; 
 				   $data = array('user_id'=>$loginUserId, 
 				                 'reason'=>$reason,
+								 'attachment'=>$attachment,
 				                 'leavetypeid'=>$leavetypeid,
 				                 'leaveday'=>$leaveday,
 								 'from_date'=>$from_date,

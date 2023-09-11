@@ -82,6 +82,13 @@ class Default_Form_leaverequest extends Zend_Form
 		$reason ->setAttrib('maxlength', '30');
 		$reason->setRequired(true);
         $reason->addValidator('NotEmpty', false, array('messages' => 'Please enter reason.'));
+
+		$attachment = new Zend_Form_Element_Textarea('attachment');
+        $attachment->setAttrib('rows', 10);
+        $attachment->setAttrib('cols', 50);
+		$attachment ->setAttrib('maxlength', '30');
+		$attachment->setRequired(true);
+        $attachment->addValidator('NotEmpty', false, array('messages' => 'Please enter attachment.'));
 		
 		$leavestatus = new Zend_Form_Element_Text('leavestatus');
         $leavestatus->setAttrib('readonly', 'true');
@@ -108,7 +115,7 @@ class Default_Form_leaverequest extends Zend_Form
 		 $submit->setOptions(array('onclick' => "saveDetails($url,$dialogMsg,$toggleDivId,$jsFunction);"
 		));
 
-		$this->addElements(array($id,$reason,$availableleaves,$repmanagerid,$comments,$leaveday,$from_date,$to_date,$leavetypeid,$issatholiday,$appliedleavesdaycount,$leavestatus,$createddate,$submit));
+		$this->addElements(array($id,$reason,$attachment,$availableleaves,$repmanagerid,$comments,$leaveday,$from_date,$to_date,$leavetypeid,$issatholiday,$appliedleavesdaycount,$leavestatus,$createddate,$submit));
         $this->setElementDecorators(array('ViewHelper'));
         $this->setElementDecorators(array(
                     'UiWidgetElement',
