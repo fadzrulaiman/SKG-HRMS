@@ -465,8 +465,14 @@ defined('EMP_DOC_FILES_PATH') || define('EMP_DOC_FILES_PATH', $domainurl.'/publi
 defined('CA_FILES_PATH') || define('CA_FILES_PATH', $domainurl.'/public/uploads/announcements/');
 defined('CA_FILES_TEMP_PATH') || define('CA_FILES_TEMP_PATH', $domainurl.'/public/uploads/ca_temp/');
 
+// define path upto / uploads
+defined('CA_FILES_PATH') || define('CA_FILES_PATH', $domainurl.'/public/uploads/announcements/');
+
 // define path upto /scripts
 defined('SCRIPTS_PATH') || define('SCRIPTS_PATH', $domainurl.'/public/scripts/');    
+
+// define path upto /leaveattachment uploads
+defined('LE_FILES_PATH') || define('LE_FILES_PATH', $domainurl.'/public/uploads/leaveattachment/');
 
 // define main xml layout file name
 defined('MAIN_XML_LAYOUT') || define('MAIN_XML_LAYOUT', 'main.xml');

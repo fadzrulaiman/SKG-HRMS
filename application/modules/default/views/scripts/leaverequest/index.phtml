@@ -763,13 +763,52 @@ if ($this->loginUserId == SUPERADMIN) { ?>
 					<?php } ?>
 				</div>
 
-				<div class="new-form-ui">
-					<label class="required">Attachment</label>
-					<div class="division"><?php echo $this->form->attachment; ?></div>
-					<?php if (isset($this->msgarray['attachment'])) { ?>
-						<span class="errors" id="errors-<?php echo $this->form->attachment->getId(); ?>"><?php echo $this->msgarray['attachment']; ?></span>
-					<?php } ?>
-				</div>
+				<div class="new-form-ui-1" id="ca_attachment" style="width:300px;">
+							<label>&nbsp;</label>
+							<div class="division">
+								<span class="upload-attachment uploadbutsel" id="fileupload"><b class="sprite upload-icon" style="cursor:pointer;">Upload Attachment</b></span>
+								<div id="photo_gallery">
+							<?php if ($this->data['attachments']) {
+								$path = LE_FILES_PATH;
+								$attachments = json_decode($this->data['attachments'], true);
+								$i = 0;
+								foreach ($attachments as $k => $v) {
+									if (in_array(strtolower(sapp_Htmlhelper::getExtension($v["new_name"])), array('jpg', 'png', 'gif', 'jpeg'))) { ?>
+												<a href="<?php echo $path . $v["new_name"]; ?>" rel="prettyPhoto[pp_gal]" class="click_view_link_class" title="<?php echo $v["original_name"]; ?>">
+												<?php if ($i == 0) { ?>Click to view<?php } ?>
+												</a>
+										<?php } else { ?>
+												<a class="click_view_link_class" href="<?php echo $path . $v["new_name"]; ?>?iframe=true&width=80%&height=90%" rel="prettyPhoto[pp_gal]" title="<?php echo $v["original_name"]; ?>">
+												<?php if ($i == 0) { ?>Click to view<?php } ?>
+												</a>
+									<?php }
+									$i++;
+								}
+							} ?> 
+								</div>
+							<?php if (isset($this->msgarray['file_original_names']) && $this->msgarray['file_original_names'] != '') {
+
+								$org_files = explode(',', $this->msgarray['file_original_names']);
+								$new_files = explode(',', $this->msgarray['file_new_names']);
+
+								for ($i = 0; $i < count($org_files); $i++) {
+									echo '<div class="ajax-file-upload-statusbar" id="x_file_' . $i . '">
+										<div class="ajax-file-upload-filename">' . $org_files[$i] . '</div>
+										<div class="ajax-file-upload-red" onclick=deleteImages(this,"' . $org_files[$i] . '","' . $new_files[$i] . '","x_file_' . $i . '") style=""><span class="ajax-file-upload-red" style=""><i class="fa fa-times-circle"></i></span></div>
+									  </div>';
+								}
+							} ?>
+							</div>
+							<div id="loaderimgprofile" style="display:none; margin-left: 124px; top: 26px;">
+								<img src="<?php echo $this->baseUrl("public/media/images/loaderwhite_21X21.gif"); ?>" style="width:21px; height: 21px; float: none; "/>
+							</div>
+						</div>
+						<input type="hidden" name="file_original_names" id="file_original_names" value="<?php if (isset($this->msgarray['file_original_names'])) {
+							echo $this->msgarray['file_original_names'];
+						} ?>">
+						<input type="hidden" name="file_new_names" id="file_new_names" value="<?php if (isset($this->msgarray['file_new_names'])) {
+							echo $this->msgarray['file_new_names'];
+						} ?>">
 
 				<div class="new-form-ui">
 					<label class="required">From <img class="tooltip" title="<?php echo DATE_DESCRIPTION; ?>" src="<?php echo MEDIA_PATH; ?>images/help.png"></label>

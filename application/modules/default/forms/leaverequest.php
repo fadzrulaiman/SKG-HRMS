@@ -83,7 +83,7 @@ class Default_Form_leaverequest extends Zend_Form
 		$reason->setRequired(true);
         $reason->addValidator('NotEmpty', false, array('messages' => 'Please enter reason.'));
 
-		$attachment = new Zend_Form_Element_Textarea('attachment');
+		$attachment  = new Zend_Form_Element_Textarea('attachment');
         $attachment->setAttrib('rows', 10);
         $attachment->setAttrib('cols', 50);
 		$attachment ->setAttrib('maxlength', '30');

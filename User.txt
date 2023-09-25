@@ -1,7 +1,9 @@
 Super Admin sawitkinabalu@email.com , Sawit1234
+System Admin SKG 01 systemadmin@emaul.com , Sawit1234
 IT Head : SKG02 ithead@email.com , Sawit1234
 IT Manager : SKG03 itmanager@email.com ,  Sawit1234
 IT Staff : SKG04 itstaff@email.com, Sawit1234
-Head HR : headhr@email.com, Sawit1234
-HR Manager : hrmanager@email.com, 
-HR Exec : hrexec@email.com
+HR Head : SKG07 hrhead@email.com, Sawit1234
+HR Manager : SKG05 hrmanager@email.com, Sawit1234
+HR Exec : SKG06 hrstaff@email.com, Sawit1234
+Group Managing Director : SKG08 gmd@email.com , Sawit1234

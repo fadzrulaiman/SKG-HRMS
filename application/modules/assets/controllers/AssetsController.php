@@ -42,10 +42,9 @@ class Assets_AssetsController extends Zend_Controller_Action
 				$searchArray = array();		
 				$tablecontent='';		
 			$organizationImg = new Zend_Session_Namespace('organizationinfo');
-			if(!empty($data['image']))
-				{
-					$image->image = $data['image'];
-				}
+			if (!empty($data['image'])) {
+				$image->image = $data['image'];
+			}
 			if($refresh == 'refresh')
 				{
 					if($dashboardcall == 'Yes')

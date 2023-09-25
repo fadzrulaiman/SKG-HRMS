@@ -258,6 +258,7 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		if($auth->hasIdentity()){
 					$loginUserId = $auth->getStorage()->read()->id;
 		}
+		// Initiating variables
 		$constantday = '';
 		$days = '';
 		$errorflag = 'true';
@@ -286,9 +287,9 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		$usersmodel = new Default_Model_Users();
 		$employeesmodel = new Default_Model_Employees();
 		$weekdaysmodel = new Default_Model_Weekdays();
-		 if($loginUserId !='' && $loginUserId != NULL)
+		 if($loginUserId !='' && $loginUserId != NULL) // Check is there is user ID present when login
 			{
-				$loggedinEmpId = $usersmodel->getUserDetailsByID($loginUserId);
+				$loggedinEmpId = $usersmodel->getUserDetailsByID($loginUserId); // Get user details by ID
 				$loggedInEmployeeDetails = $employeesmodel->getLoggedInEmployeeDetails($loginUserId);
 				
 				if(!empty($loggedInEmployeeDetails))
@@ -368,7 +369,7 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		
 		$id = $this->_request->getParam('id'); 
 		$reason = $this->_request->getParam('reason'); // reason
-		$attachment = $this->_request->getParam('attachment'); // reason
+		$attachments = $this->_request->getParam('attachments', null); // attachments
 		$leavetypeparam = $this->_request->getParam('leavetypeid');
 		if(isset($leavetypeparam) && $leavetypeparam !='')
 		{
@@ -559,7 +560,7 @@ class Default_LeaverequestController extends Zend_Controller_Action
 				$tableid  = ''; 
 				   $data = array('user_id'=>$loginUserId, 
 				                 'reason'=>$reason,
-								 'attachment'=>$attachment,
+								 'attachments'=>$attachments,
 				                 'leavetypeid'=>$leavetypeid,
 				                 'leaveday'=>$leaveday,
 								 'from_date'=>$from_date,
@@ -1007,6 +1008,8 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		$this->view->reject_flag = $reject_flag;
 		
 	}
+
+	
 	
 	public function updateleavedetailsAction()
 	{
