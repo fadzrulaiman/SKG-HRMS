@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2023 at 09:46 AM
+-- Generation Time: Sep 18, 2023 at 09:20 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hrms`
+-- Database: `hrms1`
 --
 
 -- --------------------------------------------------------
@@ -376,23 +376,6 @@ CREATE TABLE `main_allottedleaveslog` (
   `modifieddate` datetime DEFAULT NULL,
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `main_allottedleaveslog`
---
-
-INSERT INTO `main_allottedleaveslog` (`id`, `userid`, `assignedleaves`, `totalleaves`, `year`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 5, 24, 24, 2023, 6, 6, '2023-09-01 06:11:15', '2023-09-01 06:11:15', 1),
-(2, 3, 24, 24, 2023, 6, 6, '2023-09-01 06:11:15', '2023-09-01 06:11:15', 1),
-(3, 4, 24, 24, 2023, 6, 6, '2023-09-01 06:11:15', '2023-09-01 06:11:15', 1),
-(4, 7, 24, 24, 2023, 1, 1, '2023-09-01 07:03:25', '2023-09-01 07:03:25', 1),
-(5, 6, 24, 24, 2023, 1, 1, '2023-09-01 07:03:25', '2023-09-01 07:03:25', 1),
-(6, 5, 12, 36, 2023, 1, 1, '2023-09-04 03:56:35', '2023-09-04 03:56:35', 1),
-(7, 5, 24, 24, 2023, 1, 1, '2023-09-04 04:01:05', '2023-09-04 04:01:05', 1),
-(8, 8, 34, 34, 2023, 1, 1, '2023-09-08 08:24:58', '2023-09-08 08:24:58', 1),
-(9, 9, 24, 24, 2023, 1, 1, '2023-09-11 06:54:54', '2023-09-11 06:54:54', 1),
-(10, 5, 24, 24, 2023, 1, 1, '2023-09-11 07:25:11', '2023-09-11 07:25:11', 1),
-(11, 5, 24, 24, 2023, 1, 1, '2023-09-11 07:26:09', '2023-09-11 07:26:09', 1);
 
 -- --------------------------------------------------------
 
@@ -1359,7 +1342,23 @@ INSERT INTO `main_emaillogs` (`id`, `fromEmail`, `toEmail`, `toName`, `cc`, `bcc
 (57, NULL, 'itstaff@email.com', 'IT EXEC', NULL, NULL, 'Leave request approved', 'Leave Request', '<div>Hi,</div><div>The below leave(s) has been approved.</div><div>\r\n                			<table width=\"100%\" cellspacing=\"0\" cellpadding=\"15\" border=\"0\" style=\"border:3px solid #BBBBBB; font-size:16px; font-family:Arial, Helvetica, sans-serif; margin:30px 0 30px 0;\" bgcolor=\"#ffffff\">\r\n	                      	<tbody>\r\n		                      <tr>\r\n		                        <td width=\"28%\" style=\"border-right:2px solid #BBBBBB;\">Employee Name</td>\r\n		                        <td width=\"72%\">IT EXEC</td>\r\n		                      </tr>\r\n		                      <tr bgcolor=\"#e9f6fc\">\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">No. of Day(s)</td>\r\n		                        <td>4.0</td>\r\n		                      </tr>\r\n		                      <tr>\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">From</td>\r\n		                        <td>2023-09-12</td>\r\n		                      </tr>\r\n		                      <tr bgcolor=\"#e9f6fc\">\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">To</td>\r\n		                        <td>2023-09-15</td>\r\n		            	      </tr>\r\n		                      <tr bgcolor=\"#e9f6fc\">\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">Reason for Leave</td>\r\n		                        <td>Test</td>\r\n	                  		  </tr>\r\n                			</tbody>\r\n                			</table>\r\n							</div>\r\n            				<div style=\"padding:20px 0 10px 0;\">Please <a href=\"http://10.13.1.101:8000/index.php//index/popup\" target=\"_blank\" style=\"color:#b3512f;\">click here</a> to login and check the leave details.</div>', 1, '2023-09-11 07:35:07', '2023-09-11 07:35:07', NULL, NULL),
 (58, NULL, 'itmanager@email.com', 'IT MANAGER', NULL, NULL, 'Leave request approved', 'Leave Request', '<div>Hi,</div><div>The below leave(s) has been approved.</div><div>\r\n                			<table width=\"100%\" cellspacing=\"0\" cellpadding=\"15\" border=\"0\" style=\"border:3px solid #BBBBBB; font-size:16px; font-family:Arial, Helvetica, sans-serif; margin:30px 0 30px 0;\" bgcolor=\"#ffffff\">\r\n	                      	<tbody>\r\n		                      <tr>\r\n		                        <td width=\"28%\" style=\"border-right:2px solid #BBBBBB;\">Employee Name</td>\r\n		                        <td width=\"72%\">IT EXEC</td>\r\n		                      </tr>\r\n		                      <tr bgcolor=\"#e9f6fc\">\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">No. of Day(s)</td>\r\n		                        <td>4.0</td>\r\n		                      </tr>\r\n		                      <tr>\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">From</td>\r\n		                        <td>2023-09-12</td>\r\n		                      </tr>\r\n		                      <tr bgcolor=\"#e9f6fc\">\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">To</td>\r\n		                        <td>2023-09-15</td>\r\n		            	      </tr>\r\n		                      <tr bgcolor=\"#e9f6fc\">\r\n		                        <td style=\"border-right:2px solid #BBBBBB;\">Reason for Leave</td>\r\n		                        <td>Test</td>\r\n	                  		  </tr>\r\n                			</tbody>\r\n                			</table>\r\n							</div>\r\n            				<div style=\"padding:20px 0 10px 0;\">Please <a href=\"http://10.13.1.101:8000/index.php//index/popup\" target=\"_blank\" style=\"color:#b3512f;\">click here</a> to login and check the leave details.</div>', 1, '2023-09-11 07:35:17', '2023-09-11 07:35:17', NULL, NULL),
 (59, NULL, 'hrmanager@email.com', 'HR MANAGER', NULL, NULL, 'Leave request for approval', 'Leave Request', '<div>\r\n												<div>Dear HR MANAGER,</div>\r\n												<div>The leave of the below employee is pending for approval:</div>\r\n												<div>\r\n                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"15\" border=\"0\" style=\"border:3px solid #BBBBBB; font-size:16px; font-family:Arial, Helvetica, sans-serif; margin:30px 0 30px 0;\" bgcolor=\"#ffffff\">\r\n                      <tbody><tr>\r\n                        <td width=\"28%\" style=\"border-right:2px solid #BBBBBB;\">Employee Name</td>\r\n                        <td width=\"72%\">HR EXEC</td>\r\n                      </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">No. of Day(s)</td>\r\n                        <td>4</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">Remaining Leaves</td>\r\n                        <td>20</td>\r\n                      </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">From</td>\r\n                        <td>2023-09-12</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">To</td>\r\n                        <td>2023-09-15</td>\r\n                  </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">Reason for Leave</td>\r\n                        <td>sdad</td>\r\n                  </tr>\r\n                  <tr>\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">Reporting Manager</td>\r\n                        <td>HR MANAGER</td>\r\n                  </tr>\r\n                </tbody></table>\r\n\r\n            </div>\r\n            <div style=\"padding:20px 0 10px 0;\">Please <a href=\"http://10.13.1.101:8000/index.php//index/popup\" target=\"_blank\" style=\"color:#b3512f;\">click here</a> to login and check the leave details.</div>\r\n            </div>', 1, '2023-09-11 07:42:04', '2023-09-11 07:42:04', NULL, NULL),
-(60, NULL, 'hrexec@email.com', 'HR EXEC', NULL, NULL, 'Leave request for approval', 'Leave Request', '<div>\r\n												<div>Hi,</div>\r\n												<div>A leave request raised by you is sent for your managers approval.</div>\r\n<div>\r\n                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"15\" border=\"0\" style=\"border:3px solid #BBBBBB; font-size:16px; font-family:Arial, Helvetica, sans-serif; margin:30px 0 30px 0;\" bgcolor=\"#ffffff\">\r\n                      <tbody><tr>\r\n                        <td width=\"28%\" style=\"border-right:2px solid #BBBBBB;\">Employee Name</td>\r\n                        <td width=\"72%\">HR EXEC</td>\r\n                      </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">No. of Day(s)</td>\r\n                        <td>4</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">From</td>\r\n                        <td>2023-09-12</td>\r\n                      </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">To</td>\r\n                        <td>2023-09-15</td>\r\n            	     </tr>\r\n	    	          <tr>\r\n    	                 <td style=\"border-right:2px solid #BBBBBB;\">Leave Type</td>\r\n                        <td>Annual Leave</td>\r\n                  </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">Reason for Leave</td>\r\n                        <td>sdad</td>\r\n                  </tr>\r\n                </tbody></table>\r\n\r\n            </div>\r\n            <div style=\"padding:20px 0 10px 0;\">Please <a href=\"http://10.13.1.101:8000/index.php//index/popup\" target=\"_blank\" style=\"color:#b3512f;\">click here</a> to login and check the leave details.</div>												\r\n            </div>', 1, '2023-09-11 07:42:14', '2023-09-11 07:42:14', NULL, NULL);
+(60, NULL, 'hrexec@email.com', 'HR EXEC', NULL, NULL, 'Leave request for approval', 'Leave Request', '<div>\r\n												<div>Hi,</div>\r\n												<div>A leave request raised by you is sent for your managers approval.</div>\r\n<div>\r\n                <table width=\"100%\" cellspacing=\"0\" cellpadding=\"15\" border=\"0\" style=\"border:3px solid #BBBBBB; font-size:16px; font-family:Arial, Helvetica, sans-serif; margin:30px 0 30px 0;\" bgcolor=\"#ffffff\">\r\n                      <tbody><tr>\r\n                        <td width=\"28%\" style=\"border-right:2px solid #BBBBBB;\">Employee Name</td>\r\n                        <td width=\"72%\">HR EXEC</td>\r\n                      </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">No. of Day(s)</td>\r\n                        <td>4</td>\r\n                      </tr>\r\n                      <tr>\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">From</td>\r\n                        <td>2023-09-12</td>\r\n                      </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">To</td>\r\n                        <td>2023-09-15</td>\r\n            	     </tr>\r\n	    	          <tr>\r\n    	                 <td style=\"border-right:2px solid #BBBBBB;\">Leave Type</td>\r\n                        <td>Annual Leave</td>\r\n                  </tr>\r\n                      <tr bgcolor=\"#e9f6fc\">\r\n                        <td style=\"border-right:2px solid #BBBBBB;\">Reason for Leave</td>\r\n                        <td>sdad</td>\r\n                  </tr>\r\n                </tbody></table>\r\n\r\n            </div>\r\n            <div style=\"padding:20px 0 10px 0;\">Please <a href=\"http://10.13.1.101:8000/index.php//index/popup\" target=\"_blank\" style=\"color:#b3512f;\">click here</a> to login and check the leave details.</div>												\r\n            </div>', 1, '2023-09-11 07:42:14', '2023-09-11 07:42:14', NULL, NULL),
+(61, NULL, 'gmd@email.com', 'GROUP MANAGING DIRECTOR', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear GROUP MANAGING DIRECTOR,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>HR Employee</b> role has been created by HR Head. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:03:06', '2023-09-18 02:03:06', NULL, NULL),
+(62, NULL, 'sawitkinabalu@email.com', 'Super Admin', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear Super Admin,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>HR Employee</b> role has been created by HR Head. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:03:06', '2023-09-18 02:03:06', NULL, NULL),
+(63, NULL, 'hrmanager@email.com', 'HR MANAGER', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear HR MANAGER,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>HR Employee</b> role has been created by HR Head. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:03:06', '2023-09-18 02:03:06', NULL, NULL),
+(64, NULL, 'gmd@email.com', 'GROUP MANAGING DIRECTOR', NULL, NULL, 'Sawit Kinabalu : Role is updated', 'Role is updated', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear GROUP MANAGING DIRECTOR,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>HR Manager</b> role has been updated by HR Head. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:05:10', '2023-09-18 02:05:10', NULL, NULL),
+(65, NULL, 'sawitkinabalu@email.com', 'Super Admin', NULL, NULL, 'Sawit Kinabalu : Role is updated', 'Role is updated', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear Super Admin,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>HR Manager</b> role has been updated by HR Head. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:05:10', '2023-09-18 02:05:10', NULL, NULL),
+(66, NULL, 'headhr@email.com', 'HR Head', NULL, NULL, 'Sawit Kinabalu : Role is updated', 'Role is updated', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear HR Head,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Management</b> role has been updated by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:37:34', '2023-09-18 02:37:34', NULL, NULL),
+(67, NULL, 'gmd@email.com', 'GROUP MANAGING DIRECTOR', NULL, NULL, 'Sawit Kinabalu : Role is updated', 'Role is updated', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear GROUP MANAGING DIRECTOR,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Management</b> role has been updated by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:37:34', '2023-09-18 02:37:34', NULL, NULL),
+(68, NULL, 'headhr@email.com', 'HR Head', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear HR Head,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Admin</b> role has been created by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:43:52', '2023-09-18 02:43:52', NULL, NULL),
+(69, NULL, 'gmd@email.com', 'GROUP MANAGING DIRECTOR', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear GROUP MANAGING DIRECTOR,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Admin</b> role has been created by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:43:52', '2023-09-18 02:43:52', NULL, NULL),
+(70, NULL, 'hrmanager@email.com', 'HR MANAGER', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear HR MANAGER,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Admin</b> role has been created by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:43:52', '2023-09-18 02:43:52', NULL, NULL),
+(71, NULL, 'headhr@email.com', 'HR Head', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear HR Head,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Admin</b> role has been created by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:44:45', '2023-09-18 02:44:45', NULL, NULL),
+(72, NULL, 'gmd@email.com', 'GROUP MANAGING DIRECTOR', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear GROUP MANAGING DIRECTOR,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Admin</b> role has been created by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:44:45', '2023-09-18 02:44:45', NULL, NULL),
+(73, NULL, 'hrmanager@email.com', 'HR MANAGER', NULL, NULL, 'Sawit Kinabalu : Role is created', 'Role is created', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Dear HR MANAGER,</span><br />\r\n    <div style=\'padding:20px 0 0 0;color:#3b3b3b;\'> <b>System Admin</b> role has been created by Super Admin. </div>    \r\n    <div style=\'padding:20px 0 10px 0;color:#3b3b3b;\'>Please <a href=\"http://localhost:8000/index.php\" target=\'_blank\' style=\"color:#208bbd; text-decoration:none;\">click here</a> to  login and check the role details.</div>		\r\n</div>      \r\n    \r\n', 0, '2023-09-18 02:44:45', '2023-09-18 02:44:45', NULL, NULL),
+(74, NULL, 'systemadmin@email.com', 'System Admin', NULL, NULL, 'Sawit Kinabalu : Employee details updated', 'Employee details updated', 'Dear System Admin, <br/> Your details has been updated.', 0, '2023-09-18 02:54:51', '2023-09-18 02:54:51', NULL, NULL),
+(75, NULL, 'hrhead@email.com', 'IT HEAD', NULL, NULL, 'Sawit Kinabalu : Login Credentials', 'Greetings from Sentrifugo', '\r\n<div style=\'padding: 0; text-align: left; font-size:14px; font-family:Arial, Helvetica, sans-serif;\'>				\r\n	<span style=\'color:#3b3b3b;\'>Hello IT HEAD,</span><br />\r\n	\r\n	<div style=\'padding:20px 0 0 0;color:#3b3b3b;\'>You have been added to Sawit Kinabalu . The login credentials for your Sentrifugo account are:</div>\r\n	\r\n	<div style=\'padding:20px 0 0 0;color:#3b3b3b;\'>Username: <strong>SKG07</strong></div>\r\n	<div style=\'padding:5px 0 0 0;color:#3b3b3b;\'>Password: <strong>yharupuqu</strong></div>\r\n	\r\n	<div style=\"padding:20px 0 10px 0;\">Please <a href=\"http://localhost:8000/index.php/\" target=\"_blank\" style=\"color:#b3512f;\">click here</a> to login  to your Sentrifugo account.</div>\r\n\r\n</div>      \r\n      \r\n', 1, '2023-09-18 03:03:02', '2023-09-18 03:03:02', NULL, NULL),
+(76, NULL, 'hrhead@email.com', 'HR HEAD', NULL, NULL, 'Sawit Kinabalu : Employee details updated', 'Employee details updated', 'Dear HR HEAD, <br/> Your details has been updated.', 0, '2023-09-18 03:03:47', '2023-09-18 03:03:47', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1634,19 +1633,6 @@ CREATE TABLE `main_employeeleaves` (
   `isleavetrasnferset` tinyint(1) DEFAULT 0 COMMENT '0-Notset,1-set'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `main_employeeleaves`
---
-
-INSERT INTO `main_employeeleaves` (`id`, `user_id`, `emp_leave_limit`, `used_leaves`, `alloted_year`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`, `isleavetrasnferset`) VALUES
-(1, 5, 24, 8, '2023', 6, 1, '2023-09-01 06:11:15', '2023-09-11 07:26:35', 1, 0),
-(2, 3, 24, 0, '2023', 6, 6, '2023-09-01 06:11:15', '2023-09-01 06:11:15', 1, 0),
-(3, 4, 24, 0, '2023', 6, 6, '2023-09-01 06:11:15', '2023-09-01 06:11:15', 1, 0),
-(4, 7, 24, 4, '2023', 1, 1, '2023-09-01 07:03:25', '2023-09-01 07:03:25', 1, 1),
-(5, 6, 24, 0, '2023', 1, 1, '2023-09-01 07:03:25', '2023-09-01 07:03:25', 1, 1),
-(10, 8, 32, 0, '2023', 1, 1, '2023-09-08 08:24:58', '2023-09-11 02:36:35', 1, 0),
-(15, 9, 24, 0, '2023', 1, 1, '2023-09-11 06:54:54', '2023-09-11 06:54:54', 1, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -1667,15 +1653,6 @@ CREATE TABLE `main_employeeleavetypes` (
   `modifieddate` datetime DEFAULT NULL,
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `main_employeeleavetypes`
---
-
-INSERT INTO `main_employeeleavetypes` (`id`, `leavetype`, `numberofdays`, `leavecode`, `description`, `leavepreallocated`, `leavepredeductable`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 'Annual Leave', 24, 'AL', NULL, 1, 1, 1, 1, '2023-09-01 03:23:23', '2023-09-01 03:23:23', 1),
-(2, 'Leave Bank', 30, 'LB', NULL, 1, 1, 6, 1, '2023-09-01 05:58:04', '2023-09-04 03:54:32', 1),
-(3, 'Annual Leave Orang Lama', 32, 'ALOL', 'Untuk before 2004', 1, 1, 1, 1, '2023-09-08 08:23:43', '2023-09-08 08:27:01', 0);
 
 --
 -- Triggers `main_employeeleavetypes`
@@ -1724,14 +1701,15 @@ CREATE TABLE `main_employees` (
 --
 
 INSERT INTO `main_employees` (`id`, `user_id`, `date_of_joining`, `date_of_leaving`, `reporting_manager`, `emp_status_id`, `businessunit_id`, `department_id`, `jobtitle_id`, `position_id`, `years_exp`, `holiday_group`, `prefix_id`, `extension_number`, `office_number`, `office_faxnumber`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`, `is_orghead`) VALUES
-(1, 2, '2023-09-01', NULL, 0, NULL, 1, 1, NULL, NULL, '15', NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 03:06:37', '2023-09-11 02:23:43', 1, 1),
+(1, 2, '2023-09-01', NULL, 0, NULL, NULL, NULL, NULL, NULL, '15', NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 03:06:37', '2023-09-18 02:54:51', 1, 1),
 (2, 3, '2023-09-01', NULL, 9, 3, 1, 2, 4, 1, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 03:34:46', '2023-09-11 06:43:15', 1, 0),
 (3, 4, '2023-09-01', NULL, 3, 3, 1, 2, 2, 3, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 03:35:44', '2023-09-01 05:34:00', 1, 0),
 (4, 5, '2023-09-01', NULL, 4, 3, 1, 2, 1, 2, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 03:37:01', '2023-09-01 05:33:49', 1, 0),
 (5, 6, '2023-09-01', NULL, 2, 3, 1, 1, 2, 5, '13', NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 05:56:15', '2023-09-11 06:42:28', 1, 0),
 (6, 7, '2023-09-01', NULL, 6, 3, 1, 1, 1, 2, '5', NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-01 07:00:20', '2023-09-01 07:00:20', 1, 0),
 (7, 8, '2023-09-01', NULL, 3, 3, 1, 2, 1, 2, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-08 08:24:28', '2023-09-08 08:24:28', 1, 0),
-(8, 9, '2017-09-01', NULL, 2, 3, 1, 4, 5, 7, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-11 06:41:05', '2023-09-11 06:41:35', 1, 0);
+(8, 9, '2017-09-01', NULL, 2, 3, 1, 4, 5, 7, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-11 06:41:05', '2023-09-11 06:41:35', 1, 0),
+(9, 10, '2023-09-06', NULL, 9, 3, 1, 1, 4, 8, NULL, NULL, 1, NULL, NULL, NULL, 1, 1, '2023-09-18 03:03:02', '2023-09-18 03:03:47', 1, 0);
 
 --
 -- Triggers `main_employees`
@@ -1902,13 +1880,14 @@ CREATE TABLE `main_employees_summary` (
 --
 
 INSERT INTO `main_employees_summary` (`id`, `user_id`, `date_of_joining`, `date_of_leaving`, `reporting_manager`, `reporting_manager_name`, `emp_status_id`, `emp_status_name`, `businessunit_id`, `businessunit_name`, `department_id`, `department_name`, `jobtitle_id`, `jobtitle_name`, `position_id`, `position_name`, `years_exp`, `holiday_group`, `holiday_group_name`, `prefix_id`, `prefix_name`, `extension_number`, `office_number`, `office_faxnumber`, `emprole`, `emprole_name`, `firstname`, `lastname`, `userfullname`, `emailaddress`, `contactnumber`, `backgroundchk_status`, `employeeId`, `modeofentry`, `other_modeofentry`, `selecteddate`, `candidatereferredby`, `referer_name`, `profileimg`, `createdby`, `createdby_name`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 2, '2023-09-01', NULL, 0, NULL, NULL, NULL, 1, 'Headquaters', 1, 'Human Resource', NULL, NULL, NULL, NULL, '15', NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 2, 'System Manager', 'HR', 'Head', 'HR Head', 'headhr@email.com', NULL, 'Yet to start', 'SKG01', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 03:06:37', '2023-09-11 02:23:43', 1),
+(1, 2, '2023-09-01', NULL, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '15', NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 2, 'System Management', 'System', 'Admin', 'System Admin', 'systemadmin@email.com', NULL, 'Yet to start', 'SKG01', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 03:06:37', '2023-09-18 02:54:51', 1),
 (2, 3, '2023-09-01', NULL, 9, 'GROUP MANAGING DIRECTOR', 3, 'Permanent', 1, 'Headquaters', 2, 'Information Technology', 4, 'Head Of Department', 1, 'Head Of Department Information Technology', NULL, NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 10, 'Head Of Department', 'IT', 'HEAD', 'IT HEAD', 'ithead@email.com', NULL, 'Yet to start', 'SKG02', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 03:34:46', '2023-09-11 06:43:15', 1),
 (3, 4, '2023-09-01', NULL, 3, 'IT HEAD', 3, 'Permanent', 1, 'Headquaters', 2, 'Information Technology', 2, 'Manager', 3, 'Software Development Manager', NULL, NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 3, 'Manager', 'IT', 'MANAGER', 'IT MANAGER', 'itmanager@email.com', NULL, 'Yet to start', 'SKG03', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 03:35:44', '2023-09-11 02:23:08', 1),
 (4, 5, '2023-09-01', NULL, 4, 'IT MANAGER', 3, 'Permanent', 1, 'Headquaters', 2, 'Information Technology', 1, 'Executive', 2, 'Sofware Engineer', NULL, NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 5, 'Employee', 'IT', 'EXEC', 'IT EXEC', 'itstaff@email.com', NULL, 'Yet to start', 'SKG04', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 03:37:01', '2023-09-11 02:23:08', 1),
-(5, 6, '2023-09-01', NULL, 2, 'HR Head', 3, 'Permanent', 1, 'Headquaters', 1, 'Human Resource', 2, 'Manager', 5, 'HR Manager', '13', NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 4, 'HR Manager', 'HR', 'MANAGER', 'HR MANAGER', 'hrmanager@email.com', NULL, 'Yet to start', 'SKG05', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 05:56:15', '2023-09-11 06:42:28', 1),
+(5, 6, '2023-09-01', NULL, 2, 'System Admin', 3, 'Permanent', 1, 'Headquaters', 1, 'Human Resource', 2, 'Manager', 5, 'HR Manager', '13', NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 4, 'HR Manager', 'HR', 'MANAGER', 'HR MANAGER', 'hrmanager@email.com', NULL, 'Yet to start', 'SKG05', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 05:56:15', '2023-09-18 02:54:51', 1),
 (6, 7, '2023-09-01', NULL, 6, 'HR MANAGER', 3, 'Permanent', 1, 'Headquaters', 1, 'Human Resource', 1, 'Executive', 2, 'Sofware Engineer', '5', NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 5, 'Employee', 'HR', 'EXEC', 'HR EXEC', 'hrexec@email.com', NULL, 'Yet to start', 'SKG06', 'Direct', NULL, '2023-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-01 07:00:20', '2023-09-11 02:23:43', 1),
-(8, 9, '2017-09-01', NULL, 2, 'HR Head', 3, 'Permanent', 1, 'Headquaters', 4, 'Management', 5, 'Group Managing Director', 7, 'Group Managing Director', NULL, NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 11, 'Group Managing Director', 'GROUP MANAGING', 'DIRECTOR', 'GROUP MANAGING DIRECTOR', 'gmd@email.com', NULL, 'Yet to start', 'SKG08', 'Direct', NULL, '2017-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-11 06:41:05', '2023-09-11 06:41:35', 1);
+(8, 9, '2017-09-01', NULL, 2, 'System Admin', 3, 'Permanent', 1, 'Headquaters', 4, 'Management', 5, 'Group Managing Director', 7, 'Group Managing Director', NULL, NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 11, 'Group Managing Director', 'GROUP MANAGING', 'DIRECTOR', 'GROUP MANAGING DIRECTOR', 'gmd@email.com', NULL, 'Yet to start', 'SKG08', 'Direct', NULL, '2017-09-01', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-11 06:41:05', '2023-09-18 02:54:51', 1),
+(9, 10, '2023-09-06', NULL, 9, 'GROUP MANAGING DIRECTOR', 3, 'Permanent', 1, 'Headquaters', 1, 'Human Resource', 4, 'Head Of Department', 8, 'Head Of Department Of Human Resource', NULL, NULL, NULL, 1, 'Mr', NULL, NULL, NULL, 10, 'Head Of Department', 'HR', 'HEAD', 'HR HEAD', 'hrhead@email.com', NULL, 'Yet to start', 'SKG07', 'Direct', NULL, '2023-09-06', NULL, NULL, NULL, 1, 'Super Admin', 1, '2023-09-18 03:03:02', '2023-09-18 03:03:47', 1);
 
 -- --------------------------------------------------------
 
@@ -2451,18 +2430,6 @@ CREATE TABLE `main_holidaydates` (
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `main_holidaydates`
---
-
-INSERT INTO `main_holidaydates` (`id`, `holidayname`, `groupid`, `holidaydate`, `holidayyear`, `description`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 'Kaamatan Day 1', 2, '2023-05-30', '2023', 'Kaamatan Day 1  Holiday', 6, 1, '2023-09-01 06:00:39', '2023-09-11 03:18:25', 1),
-(2, 'Merdeka Day', 3, '2023-08-31', '2023', 'Malaysia Independence Day', 1, 1, '2023-09-11 02:13:22', '2023-09-11 02:13:22', 1),
-(3, 'Malaysia Day', 3, '2023-09-16', '2023', 'Malaysian federation Day', 1, 1, '2023-09-11 02:14:59', '2023-09-11 02:14:59', 1),
-(4, 'Maulidur Rasul', 3, '2023-09-28', '2023', 'Islamic prophet Muhammad', 1, 1, '2023-09-11 02:16:03', '2023-09-11 02:16:03', 1),
-(5, 'Kaamatan Day 2', 2, '2023-05-31', '2023', 'Kaamatan Day 2 Holiday', 1, 1, '2023-09-11 03:17:48', '2023-09-11 03:18:44', 1),
-(6, 'Cuti Sukan', 3, '2023-09-13', '2023', NULL, 1, 1, '2023-09-11 07:36:24', '2023-09-11 07:36:24', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -2479,15 +2446,6 @@ CREATE TABLE `main_holidaygroups` (
   `modifieddate` datetime DEFAULT NULL,
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `main_holidaygroups`
---
-
-INSERT INTO `main_holidaygroups` (`id`, `groupname`, `description`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 'Chrismas', NULL, 6, 6, '2023-09-01 05:58:13', '2023-09-01 07:22:50', 0),
-(2, 'State Holiday', NULL, 6, 6, '2023-09-01 05:58:36', '2023-09-01 05:58:36', 1),
-(3, 'Public  Holiday', NULL, 1, 1, '2023-09-11 02:12:37', '2023-09-11 02:12:37', 1);
 
 --
 -- Triggers `main_holidaygroups`
@@ -2521,13 +2479,6 @@ CREATE TABLE `main_hr_wizard` (
   `modifieddate` datetime DEFAULT NULL,
   `isactive` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `main_hr_wizard`
---
-
-INSERT INTO `main_hr_wizard` (`id`, `leavetypes`, `holidays`, `perf_appraisal`, `iscomplete`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(2, 2, 2, 2, 2, 1, 6, '2016-11-02 11:14:32', '2023-09-01 06:00:58', 1);
 
 -- --------------------------------------------------------
 
@@ -2857,14 +2808,6 @@ CREATE TABLE `main_leavemanagement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Dumping data for table `main_leavemanagement`
---
-
-INSERT INTO `main_leavemanagement` (`id`, `cal_startmonth`, `weekend_startday`, `weekend_endday`, `businessunit_id`, `department_id`, `hr_id`, `hours_day`, `is_satholiday`, `is_halfday`, `is_leavetransfer`, `is_skipholidays`, `description`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 1, 6, 0, 1, 2, 6, 9, NULL, 1, 2, 1, NULL, 6, 1, '2023-09-01 06:13:57', '2023-09-07 00:20:24', 1),
-(2, 1, 6, 0, 1, 1, 6, 9, NULL, 2, 2, 2, NULL, 1, 1, '2023-09-01 07:02:53', '2023-09-11 07:41:45', 1);
-
---
 -- Triggers `main_leavemanagement`
 --
 DELIMITER $$
@@ -2961,14 +2904,6 @@ CREATE TABLE `main_leavemanagement_summary` (
   `isactive` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `main_leavemanagement_summary`
---
-
-INSERT INTO `main_leavemanagement_summary` (`id`, `leavemgmt_id`, `cal_startmonth`, `cal_startmonthname`, `weekend_startday`, `weekend_startdayname`, `weekend_endday`, `weekend_enddayname`, `businessunit_id`, `businessunit_name`, `department_id`, `department_name`, `hours_day`, `is_satholiday`, `is_halfday`, `is_leavetransfer`, `is_skipholidays`, `description`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 1, 1, 'January', 6, 'Saturday', 0, 'Sunday', 1, 'TJMA-', 2, 'Information Technology (ITU)', 9, NULL, 1, 2, 1, NULL, 6, 1, '2023-09-01 06:13:57', '2023-09-11 02:23:08', 1),
-(2, 2, 1, 'January', 6, 'Saturday', 0, 'Sunday', 1, 'TJMA-', 1, 'Human Resource (HRD)', 9, NULL, 2, 2, 2, NULL, 1, 1, '2023-09-01 07:02:53', '2023-09-11 07:41:45', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -2997,19 +2932,6 @@ CREATE TABLE `main_leaverequest` (
   `modifieddate` datetime DEFAULT NULL,
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `main_leaverequest`
---
-
-INSERT INTO `main_leaverequest` (`id`, `user_id`, `reason`, `attachment`, `approver_comments`, `leavetypeid`, `leaveday`, `from_date`, `to_date`, `leavestatus`, `rep_mang_id`, `hr_id`, `no_of_days`, `appliedleavescount`, `is_sat_holiday`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 5, 'Test', NULL, NULL, 1, 1, '2023-09-03', '2023-09-07', 'Approved', 4, 6, 24, 4.0, NULL, 5, 4, '2023-09-01 06:25:02', '2023-09-01 06:26:35', 1),
-(2, 7, 'Cuti Malaysia', NULL, 'Selamat Bercuti', 1, 1, '2023-09-03', '2023-09-07', 'Approved', 6, 6, 24, 4.0, NULL, 7, 6, '2023-09-01 07:04:17', '2023-09-01 07:06:53', 1),
-(3, 5, 'Test Reason', NULL, NULL, 1, 1, '2023-09-08', '2023-09-08', 'Cancel', 4, 6, 20, 1.0, NULL, 5, 5, '2023-09-10 04:11:57', '2023-09-11 07:11:12', 1),
-(4, 5, 'ss', 'ss', NULL, 1, 1, '2023-09-11', '2023-09-11', 'Cancel', 4, 6, 20, 1.0, NULL, 5, 5, '2023-09-10 04:50:02', '2023-09-11 07:04:51', 1),
-(5, 5, 'Test', 'For Attachment', NULL, 1, 1, '2023-09-12', '2023-09-12', 'Cancel', 4, 6, 20, 1.0, NULL, 5, 5, '2023-09-10 04:51:09', '2023-09-11 07:05:14', 1),
-(6, 5, 'Test', 'Test', NULL, 1, 1, '2023-09-12', '2023-09-15', 'Approved', 4, 6, 20, 4.0, NULL, 5, 4, '2023-09-11 07:32:55', '2023-09-11 07:35:07', 1),
-(7, 7, 'sdad', 'dasd', NULL, 1, 1, '2023-09-12', '2023-09-15', 'Pending for approval', 6, 6, 20, 4.0, NULL, 7, 7, '2023-09-11 07:42:04', '2023-09-11 07:42:04', 1);
 
 --
 -- Triggers `main_leaverequest`
@@ -3081,25 +3003,6 @@ CREATE TABLE `main_leaverequest_history` (
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Dumping data for table `main_leaverequest_history`
---
-
-INSERT INTO `main_leaverequest_history` (`id`, `leaverequest_id`, `description`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 1, 'Leave Request has been sent for Manager Approval by ', 5, 5, '2023-09-01 06:25:02', '2023-09-01 06:25:02', 1),
-(2, 1, 'Leave Request has been Approved by ', 4, 4, '2023-09-01 06:26:35', '2023-09-01 06:26:35', 1),
-(3, 2, 'Leave Request has been sent for Manager Approval by ', 7, 7, '2023-09-01 07:04:17', '2023-09-01 07:04:17', 1),
-(4, 2, 'Leave Request has been Approved by ', 6, 6, '2023-09-01 07:06:53', '2023-09-01 07:06:53', 1),
-(5, 3, 'Leave Request has been sent for Manager Approval by ', 5, 5, '2023-09-10 04:11:57', '2023-09-10 04:11:57', 1),
-(6, 4, 'Leave Request has been sent for Manager Approval by ', 5, 5, '2023-09-10 04:50:02', '2023-09-10 04:50:02', 1),
-(7, 5, 'Leave Request has been sent for Manager Approval by ', 5, 5, '2023-09-10 04:51:09', '2023-09-10 04:51:09', 1),
-(8, 4, 'Leave Request has been Cancelled by ', 5, 5, '2023-09-11 07:04:51', '2023-09-11 07:04:51', 1),
-(9, 5, 'Leave Request has been Cancelled by ', 5, 5, '2023-09-11 07:05:14', '2023-09-11 07:05:14', 1),
-(10, 3, 'Leave Request has been Cancelled by ', 5, 5, '2023-09-11 07:11:12', '2023-09-11 07:11:12', 1),
-(11, 6, 'Leave Request has been sent for Manager Approval by ', 5, 5, '2023-09-11 07:32:55', '2023-09-11 07:32:55', 1),
-(12, 6, 'Leave Request has been Approved by ', 4, 4, '2023-09-11 07:35:07', '2023-09-11 07:35:07', 1),
-(13, 7, 'Leave Request has been sent for Manager Approval by ', 7, 7, '2023-09-11 07:42:04', '2023-09-11 07:42:04', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -3136,19 +3039,6 @@ CREATE TABLE `main_leaverequest_summary` (
   `modifieddate` datetime DEFAULT NULL,
   `isactive` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `main_leaverequest_summary`
---
-
-INSERT INTO `main_leaverequest_summary` (`id`, `leave_req_id`, `user_id`, `user_name`, `department_id`, `department_name`, `bunit_id`, `buss_unit_name`, `reason`, `approver_comments`, `leavetypeid`, `leavetype_name`, `leaveday`, `from_date`, `to_date`, `leavestatus`, `rep_mang_id`, `rep_manager_name`, `hr_id`, `hr_name`, `no_of_days`, `appliedleavescount`, `is_sat_holiday`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
-(1, 1, 5, 'IT EXEC', 2, 'Information Technology (ITU)', 1, 'TJMA-', 'Test', NULL, 1, 'Annual Leave', 1, '2023-09-03', '2023-09-07', 'Approved', 4, 'IT MANAGER', 6, 'HR MANAGER', 24, 4.0, NULL, 5, 5, '2023-09-01 06:25:02', '2023-09-11 02:23:08', 1),
-(2, 2, 7, 'HR EXEC', 1, 'Human Resource (HRD)', 1, 'TJMA-', 'Cuti Malaysia', 'Selamat Bercuti', 1, 'Annual Leave', 1, '2023-09-03', '2023-09-07', 'Approved', 6, 'HR MANAGER', 6, 'HR MANAGER', 24, 4.0, NULL, 7, 7, '2023-09-01 07:04:17', '2023-09-11 02:23:43', 1),
-(3, 3, 5, 'IT EXEC', 2, 'Information Technology (ITU)', 1, 'TJMA-', 'Test Reason', NULL, 1, 'Annual Leave', 1, '2023-09-08', '2023-09-08', 'Cancel', 4, 'IT MANAGER', 6, 'HR MANAGER', 20, 1.0, NULL, 5, 5, '2023-09-10 04:11:57', '2023-09-11 07:11:12', 1),
-(4, 4, 5, 'IT EXEC', 2, 'Information Technology (ITU)', 1, 'TJMA-', 'ss', NULL, 1, 'Annual Leave', 1, '2023-09-11', '2023-09-11', 'Cancel', 4, 'IT MANAGER', 6, 'HR MANAGER', 20, 1.0, NULL, 5, 5, '2023-09-10 04:50:02', '2023-09-11 07:04:51', 1),
-(5, 5, 5, 'IT EXEC', 2, 'Information Technology (ITU)', 1, 'TJMA-', 'Test', NULL, 1, 'Annual Leave', 1, '2023-09-12', '2023-09-12', 'Cancel', 4, 'IT MANAGER', 6, 'HR MANAGER', 20, 1.0, NULL, 5, 5, '2023-09-10 04:51:09', '2023-09-11 07:05:14', 1),
-(6, 6, 5, 'IT EXEC', 2, 'Information Technology (ITU)', 1, 'TJMA-', 'Test', NULL, 1, 'Annual Leave', 1, '2023-09-12', '2023-09-15', 'Approved', 4, 'IT MANAGER', 6, 'HR MANAGER', 20, 4.0, NULL, 5, 5, '2023-09-11 07:32:55', '2023-09-11 07:35:07', 1),
-(7, 7, 7, 'HR EXEC', 1, 'Human Resource (HRD)', 1, 'TJMA-', 'sdad', NULL, 1, 'Annual Leave', 1, '2023-09-12', '2023-09-15', 'Pending for approval', 6, 'HR MANAGER', 6, 'HR MANAGER', 20, 4.0, NULL, 7, 7, '2023-09-11 07:42:04', '2023-09-11 07:42:04', 1);
 
 -- --------------------------------------------------------
 
@@ -3189,7 +3079,7 @@ CREATE TABLE `main_logmanager` (
 --
 
 INSERT INTO `main_logmanager` (`id`, `menuId`, `user_action`, `log_details`, `last_modifiedby`, `last_modifieddate`, `key_flag`, `is_active`) VALUES
-(1, 14, 1, '{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:06:37\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:34:53\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:35:50\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 03:37:07\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-01 05:56:22\"},{\"userid\":\"6\",\"recordid\":5,\"date\":\"2023-09-01 06:11:15\"},{\"userid\":\"6\",\"recordid\":3,\"date\":\"2023-09-01 06:11:15\"},{\"userid\":\"6\",\"recordid\":4,\"date\":\"2023-09-01 06:11:15\"},{\"userid\":\"1\",\"recordid\":\"7\",\"date\":\"2023-09-01 07:00:26\"},{\"userid\":\"1\",\"recordid\":7,\"date\":\"2023-09-01 07:03:25\"},{\"userid\":\"1\",\"recordid\":6,\"date\":\"2023-09-01 07:03:25\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-04 03:56:36\"},{\"userid\":\"1\",\"recordid\":5,\"date\":\"2023-09-04 04:01:05\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-08 08:24:35\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-08 08:24:58\"},{\"userid\":\"1\",\"recordid\":\"9\",\"date\":\"2023-09-11 06:41:13\"},{\"userid\":\"1\",\"recordid\":\"9\",\"date\":\"2023-09-11 06:54:54\"},{\"userid\":\"1\",\"recordid\":5,\"date\":\"2023-09-11 07:25:11\"},{\"userid\":\"1\",\"recordid\":5,\"date\":\"2023-09-11 07:26:09\"}', 1, '2023-09-10 23:26:09', '5', 1),
+(1, 14, 1, '{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:06:37\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:34:53\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:35:50\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 03:37:07\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-01 05:56:22\"},{\"userid\":\"6\",\"recordid\":5,\"date\":\"2023-09-01 06:11:15\"},{\"userid\":\"6\",\"recordid\":3,\"date\":\"2023-09-01 06:11:15\"},{\"userid\":\"6\",\"recordid\":4,\"date\":\"2023-09-01 06:11:15\"},{\"userid\":\"1\",\"recordid\":\"7\",\"date\":\"2023-09-01 07:00:26\"},{\"userid\":\"1\",\"recordid\":7,\"date\":\"2023-09-01 07:03:25\"},{\"userid\":\"1\",\"recordid\":6,\"date\":\"2023-09-01 07:03:25\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-04 03:56:36\"},{\"userid\":\"1\",\"recordid\":5,\"date\":\"2023-09-04 04:01:05\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-08 08:24:35\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-08 08:24:58\"},{\"userid\":\"1\",\"recordid\":\"9\",\"date\":\"2023-09-11 06:41:13\"},{\"userid\":\"1\",\"recordid\":\"9\",\"date\":\"2023-09-11 06:54:54\"},{\"userid\":\"1\",\"recordid\":5,\"date\":\"2023-09-11 07:25:11\"},{\"userid\":\"1\",\"recordid\":5,\"date\":\"2023-09-11 07:26:09\"},{\"userid\":\"1\",\"recordid\":\"10\",\"date\":\"2023-09-18 03:03:08\"}', 1, '2023-09-17 19:03:08', '10', 1),
 (2, 142, 2, '{\"userid\":\"1\",\"recordid\":\"8\",\"childrecordid\":\"Analytics\",\"date\":\"2023-09-01 03:10:53\"}', 1, '2023-08-31 19:10:53', 'Analytics', 1),
 (3, 80, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:11:36\"}', 1, '2023-08-31 19:11:36', '1', 1),
 (4, 102, 1, '{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:13:13\"}', 1, '2023-08-31 19:13:13', '2', 1),
@@ -3198,16 +3088,16 @@ INSERT INTO `main_logmanager` (`id`, `menuId`, `user_action`, `log_details`, `la
 (7, 11, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:15:36\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:15:36\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-11 02:47:55\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-11 06:39:40\"}', 1, '2023-09-10 22:39:40', '4', 1),
 (9, 144, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:15:51\"}', 1, '2023-08-31 19:15:51', '1', 1),
 (10, 145, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:17:25\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:17:25\"}', 1, '2023-08-31 19:17:25', '2', 1),
-(12, 20, 3, '{\"userid\":\"1\",\"recordid\":\"9\",\"date\":\"2023-09-01 03:17:46\"},{\"userid\":\"1\",\"recordid\":\"7\",\"date\":\"2023-09-01 03:17:50\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-01 03:17:53\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-01 06:47:13\"}', 1, '2023-08-31 22:47:13', '8', 1),
-(15, 20, 2, '{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:18:14\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:32:29\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-01 03:32:40\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 03:32:48\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:33:03\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-01 03:33:15\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:33:26\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:37:38\"},{\"userid\":\"1\",\"recordid\":\"11\",\"date\":\"2023-09-01 06:49:42\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 06:49:59\"},{\"userid\":\"1\",\"recordid\":\"11\",\"date\":\"2023-09-11 06:35:47\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-11 06:36:24\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-11 06:36:40\"}', 1, '2023-09-10 22:36:40', '4', 1),
+(12, 20, 3, '{\"userid\":\"1\",\"recordid\":\"9\",\"date\":\"2023-09-01 03:17:46\"},{\"userid\":\"1\",\"recordid\":\"7\",\"date\":\"2023-09-01 03:17:50\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-01 03:17:53\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-01 06:47:13\"},{\"userid\":\"1\",\"recordid\":\"13\",\"date\":\"2023-09-18 02:44:06\"}', 1, '2023-09-17 18:44:06', '13', 1),
+(15, 20, 2, '{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:18:14\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:32:29\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-01 03:32:40\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 03:32:48\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:33:03\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-01 03:33:15\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:33:26\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:37:38\"},{\"userid\":\"1\",\"recordid\":\"11\",\"date\":\"2023-09-01 06:49:42\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 06:49:59\"},{\"userid\":\"1\",\"recordid\":\"11\",\"date\":\"2023-09-11 06:35:47\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-11 06:36:24\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-11 06:36:40\"},{\"userid\":\"2\",\"recordid\":\"4\",\"date\":\"2023-09-18 02:05:10\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-18 02:37:34\"}', 1, '2023-09-17 18:37:34', '2', 1),
 (16, 117, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:19:08\"}', 1, '2023-08-31 19:19:08', '1', 1),
 (17, 116, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:19:31\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:19:57\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:20:25\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:21:19\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-11 06:37:31\"}', 1, '2023-09-10 22:37:31', '5', 1),
 (21, 116, 2, '{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:21:41\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:21:51\"}', 1, '2023-08-31 19:21:51', '3', 1),
-(23, 120, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:22:20\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:22:30\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:22:42\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:23:02\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 05:54:34\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 03:30:41\"},{\"userid\":\"1\",\"recordid\":\"7\",\"date\":\"2023-09-11 06:37:43\"}', 1, '2023-09-10 22:37:43', '7', 1),
+(23, 120, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:22:20\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-01 03:22:30\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 03:22:42\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 03:23:02\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 05:54:34\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 03:30:41\"},{\"userid\":\"1\",\"recordid\":\"7\",\"date\":\"2023-09-11 06:37:43\"},{\"userid\":\"1\",\"recordid\":\"8\",\"date\":\"2023-09-18 03:02:29\"}', 1, '2023-09-17 19:02:29', '8', 1),
 (27, 128, 1, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 03:23:23\"},{\"userid\":\"6\",\"recordid\":\"2\",\"date\":\"2023-09-01 05:58:04\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-08 08:23:43\"}', 1, '2023-09-08 00:23:43', '3', 1),
-(28, 20, 1, '{\"userid\":\"1\",\"recordid\":\"10\",\"date\":\"2023-09-01 03:31:54\"},{\"userid\":\"1\",\"recordid\":\"11\",\"date\":\"2023-09-01 06:49:15\"}', 1, '2023-08-31 22:49:15', '11', 1),
+(28, 20, 1, '{\"userid\":\"1\",\"recordid\":\"10\",\"date\":\"2023-09-01 03:31:54\"},{\"userid\":\"1\",\"recordid\":\"11\",\"date\":\"2023-09-01 06:49:15\"},{\"userid\":\"2\",\"recordid\":\"12\",\"date\":\"2023-09-18 02:03:06\"},{\"userid\":\"1\",\"recordid\":\"13\",\"date\":\"2023-09-18 02:43:52\"},{\"userid\":\"1\",\"recordid\":\"14\",\"date\":\"2023-09-18 02:44:45\"}', 1, '2023-09-17 18:44:45', '14', 1),
 (39, 9, 2, '{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-01 05:33:29\"},{\"userid\":\"1\",\"recordid\":\"1\",\"date\":\"2023-09-11 03:49:02\"}', 1, '2023-09-10 19:49:02', '1', 1),
-(40, 14, 2, '{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 05:33:49\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 05:34:00\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 05:34:14\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-08 08:17:19\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 06:42:00\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 06:42:28\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-11 06:43:15\"}', 1, '2023-09-10 22:43:15', '3', 1),
+(40, 14, 2, '{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-01 05:33:49\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-01 05:34:00\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-01 05:34:14\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-08 08:17:19\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 06:42:00\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 06:42:28\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-11 06:43:15\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-18 02:54:51\"},{\"userid\":\"1\",\"recordid\":\"10\",\"date\":\"2023-09-18 03:03:47\"}', 1, '2023-09-17 19:03:47', '10', 1),
 (46, 41, 1, '{\"userid\":\"6\",\"recordid\":\"1\",\"date\":\"2023-09-01 05:58:13\"},{\"userid\":\"6\",\"recordid\":\"2\",\"date\":\"2023-09-01 05:58:36\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-11 02:12:37\"}', 1, '2023-09-10 18:12:37', '3', 1),
 (48, 42, 1, '{\"userid\":\"6\",\"recordid\":\"1\",\"date\":\"2023-09-01 06:00:39\"},{\"userid\":\"1\",\"recordid\":\"2\",\"date\":\"2023-09-11 02:13:22\"},{\"userid\":\"1\",\"recordid\":\"3\",\"date\":\"2023-09-11 02:14:59\"},{\"userid\":\"1\",\"recordid\":\"4\",\"date\":\"2023-09-11 02:16:03\"},{\"userid\":\"1\",\"recordid\":\"5\",\"date\":\"2023-09-11 03:17:48\"},{\"userid\":\"1\",\"recordid\":\"6\",\"date\":\"2023-09-11 07:36:24\"}', 1, '2023-09-10 23:36:24', '6', 1),
 (49, 152, 1, '{\"userid\":\"6\",\"recordid\":\"1\",\"date\":\"2023-09-01 06:00:58\"}', 6, '2023-08-31 22:00:58', '1', 1),
@@ -4254,7 +4144,8 @@ INSERT INTO `main_positions` (`id`, `positionname`, `jobtitleid`, `description`,
 (4, 'Supervisor Office', 3, NULL, 1, 1, '2023-09-01 03:23:02', '2023-09-01 03:23:02', 1),
 (5, 'HR Manager', 2, NULL, 1, 1, '2023-09-01 05:54:34', '2023-09-11 06:29:57', 1),
 (6, 'Head Of Department Digital Transformation Unit', 4, NULL, 1, 1, '2023-09-11 03:30:41', '2023-09-11 06:30:17', 1),
-(7, 'Group Managing Director', 5, NULL, 1, 1, '2023-09-11 06:37:43', '2023-09-11 06:37:43', 1);
+(7, 'Group Managing Director', 5, NULL, 1, 1, '2023-09-11 06:37:43', '2023-09-11 06:37:43', 1),
+(8, 'Head Of Department Of Human Resource', 4, NULL, 1, 1, '2023-09-18 03:02:29', '2023-09-18 03:02:29', 1);
 
 --
 -- Triggers `main_positions`
@@ -4776,51 +4667,51 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (436, NULL, 6, 169, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (437, NULL, 6, 170, 'No', 'Yes', 'No', 'Yes', 'No', 'No', NULL, NULL, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (438, NULL, 6, 174, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(439, 2, 1, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(440, 2, 1, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(441, 2, 1, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(442, 2, 1, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(443, 2, 1, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
+(439, 2, 1, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(440, 2, 1, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(441, 2, 1, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(442, 2, 1, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(443, 2, 1, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (444, 2, 1, 63, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (445, 2, 1, 64, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (446, 2, 1, 135, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(447, 2, 1, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(448, 2, 1, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(449, 2, 1, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
+(447, 2, 1, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(448, 2, 1, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(449, 2, 1, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (450, 2, 1, 143, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (451, 2, 1, 147, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (452, 2, 1, 144, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (453, 2, 1, 145, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (454, 2, 1, 146, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(455, 2, 1, 3, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(456, 2, 1, 14, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
+(455, 2, 1, 3, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(456, 2, 1, 14, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (457, 2, 1, 2, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:18:13', 0),
-(458, 2, 1, 20, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(459, 2, 1, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(460, 2, 1, 16, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(461, 2, 1, 41, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(462, 2, 1, 42, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(463, 2, 1, 17, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(464, 2, 1, 44, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(465, 2, 1, 45, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(466, 2, 1, 113, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(467, 2, 1, 140, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(468, 2, 1, 114, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(469, 2, 1, 117, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(470, 2, 1, 118, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(471, 2, 1, 116, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(472, 2, 1, 120, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(473, 2, 1, 124, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(474, 2, 1, 125, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(475, 2, 1, 121, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(476, 2, 1, 128, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(477, 2, 1, 126, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(478, 2, 1, 123, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(479, 2, 1, 139, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(480, 2, 1, 115, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(481, 2, 1, 127, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(482, 2, 1, 107, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(483, 2, 1, 108, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
+(458, 2, 1, 20, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(459, 2, 1, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(460, 2, 1, 16, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(461, 2, 1, 41, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(462, 2, 1, 42, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(463, 2, 1, 17, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(464, 2, 1, 44, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(465, 2, 1, 45, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(466, 2, 1, 113, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(467, 2, 1, 140, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(468, 2, 1, 114, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(469, 2, 1, 117, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(470, 2, 1, 118, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(471, 2, 1, 116, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(472, 2, 1, 120, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(473, 2, 1, 124, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(474, 2, 1, 125, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(475, 2, 1, 121, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(476, 2, 1, 128, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(477, 2, 1, 126, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(478, 2, 1, 123, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(479, 2, 1, 139, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(480, 2, 1, 115, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(481, 2, 1, 127, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(482, 2, 1, 107, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(483, 2, 1, 108, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (484, 2, 1, 149, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (485, 2, 1, 162, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (486, 2, 1, 155, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
@@ -4853,38 +4744,38 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (513, 2, 1, 69, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (514, 2, 1, 141, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (515, 2, 1, 23, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(516, 2, 1, 1, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(517, 2, 1, 9, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(518, 2, 1, 10, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(519, 2, 1, 11, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(520, 2, 1, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(521, 2, 1, 13, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(522, 2, 1, 168, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(523, 2, 1, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(524, 2, 1, 70, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(525, 2, 1, 131, 'Yes', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(526, 2, 1, 72, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(527, 2, 1, 85, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(528, 2, 1, 133, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(529, 2, 1, 86, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(530, 2, 1, 80, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(531, 2, 1, 87, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(532, 2, 1, 88, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(533, 2, 1, 89, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(534, 2, 1, 90, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(535, 2, 1, 91, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(536, 2, 1, 92, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(537, 2, 1, 93, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(538, 2, 1, 136, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(539, 2, 1, 132, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(540, 2, 1, 73, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(541, 2, 1, 100, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(542, 2, 1, 101, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(543, 2, 1, 102, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(544, 2, 1, 103, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(545, 2, 1, 75, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(546, 2, 1, 110, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(547, 2, 1, 111, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(516, 2, 1, 1, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(517, 2, 1, 9, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(518, 2, 1, 10, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(519, 2, 1, 11, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(520, 2, 1, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(521, 2, 1, 13, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(522, 2, 1, 168, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(523, 2, 1, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(524, 2, 1, 70, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(525, 2, 1, 131, 'Yes', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(526, 2, 1, 72, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(527, 2, 1, 85, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(528, 2, 1, 133, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(529, 2, 1, 86, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(530, 2, 1, 80, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(531, 2, 1, 87, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(532, 2, 1, 88, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(533, 2, 1, 89, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(534, 2, 1, 90, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(535, 2, 1, 91, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(536, 2, 1, 92, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(537, 2, 1, 93, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(538, 2, 1, 136, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(539, 2, 1, 132, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(540, 2, 1, 73, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(541, 2, 1, 100, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(542, 2, 1, 101, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(543, 2, 1, 102, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(544, 2, 1, 103, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(545, 2, 1, 75, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(546, 2, 1, 110, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(547, 2, 1, 111, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (548, 2, 1, 142, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:18:13', 0),
 (549, 3, 2, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
 (550, 3, 2, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
@@ -4925,49 +4816,49 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (585, 3, 2, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
 (586, 3, 2, 13, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
 (587, 3, 2, 168, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(588, 4, 3, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(589, 4, 3, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(590, 4, 3, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(591, 4, 3, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(592, 4, 3, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(593, 4, 3, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(588, 4, 3, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(589, 4, 3, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(590, 4, 3, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(591, 4, 3, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(592, 4, 3, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(593, 4, 3, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (594, 4, 3, 63, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (595, 4, 3, 64, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (596, 4, 3, 135, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(597, 4, 3, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(598, 4, 3, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(599, 4, 3, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(597, 4, 3, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(598, 4, 3, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(599, 4, 3, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (600, 4, 3, 143, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (601, 4, 3, 147, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (602, 4, 3, 144, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (603, 4, 3, 145, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (604, 4, 3, 146, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (605, 4, 3, 148, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(606, 4, 3, 3, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(607, 4, 3, 14, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(606, 4, 3, 3, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(607, 4, 3, 14, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (608, 4, 3, 2, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:28', 0),
-(609, 4, 3, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(610, 4, 3, 16, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(611, 4, 3, 41, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(612, 4, 3, 42, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(613, 4, 3, 17, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(614, 4, 3, 44, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(615, 4, 3, 45, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(616, 4, 3, 113, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(617, 4, 3, 140, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(618, 4, 3, 114, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(619, 4, 3, 117, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(620, 4, 3, 118, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(621, 4, 3, 116, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(622, 4, 3, 120, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(623, 4, 3, 124, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(624, 4, 3, 125, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(625, 4, 3, 128, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(626, 4, 3, 126, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(627, 4, 3, 123, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(628, 4, 3, 139, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(629, 4, 3, 115, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(630, 4, 3, 127, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(609, 4, 3, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(610, 4, 3, 16, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(611, 4, 3, 41, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(612, 4, 3, 42, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(613, 4, 3, 17, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(614, 4, 3, 44, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(615, 4, 3, 45, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(616, 4, 3, 113, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(617, 4, 3, 140, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(618, 4, 3, 114, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(619, 4, 3, 117, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(620, 4, 3, 118, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(621, 4, 3, 116, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(622, 4, 3, 120, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(623, 4, 3, 124, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(624, 4, 3, 125, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(625, 4, 3, 128, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(626, 4, 3, 126, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(627, 4, 3, 123, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(628, 4, 3, 139, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(629, 4, 3, 115, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(630, 4, 3, 127, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (631, 4, 3, 149, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (632, 4, 3, 162, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (633, 4, 3, 155, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
@@ -4996,13 +4887,13 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (656, 4, 3, 69, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (657, 4, 3, 141, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (658, 4, 3, 23, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(659, 4, 3, 1, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(660, 4, 3, 9, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(661, 4, 3, 10, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(662, 4, 3, 11, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(663, 4, 3, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(664, 4, 3, 13, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(665, 4, 3, 168, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(659, 4, 3, 1, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(660, 4, 3, 9, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(661, 4, 3, 10, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(662, 4, 3, 11, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(663, 4, 3, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(664, 4, 3, 13, 'No', 'No', 'No', 'No', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(665, 4, 3, 168, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (666, 5, 4, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (667, 5, 4, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (668, 5, 4, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
@@ -5146,9 +5037,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (806, 9, 4, 176, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
 (807, 8, 6, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (808, 5, 4, 176, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
-(809, 4, 3, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(809, 4, 3, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (810, 3, 2, 176, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(811, 2, 1, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(811, 2, 1, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (812, 1, NULL, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (813, NULL, 1, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (814, NULL, 2, 177, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
@@ -5205,20 +5096,20 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (865, NULL, 3, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (866, NULL, 4, 183, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (867, NULL, 6, 183, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', NULL, NULL, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(868, 2, 1, 182, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
-(869, 2, 1, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(868, 2, 1, 182, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(869, 2, 1, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (870, 3, 2, 183, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
 (871, 9, 4, 183, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
 (872, 8, 6, 182, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (873, 8, 6, 183, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (874, 5, 4, 183, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
-(875, 4, 3, 182, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
-(876, 4, 3, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(875, 4, 3, 182, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
+(876, 4, 3, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (877, 1, NULL, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (878, NULL, 1, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (879, NULL, 3, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(880, 2, 1, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:23', 1),
-(881, 4, 3, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(880, 2, 1, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
+(881, 4, 3, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (882, 2, 1, 148, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (883, 1, NULL, 175, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (884, NULL, 1, 175, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
@@ -5252,9 +5143,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (911, NULL, 3, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (912, NULL, 4, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (913, NULL, 6, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(914, 2, 1, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(914, 2, 1, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (915, 3, 2, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(916, 4, 3, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(916, 4, 3, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (917, 5, 4, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (918, 8, 6, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (919, 9, 4, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5266,7 +5157,7 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (925, NULL, 6, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (926, 2, 1, 186, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (927, 3, 2, 186, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(928, 4, 3, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(928, 4, 3, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (929, 5, 4, 186, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (930, 8, 6, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (931, 9, 4, 186, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5295,7 +5186,7 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (954, 8, 6, 189, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (955, 9, 4, 189, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
 (956, NULL, 3, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(957, 4, 3, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(957, 4, 3, 8, 'No', 'No', 'No', 'No', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (958, 1, NULL, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (959, NULL, 1, 190, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (960, NULL, 2, 190, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
@@ -5304,7 +5195,7 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (963, NULL, 6, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (964, 2, 1, 190, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (965, 3, 2, 190, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(966, 4, 3, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(966, 4, 3, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (967, 5, 4, 190, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (968, 8, 6, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (969, 9, 4, 190, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5316,7 +5207,7 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (975, NULL, 6, 191, 'NO', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (976, 2, 1, 191, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (977, 3, 2, 191, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(978, 4, 3, 191, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(978, 4, 3, 191, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (979, 5, 4, 191, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (980, 8, 6, 191, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (981, 9, 4, 191, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5328,7 +5219,7 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (987, NULL, 6, 192, 'NO', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (988, 2, 1, 192, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (989, 3, 2, 192, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(990, 4, 3, 192, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(990, 4, 3, 192, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (991, 5, 4, 192, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (992, 8, 6, 192, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (993, 9, 4, 192, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5338,9 +5229,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (997, NULL, 3, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (998, NULL, 4, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (999, NULL, 6, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1000, 2, 1, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1000, 2, 1, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1001, 3, 2, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1002, 4, 3, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1002, 4, 3, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1003, 5, 4, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1004, 8, 6, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1005, 9, 4, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5350,9 +5241,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1009, NULL, 3, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1010, NULL, 4, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1011, NULL, 6, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1012, 2, 1, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1012, 2, 1, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1013, 3, 2, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1014, 4, 3, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1014, 4, 3, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1015, 5, 4, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1016, 8, 6, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1017, 9, 4, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5362,9 +5253,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1021, NULL, 3, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1022, NULL, 4, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1023, NULL, 6, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1024, 2, 1, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1024, 2, 1, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1025, 3, 2, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1026, 4, 3, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1026, 4, 3, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1027, 5, 4, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1028, 8, 6, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1029, 9, 4, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5374,9 +5265,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1033, NULL, 3, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1034, NULL, 4, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1035, NULL, 6, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1036, 2, 1, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1036, 2, 1, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1037, 3, 2, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1038, 4, 3, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1038, 4, 3, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1039, 5, 4, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1040, 8, 6, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1041, 9, 4, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5386,9 +5277,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1045, NULL, 3, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1046, NULL, 4, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1047, NULL, 6, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1048, 2, 1, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1048, 2, 1, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1049, 3, 2, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1050, 4, 3, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1050, 4, 3, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1051, 5, 4, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1052, 8, 6, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1053, 9, 4, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5398,9 +5289,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1057, NULL, 3, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1058, NULL, 4, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1059, NULL, 6, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1060, 2, 1, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1060, 2, 1, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1061, 3, 2, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1062, 4, 3, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1062, 4, 3, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1063, 5, 4, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1064, 8, 6, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1065, 9, 4, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5410,9 +5301,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1069, NULL, 3, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1070, NULL, 4, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1071, NULL, 6, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
-(1072, 2, 1, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:24', 1),
+(1072, 2, 1, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-18 02:37:33', 1),
 (1073, 3, 2, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:33:25', 1),
-(1074, 4, 3, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1074, 4, 3, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1075, 5, 4, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:32:47', 1),
 (1076, 8, 6, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1077, 9, 4, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5424,7 +5315,7 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1083, NULL, 6, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 1),
 (1084, 2, 1, 200, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (1085, 3, 2, 200, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
-(1086, 4, 3, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-11 06:36:39', 1),
+(1086, 4, 3, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:14:14', '2023-09-18 02:05:09', 1),
 (1087, 5, 4, 200, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2016-11-02 11:14:14', 0),
 (1088, 8, 6, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 06:47:13', 0),
 (1089, 9, 4, 200, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2016-11-02 11:14:14', '2023-09-01 03:17:46', 0),
@@ -5453,19 +5344,19 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1112, NULL, 6, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2016-11-02 11:22:11', 1),
 (1113, NULL, 6, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2016-11-02 11:22:11', 1),
 (1114, NULL, 6, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2016-11-02 11:22:11', 1),
-(1115, 2, 1, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:24', 1),
-(1116, 2, 1, 202, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:24', 1),
-(1117, 2, 1, 203, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:24', 1),
-(1118, 2, 1, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:24', 1),
-(1119, 2, 1, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:24', 1),
-(1120, 2, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:24', 1),
+(1115, 2, 1, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-18 02:37:33', 1),
+(1116, 2, 1, 202, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-18 02:37:33', 1),
+(1117, 2, 1, 203, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-18 02:37:33', 1),
+(1118, 2, 1, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-18 02:37:33', 1),
+(1119, 2, 1, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-18 02:37:33', 1),
+(1120, 2, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-18 02:37:33', 1),
 (1121, 3, 2, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-01 03:33:25', 1),
 (1122, 3, 2, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-01 03:33:25', 1),
 (1123, 3, 2, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-01 03:33:25', 1),
-(1124, 4, 3, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:39', 1),
-(1125, 4, 3, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:39', 1),
-(1126, 4, 3, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:39', 1),
-(1127, 4, 3, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-11 06:36:39', 1),
+(1124, 4, 3, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:22:11', '2023-09-18 02:05:09', 1),
+(1125, 4, 3, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:22:11', '2023-09-18 02:05:09', 1),
+(1126, 4, 3, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:22:11', '2023-09-18 02:05:09', 1),
+(1127, 4, 3, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-02 11:22:11', '2023-09-18 02:05:09', 1),
 (1128, 5, 4, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-01 03:32:47', 1),
 (1129, 5, 4, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-01 03:32:47', 1),
 (1130, 5, 4, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-02 11:22:11', '2023-09-01 03:32:47', 1),
@@ -5500,19 +5391,19 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1159, NULL, 6, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2016-11-08 10:19:54', 1),
 (1160, NULL, 6, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2016-11-08 10:19:54', 1),
 (1161, NULL, 6, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2016-11-08 10:19:54', 1),
-(1162, 2, 1, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:24', 1),
-(1163, 2, 1, 202, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:24', 1),
-(1164, 2, 1, 203, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:24', 1),
-(1165, 2, 1, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:24', 1),
-(1166, 2, 1, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:24', 1),
-(1167, 2, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:24', 1),
+(1162, 2, 1, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-18 02:37:33', 1),
+(1163, 2, 1, 202, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-18 02:37:33', 1),
+(1164, 2, 1, 203, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-18 02:37:33', 1),
+(1165, 2, 1, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-18 02:37:33', 1),
+(1166, 2, 1, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-18 02:37:33', 1),
+(1167, 2, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-18 02:37:33', 1),
 (1168, 3, 2, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-01 03:33:25', 1),
 (1169, 3, 2, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-01 03:33:25', 1),
 (1170, 3, 2, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-01 03:33:25', 1),
-(1171, 4, 3, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:39', 1),
-(1172, 4, 3, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:39', 1),
-(1173, 4, 3, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:39', 1),
-(1174, 4, 3, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-11 06:36:39', 1),
+(1171, 4, 3, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2016-11-08 10:19:54', '2023-09-18 02:05:09', 1),
+(1172, 4, 3, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-08 10:19:54', '2023-09-18 02:05:09', 1),
+(1173, 4, 3, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-08 10:19:54', '2023-09-18 02:05:09', 1),
+(1174, 4, 3, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 2, '2016-11-08 10:19:54', '2023-09-18 02:05:09', 1),
 (1175, 5, 4, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-01 03:32:47', 1),
 (1176, 5, 4, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-01 03:32:47', 1),
 (1177, 5, 4, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2016-11-08 10:19:54', '2023-09-01 03:32:47', 1),
@@ -5529,9 +5420,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1188, NULL, 4, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1189, NULL, 5, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1190, NULL, 6, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1191, 2, 1, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
+(1191, 2, 1, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
 (1192, 3, 2, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:33:25', 1),
-(1193, 4, 3, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1193, 4, 3, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1194, 5, 4, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:32:47', 1),
 (1195, 6, 5, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:17:53', 0),
 (1196, 8, 6, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
@@ -5542,9 +5433,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1201, NULL, 4, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1202, NULL, 5, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1203, NULL, 6, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1204, 2, 1, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
+(1204, 2, 1, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
 (1205, 3, 2, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:33:25', 1),
-(1206, 4, 3, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1206, 4, 3, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1207, 5, 4, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:32:47', 1),
 (1208, 6, 5, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:17:53', 0),
 (1209, 8, 6, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
@@ -5552,8 +5443,8 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1211, NULL, 1, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1212, NULL, 3, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1213, NULL, 6, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1214, 2, 1, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
-(1215, 4, 3, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1214, 2, 1, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
+(1215, 4, 3, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1216, 8, 6, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
 (1217, 1, NULL, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1218, NULL, 1, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
@@ -5562,9 +5453,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1221, NULL, 4, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1222, NULL, 5, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1223, NULL, 6, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1224, 2, 1, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
+(1224, 2, 1, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
 (1225, 3, 2, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:33:25', 1),
-(1226, 4, 3, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1226, 4, 3, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1227, 5, 4, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:32:47', 1),
 (1228, 6, 5, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:17:53', 0),
 (1229, 8, 6, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
@@ -5575,9 +5466,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1234, NULL, 4, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1235, NULL, 5, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1236, NULL, 6, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1237, 2, 1, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
+(1237, 2, 1, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
 (1238, 3, 2, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:33:25', 1),
-(1239, 4, 3, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1239, 4, 3, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1240, 5, 4, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:32:47', 1),
 (1241, 6, 5, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:17:53', 0),
 (1242, 8, 6, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
@@ -5588,9 +5479,9 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1247, NULL, 4, 180, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1248, NULL, 5, 180, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1249, NULL, 6, 180, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1250, 2, 1, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
+(1250, 2, 1, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
 (1251, 3, 2, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:33:25', 1),
-(1252, 4, 3, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1252, 4, 3, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1253, 5, 4, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:32:47', 1),
 (1254, 6, 5, 180, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:17:53', 0),
 (1255, 8, 6, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
@@ -5601,27 +5492,27 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1260, NULL, 4, 181, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1261, NULL, 5, 181, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1262, NULL, 6, 181, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1263, 2, 1, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
+(1263, 2, 1, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
 (1264, 3, 2, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:33:25', 1),
-(1265, 4, 3, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1265, 4, 3, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1266, 5, 4, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:32:47', 1),
 (1267, 6, 5, 181, 'Yes', 'Yes', 'No', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 03:17:53', 0),
 (1268, 8, 6, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-01 06:47:13', 0),
 (1269, 1, NULL, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1270, NULL, 1, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1271, NULL, 3, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1272, 2, 1, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
-(1273, 4, 3, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1272, 2, 1, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
+(1273, 4, 3, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1274, 1, NULL, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1275, NULL, 1, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1276, NULL, 3, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1277, 2, 1, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
-(1278, 4, 3, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1277, 2, 1, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
+(1278, 4, 3, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1279, 1, NULL, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1280, NULL, 1, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
 (1281, NULL, 3, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 'Yes', 1, 1, '2023-09-01 10:46:47', '2023-09-01 10:46:47', 1),
-(1282, 2, 1, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:23', 1),
-(1283, 4, 3, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-11 06:36:39', 1),
+(1282, 2, 1, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 10:46:47', '2023-09-18 02:37:33', 1),
+(1283, 4, 3, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 2, '2023-09-01 10:46:47', '2023-09-18 02:05:09', 1),
 (1284, 10, 2, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 03:31:54', '2023-09-01 03:31:54', 1),
 (1285, 10, 2, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 03:31:54', '2023-09-01 03:31:54', 1),
 (1286, 10, 2, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-01 03:31:54', '2023-09-01 03:31:54', 1),
@@ -5760,7 +5651,247 @@ INSERT INTO `main_privileges` (`id`, `role`, `group_id`, `object`, `addpermissio
 (1418, 11, 1, 203, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1),
 (1419, 11, 1, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1),
 (1420, 11, 1, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1),
-(1421, 11, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1);
+(1421, 11, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1),
+(1422, 12, 3, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1423, 12, 3, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1424, 12, 3, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1425, 12, 3, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1426, 12, 3, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1427, 12, 3, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1428, 12, 3, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1429, 12, 3, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1430, 12, 3, 3, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1431, 12, 3, 14, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1432, 12, 3, 16, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1433, 12, 3, 41, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1434, 12, 3, 42, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1435, 12, 3, 17, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1436, 12, 3, 44, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1437, 12, 3, 45, 'No', 'No', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1438, 12, 3, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1439, 12, 3, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1440, 12, 3, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1441, 12, 3, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1442, 12, 3, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1443, 12, 3, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1444, 12, 3, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1445, 12, 3, 113, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1446, 12, 3, 140, 'No', 'Yes', 'No', 'No', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1447, 12, 3, 114, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1448, 12, 3, 117, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1449, 12, 3, 118, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1450, 12, 3, 116, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1451, 12, 3, 120, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1452, 12, 3, 124, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1453, 12, 3, 125, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1454, 12, 3, 128, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1455, 12, 3, 126, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1456, 12, 3, 123, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1457, 12, 3, 139, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1458, 12, 3, 115, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1459, 12, 3, 127, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1460, 12, 3, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1461, 12, 3, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1462, 12, 3, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1463, 12, 3, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1464, 12, 3, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1465, 12, 3, 1, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1466, 12, 3, 9, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1467, 12, 3, 10, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1468, 12, 3, 11, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1469, 12, 3, 12, 'No', 'No', 'No', 'No', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1470, 12, 3, 13, 'No', 'No', 'No', 'No', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1471, 12, 3, 168, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1472, 12, 3, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1473, 12, 3, 182, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1474, 12, 3, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1475, 12, 3, 8, 'No', 'No', 'No', 'No', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1476, 12, 3, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1477, 12, 3, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1478, 12, 3, 191, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1479, 12, 3, 192, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1480, 12, 3, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1481, 12, 3, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1482, 12, 3, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1483, 12, 3, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1484, 12, 3, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1485, 12, 3, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1486, 12, 3, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1487, 12, 3, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1488, 12, 3, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1489, 12, 3, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1490, 12, 3, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1491, 12, 3, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1492, 12, 3, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(1493, 13, 1, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1494, 13, 1, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1495, 13, 1, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1496, 13, 1, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1497, 13, 1, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1498, 13, 1, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1499, 13, 1, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1500, 13, 1, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1501, 13, 1, 3, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1502, 13, 1, 14, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1503, 13, 1, 20, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1504, 13, 1, 16, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1505, 13, 1, 41, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1506, 13, 1, 42, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1507, 13, 1, 17, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1508, 13, 1, 44, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1509, 13, 1, 45, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1510, 13, 1, 184, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1511, 13, 1, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1512, 13, 1, 179, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1513, 13, 1, 210, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1514, 13, 1, 178, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1515, 13, 1, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1516, 13, 1, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1517, 13, 1, 113, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1518, 13, 1, 140, 'No', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1519, 13, 1, 114, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1520, 13, 1, 117, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1521, 13, 1, 118, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1522, 13, 1, 116, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1523, 13, 1, 120, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1524, 13, 1, 124, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1525, 13, 1, 125, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1526, 13, 1, 121, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1527, 13, 1, 128, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1528, 13, 1, 126, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1529, 13, 1, 123, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1530, 13, 1, 139, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1531, 13, 1, 115, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1532, 13, 1, 127, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1533, 13, 1, 107, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1534, 13, 1, 108, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1535, 13, 1, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1536, 13, 1, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1537, 13, 1, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1538, 13, 1, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1539, 13, 1, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1540, 13, 1, 1, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1541, 13, 1, 9, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1542, 13, 1, 10, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1543, 13, 1, 11, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1544, 13, 1, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1545, 13, 1, 13, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1546, 13, 1, 168, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1547, 13, 1, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1548, 13, 1, 182, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1549, 13, 1, 183, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1550, 13, 1, 8, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1551, 13, 1, 70, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1552, 13, 1, 131, 'Yes', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1553, 13, 1, 72, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1554, 13, 1, 85, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1555, 13, 1, 133, 'Yes', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1556, 13, 1, 86, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1557, 13, 1, 80, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1558, 13, 1, 87, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1559, 13, 1, 88, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1560, 13, 1, 89, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1561, 13, 1, 90, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1562, 13, 1, 91, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1563, 13, 1, 92, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1564, 13, 1, 93, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1565, 13, 1, 136, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1566, 13, 1, 132, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1567, 13, 1, 73, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1568, 13, 1, 100, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1569, 13, 1, 101, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1570, 13, 1, 102, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1571, 13, 1, 103, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1572, 13, 1, 75, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1573, 13, 1, 110, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1574, 13, 1, 111, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1575, 13, 1, 142, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1576, 13, 1, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1577, 13, 1, 198, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1578, 13, 1, 191, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1579, 13, 1, 192, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1580, 13, 1, 193, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1581, 13, 1, 194, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1582, 13, 1, 195, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1583, 13, 1, 196, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1584, 13, 1, 197, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1585, 13, 1, 199, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1586, 13, 1, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1587, 13, 1, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1588, 13, 1, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1589, 13, 1, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1590, 13, 1, 202, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1591, 13, 1, 203, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1592, 13, 1, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1593, 13, 1, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1594, 13, 1, 206, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(1595, 14, 6, 4, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1596, 14, 6, 31, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1597, 14, 6, 61, 'Yes', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1598, 14, 6, 62, 'No', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1599, 14, 6, 65, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1600, 14, 6, 32, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1601, 14, 6, 43, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1602, 14, 6, 34, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1603, 14, 6, 3, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1604, 14, 6, 14, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1605, 14, 6, 20, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1606, 14, 6, 177, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1607, 14, 6, 180, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1608, 14, 6, 181, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1609, 14, 6, 207, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1610, 14, 6, 21, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1611, 14, 6, 187, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1612, 14, 6, 208, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1613, 14, 6, 209, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1614, 14, 6, 1, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1615, 14, 6, 9, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1616, 14, 6, 10, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1617, 14, 6, 11, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1618, 14, 6, 12, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1619, 14, 6, 13, 'No', 'No', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1620, 14, 6, 168, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1621, 14, 6, 176, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1622, 14, 6, 182, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1623, 14, 6, 183, 'Yes', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1624, 14, 6, 70, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1625, 14, 6, 131, 'Yes', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1626, 14, 6, 72, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1627, 14, 6, 85, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1628, 14, 6, 133, 'Yes', 'Yes', 'No', 'No', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1629, 14, 6, 86, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1630, 14, 6, 80, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1631, 14, 6, 87, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1632, 14, 6, 88, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1633, 14, 6, 89, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1634, 14, 6, 90, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1635, 14, 6, 91, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1636, 14, 6, 92, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1637, 14, 6, 93, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1638, 14, 6, 136, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1639, 14, 6, 132, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1640, 14, 6, 73, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1641, 14, 6, 100, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1642, 14, 6, 101, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1643, 14, 6, 102, 'Yes', 'No', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1644, 14, 6, 103, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1645, 14, 6, 75, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1646, 14, 6, 110, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1),
+(1647, 14, 6, 111, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1648, 14, 6, 185, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1649, 14, 6, 198, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1650, 14, 6, 193, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1651, 14, 6, 194, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1652, 14, 6, 195, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1653, 14, 6, 196, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1654, 14, 6, 197, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1655, 14, 6, 199, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1656, 14, 6, 186, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1657, 14, 6, 200, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1658, 14, 6, 190, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1659, 14, 6, 201, 'Yes', 'Yes', 'Yes', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1660, 14, 6, 204, 'No', 'Yes', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1),
+(1661, 14, 6, 205, 'No', 'No', 'No', 'Yes', 'No', 'No', 1, 1, '2023-09-18 02:44:45', '2023-09-18 02:44:45', 1);
 
 -- --------------------------------------------------------
 
@@ -6080,16 +6211,15 @@ CREATE TABLE `main_roles` (
 
 INSERT INTO `main_roles` (`id`, `rolename`, `roletype`, `roledescription`, `group_id`, `levelid`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`) VALUES
 (1, 'Super Admin', 'admin', NULL, NULL, 0, 0, 0, '2015-07-29 08:45:49', '2015-07-29 08:45:49', 1),
-(2, 'System Manager', 'SystemManager', NULL, 1, 1, 1, 1, '2015-07-29 08:45:01', '2023-09-11 06:36:23', 1),
+(2, 'System Management', 'SMN', NULL, 1, 1, 1, 1, '2015-07-29 08:45:01', '2023-09-18 02:37:33', 1),
 (3, 'Manager', 'Manager', NULL, 2, 2, 1, 1, '2015-07-29 08:45:49', '2023-09-01 03:33:25', 1),
-(4, 'HR Manager', 'HRM', NULL, 3, 3, 1, 1, '2015-07-29 08:46:36', '2023-09-11 06:36:39', 1),
+(4, 'HR Manager', 'HRM', NULL, 3, 3, 1, 2, '2015-07-29 08:46:36', '2023-09-18 02:05:09', 1),
 (5, 'Employee', 'Employee', NULL, 4, 4, 1, 1, '2015-07-29 08:47:54', '2023-09-01 03:32:47', 1),
-(6, 'User', 'user', '', 5, 5, 1, 1, '2015-07-29 09:02:21', '2023-09-01 03:17:53', 0),
-(7, 'Agency user', 'agency', '', 5, 5, 1, 1, '2015-07-29 09:03:19', '2023-09-01 03:17:49', 0),
-(8, 'System Admin', 'SYSAdmin', NULL, 6, 6, 1, 1, '2015-07-29 09:04:08', '2023-09-01 06:47:13', 0),
-(9, 'Team Lead', 'lead', '', 4, 4, 1, 1, '2015-07-29 09:05:02', '2023-09-01 03:17:46', 0),
 (10, 'Head Of Department', 'HOD', NULL, 2, 2, 1, 1, '2023-09-01 03:31:54', '2023-09-01 03:31:54', 1),
-(11, 'Group Managing Director', 'GMD', NULL, 1, 1, 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1);
+(11, 'Group Managing Director', 'GMD', NULL, 1, 1, 1, 1, '2023-09-01 06:49:14', '2023-09-11 06:35:47', 1),
+(12, 'HR Employee', 'HRE', NULL, 3, 3, 2, 2, '2023-09-18 02:03:05', '2023-09-18 02:03:05', 1),
+(13, 'System Admin', 'SYA', NULL, 1, 1, 1, 1, '2023-09-18 02:43:51', '2023-09-18 02:44:06', 0),
+(14, 'System Admin', 'SAD', NULL, 6, 6, 1, 1, '2023-09-18 02:44:44', '2023-09-18 02:44:44', 1);
 
 --
 -- Triggers `main_roles`
@@ -6406,7 +6536,7 @@ CREATE TABLE `main_settings` (
 --
 
 INSERT INTO `main_settings` (`id`, `menuid`, `userid`, `flag`, `isactive`, `created`, `modified`) VALUES
-(1, '', 1, 2, 1, '2023-09-04 02:38:47', '2023-09-05 05:51:23'),
+(1, '', 1, 2, 1, '2023-09-04 02:38:47', '2023-09-18 00:41:43'),
 (2, '32,10,11,43,42', 1, 1, 1, '2023-09-07 06:53:43', '2023-09-07 06:53:43');
 
 -- --------------------------------------------------------
@@ -6617,7 +6747,16 @@ INSERT INTO `main_userloginlog` (`id`, `userid`, `emprole`, `group_id`, `employe
 (55, 4, 3, 2, 'SKG03', 'itmanager@email.com', 'IT MANAGER', '2023-09-11 07:34:51', '10.13.1.101', ''),
 (56, 5, 5, 4, 'SKG04', 'itstaff@email.com', 'IT EXEC', '2023-09-11 07:35:42', '10.13.1.101', ''),
 (57, 1, 1, 0, 'SKG0001', 'sawitkinabalu@email.com', 'Super Admin', '2023-09-11 07:38:33', '10.13.1.101', ''),
-(58, 7, 5, 4, 'SKG06', 'hrexec@email.com', 'HR EXEC', '2023-09-11 07:40:01', '10.13.1.101', '');
+(58, 7, 5, 4, 'SKG06', 'hrexec@email.com', 'HR EXEC', '2023-09-11 07:40:01', '10.13.1.101', ''),
+(59, 1, 1, 0, 'SKG0001', 'sawitkinabalu@email.com', 'Super Admin', '2023-09-11 08:01:03', '10.13.1.101', ''),
+(60, 1, 1, 0, 'SKG0001', 'sawitkinabalu@email.com', 'Super Admin', '2023-09-18 00:20:03', '127.0.0.1', ''),
+(61, 5, 5, 4, 'SKG04', 'itstaff@email.com', 'IT EXEC', '2023-09-18 00:27:44', '127.0.0.1', ''),
+(62, 1, 1, 0, 'SKG0001', 'sawitkinabalu@email.com', 'Super Admin', '2023-09-18 01:33:02', '127.0.0.1', ''),
+(63, 2, 2, 1, 'SKG01', 'headhr@email.com', 'System Admin', '2023-09-18 01:34:34', '127.0.0.1', ''),
+(64, 2, 2, 1, 'SKG01', 'headhr@email.com', 'System Admin', '2023-09-18 01:44:05', '127.0.0.1', ''),
+(65, 1, 1, 0, 'SKG0001', 'sawitkinabalu@email.com', 'Super Admin', '2023-09-18 02:09:19', '127.0.0.1', ''),
+(66, 2, 2, 1, 'SKG01', 'headhr@email.com', 'System Admin', '2023-09-18 02:46:25', '127.0.0.1', ''),
+(67, 10, 10, 2, 'SKG07', 'hrhead@email.com', 'HR HEAD', '2023-09-18 03:04:32', '127.0.0.1', '');
 
 -- --------------------------------------------------------
 
@@ -6665,13 +6804,14 @@ CREATE TABLE `main_users` (
 
 INSERT INTO `main_users` (`id`, `emprole`, `userstatus`, `firstname`, `lastname`, `userfullname`, `emailaddress`, `contactnumber`, `empipaddress`, `backgroundchk_status`, `emptemplock`, `empreasonlocked`, `emplockeddate`, `emppassword`, `createdby`, `modifiedby`, `createddate`, `modifieddate`, `isactive`, `employeeId`, `modeofentry`, `other_modeofentry`, `entrycomments`, `rccandidatename`, `selecteddate`, `candidatereferredby`, `company_id`, `profileimg`, `jobtitle_id`, `tourflag`, `themes`) VALUES
 (1, 1, 'old', 'Super', 'Admin', 'Super Admin', 'sawitkinabalu@email.com', NULL, NULL, 'Not Applicable', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', NULL, NULL, '2013-11-21 00:00:00', '2023-09-01 03:12:07', 1, 'SKG0001', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'default'),
-(2, 2, 'old', 'HR', 'Head', 'HR Head', 'headhr@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, 'a92ab3c96984f036687d986a295f3aa5', 1, 1, '2023-09-01 03:06:37', '2023-09-08 08:17:19', 1, 'SKG01', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, NULL, 0, 'default'),
+(2, 2, 'old', 'System', 'Admin', 'System Admin', 'systemadmin@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-01 03:06:37', '2023-09-18 02:54:51', 1, 'SKG01', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, NULL, 1, 'default'),
 (3, 10, 'old', 'IT', 'HEAD', 'IT HEAD', 'ithead@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-01 03:34:46', '2023-09-11 06:43:15', 1, 'SKG02', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, 4, 1, 'default'),
 (4, 3, 'old', 'IT', 'MANAGER', 'IT MANAGER', 'itmanager@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-01 03:35:44', '2023-09-01 05:34:00', 1, 'SKG03', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, 2, 1, 'default'),
 (5, 5, 'old', 'IT', 'EXEC', 'IT EXEC', 'itstaff@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-01 03:37:01', '2023-09-01 05:33:49', 1, 'SKG04', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, 1, 1, 'default'),
 (6, 4, 'old', 'HR', 'MANAGER', 'HR MANAGER', 'hrmanager@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-01 05:56:15', '2023-09-11 06:42:28', 1, 'SKG05', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, 2, 1, 'default'),
 (7, 5, 'old', 'HR', 'EXEC', 'HR EXEC', 'hrexec@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-01 07:00:20', '2023-09-01 07:00:20', 1, 'SKG06', 'Direct', NULL, NULL, NULL, '2023-09-01', NULL, NULL, NULL, 1, 1, 'default'),
-(9, 11, 'old', 'GROUP MANAGING', 'DIRECTOR', 'GROUP MANAGING DIRECTOR', 'gmd@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '3aaa7b9771edf4856436e533009ac770', 1, 1, '2023-09-11 06:41:05', '2023-09-11 06:41:05', 1, 'SKG08', 'Direct', NULL, NULL, NULL, '2017-09-01', NULL, NULL, NULL, 5, 0, 'default');
+(9, 11, 'old', 'GROUP MANAGING', 'DIRECTOR', 'GROUP MANAGING DIRECTOR', 'gmd@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '3aaa7b9771edf4856436e533009ac770', 1, 1, '2023-09-11 06:41:05', '2023-09-11 06:41:05', 1, 'SKG08', 'Direct', NULL, NULL, NULL, '2017-09-01', NULL, NULL, NULL, 5, 0, 'default'),
+(10, 10, 'old', 'HR', 'HEAD', 'HR HEAD', 'hrhead@email.com', NULL, NULL, 'Yet to start', 0, NULL, NULL, '98ad354e9717e2f74d97e564ced0fd8a', 1, 1, '2023-09-18 03:03:02', '2023-09-18 03:03:47', 1, 'SKG07', 'Direct', NULL, NULL, NULL, '2023-09-06', NULL, NULL, NULL, 4, 1, 'default');
 
 --
 -- Triggers `main_users`
@@ -15214,7 +15354,7 @@ ALTER TABLE `assets_history`
 -- AUTO_INCREMENT for table `expenses`
 --
 ALTER TABLE `expenses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `expense_advacne_summary`
@@ -15232,7 +15372,7 @@ ALTER TABLE `expense_advance`
 -- AUTO_INCREMENT for table `expense_categories`
 --
 ALTER TABLE `expense_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `expense_forward`
@@ -15244,7 +15384,7 @@ ALTER TABLE `expense_forward`
 -- AUTO_INCREMENT for table `expense_history`
 --
 ALTER TABLE `expense_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `expense_notifications`
@@ -15256,13 +15396,13 @@ ALTER TABLE `expense_notifications`
 -- AUTO_INCREMENT for table `expense_payment_methods`
 --
 ALTER TABLE `expense_payment_methods`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `expense_receipts`
 --
 ALTER TABLE `expense_receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `expense_return_advance`
@@ -15274,13 +15414,13 @@ ALTER TABLE `expense_return_advance`
 -- AUTO_INCREMENT for table `expense_trips`
 --
 ALTER TABLE `expense_trips`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `expense_trip_history`
 --
 ALTER TABLE `expense_trip_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `main_accountclasstype`
@@ -15466,7 +15606,7 @@ ALTER TABLE `main_emailgroups`
 -- AUTO_INCREMENT for table `main_emaillogs`
 --
 ALTER TABLE `main_emaillogs`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `main_empadditionaldetails`
@@ -15550,13 +15690,13 @@ ALTER TABLE `main_employeeleavetypes`
 -- AUTO_INCREMENT for table `main_employees`
 --
 ALTER TABLE `main_employees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `main_employees_summary`
 --
 ALTER TABLE `main_employees_summary`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `main_employmentstatus`
@@ -15772,7 +15912,7 @@ ALTER TABLE `main_licensetype`
 -- AUTO_INCREMENT for table `main_logmanager`
 --
 ALTER TABLE `main_logmanager`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `main_logmanagercron`
@@ -15964,7 +16104,7 @@ ALTER TABLE `main_pd_documents`
 -- AUTO_INCREMENT for table `main_positions`
 --
 ALTER TABLE `main_positions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `main_prefix`
@@ -15976,7 +16116,7 @@ ALTER TABLE `main_prefix`
 -- AUTO_INCREMENT for table `main_privileges`
 --
 ALTER TABLE `main_privileges`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1422;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1662;
 
 --
 -- AUTO_INCREMENT for table `main_racecode`
@@ -16018,7 +16158,7 @@ ALTER TABLE `main_requisition_summary`
 -- AUTO_INCREMENT for table `main_roles`
 --
 ALTER TABLE `main_roles`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `main_sd_configurations`
@@ -16084,13 +16224,13 @@ ALTER TABLE `main_timezone`
 -- AUTO_INCREMENT for table `main_userloginlog`
 --
 ALTER TABLE `main_userloginlog`
-  MODIFY `id` bigint(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` bigint(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `main_users`
 --
 ALTER TABLE `main_users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `main_vendors`
