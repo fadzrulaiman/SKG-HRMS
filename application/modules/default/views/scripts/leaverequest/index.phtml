@@ -1,25 +1,3 @@
-<?php
-
-/********************************************************************************* 
- *  This file is part of Sentrifugo.
- *  Copyright (C) 2014 Sapplica
- *   
- *  Sentrifugo is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  Sentrifugo is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Sentrifugo.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Sentrifugo Support <support@sentrifugo.com>
- ********************************************************************************/
-?>
 <style>
 	.fc-ltr .fc-event-hori.fc-event-start,
 	.fc-rtl .fc-event-hori.fc-event-end {
@@ -280,7 +258,6 @@
 		$('#reason').val('');
 		$('#errors-no_of_days').remove();
 		$('#errors-reason').remove();
-		$('#errors-attachment').remove();
 		$('#errors-leavetypeid').remove();
 		$('#errors-leaveday').remove();
 		$('#errors-from_date').remove();
@@ -333,7 +310,7 @@
 				type: 'POST',
 				data: 'fromDate=' + fromdateval + '&toDate=' + todateval,
 				dataType: 'json',
-				success: function(response) {
+				success: function (response) {
 					var superadminid = <?php echo SUPERADMIN; ?>;
 					if (response['days'] == 0 && response['loginUserId'] != superadminid) {
 						jAlert("You cannot apply leave on Weekend/Holidays.");
@@ -342,7 +319,7 @@
 						$("#from_date").val(fromdateval);
 						$("#to_date").val(todateval);
 						$("#leaverequestform").dialog({
-							open: function(event, ui) {
+							open: function (event, ui) {
 
 								checkerrorvalidation();
 								datepickerappend();
@@ -353,7 +330,7 @@
 							height: 'auto',
 							title: "Create: Leave request",
 							modal: true,
-							close: function(event, ui) {
+							close: function (event, ui) {
 								closedialog('');
 							}
 						});
@@ -397,11 +374,11 @@
 				showButtonPanel: true,
 				changeMonth: true,
 				changeYear: true,
-				beforeShowDay: function(date) {
+				beforeShowDay: function (date) {
 					var day1 = date.getDay();
 					return [(day1 != weekend_strtday && day1 != weekend_endday)];
 				},
-				onClose: function() {
+				onClose: function () {
 					$('#from_date').trigger('blur');
 					emptytodate(this);
 				}
@@ -418,11 +395,11 @@
 				changeMonth: true,
 				changeYear: true,
 				showButtonPanel: true,
-				beforeShowDay: function(date) {
+				beforeShowDay: function (date) {
 					var day2 = date.getDay();
 					return [(day2 != weekend_strtday && day2 != weekend_endday)];
 				},
-				onClose: function() {
+				onClose: function () {
 					$('#to_date').trigger('blur');
 					validateselecteddate(this);
 				}
@@ -436,12 +413,12 @@
 	   Full calender plugin code.
 	   1. heders: For displaying previous month, next month.
 	   2. select: For dragging dates on calender plugin.
-	        -> First we are storing one javascript variable 'dateformatjs' with our site preference settings.
+			-> First we are storing one javascript variable 'dateformatjs' with our site preference settings.
 			-> We are converting the date returned by full calender plugin to our site preference date.
 			-> Based on leave management options the calender dragging event will work.
 	   3. events: For displying on which dates leave has been applied.	
 	*/
-	$(document).ready(function() {
+	$(document).ready(function () {
 
 		var date = new Date();
 		var d = date.getDate();
@@ -469,7 +446,7 @@
 
 			selectable: true,
 			selectHelper: true,
-			select: function(start, end, allDay) {
+			select: function (start, end, allDay) {
 
 				var startdate = $.datepicker.formatDate($("#dateformatjs").val(), start);
 				var enddate = $.datepicker.formatDate($("#dateformatjs").val(), end);
@@ -508,123 +485,123 @@
 			/* Event sources allows multiple events to be attached to calender with comma separated events
 			  and we can add different colors to different event so that we can differentiate events  */
 			eventSources: [{ // First enent source
-					events: [ // First event to display pending or approved leaves
-						<?php if (!empty($this->leaverequestdetails)) {
-							foreach ($this->leaverequestdetails as $val) {
-								if ($val['from_date'] != '' && $val['to_date'] != '' && $val['to_date'] != NULL) {
-									$from_date = explode("-", $val['from_date']);
-									$from_date_year = $from_date[0];
-									$from_date_month = $from_date[1];
-									$from_date_day = $from_date[2];
+				events: [ // First event to display pending or approved leaves
+					<?php if (!empty($this->leaverequestdetails)) {
+						foreach ($this->leaverequestdetails as $val) {
+							if ($val['from_date'] != '' && $val['to_date'] != '' && $val['to_date'] != NULL) {
+								$from_date = explode("-", $val['from_date']);
+								$from_date_year = $from_date[0];
+								$from_date_month = $from_date[1];
+								$from_date_day = $from_date[2];
 
-									$to_date = explode("-", $val['to_date']);
-									$to_date_year = $to_date[0];
-									$to_date_month = $to_date[1];
-									$to_date_day = $to_date[2];
-								} else if ($val['to_date'] == '' || $val['to_date'] == NULL) {
-									$from_date = explode("-", $val['from_date']);
-									$from_date_year = $from_date[0];
-									$from_date_month = $from_date[1];
-									$from_date_day = $from_date[2];
+								$to_date = explode("-", $val['to_date']);
+								$to_date_year = $to_date[0];
+								$to_date_month = $to_date[1];
+								$to_date_day = $to_date[2];
+							} else if ($val['to_date'] == '' || $val['to_date'] == NULL) {
+								$from_date = explode("-", $val['from_date']);
+								$from_date_year = $from_date[0];
+								$from_date_month = $from_date[1];
+								$from_date_day = $from_date[2];
 
-									$to_date = explode("-", $val['from_date']);
-									$to_date_year = $to_date[0];
-									$to_date_month = $to_date[1];
-									$to_date_day = $to_date[2];
-								}
-						?>
-
-								{
-									title: '<?php echo $this->userfullname . ', Leave, (' . $val['status'] . ')'; ?>',
-									start: new Date(<?php echo $from_date_year; ?>, <?php echo $from_date_month - 1; ?>, <?php echo $from_date_day; ?>),
-									end: new Date(<?php echo $to_date_year; ?>, <?php echo $to_date_month - 1; ?>, <?php echo $to_date_day; ?>),
-									id: <?php echo $val['id']; ?>,
-
-								},
-						<?php }
-						} ?>
-					], // END - First event 
-				}, // END - First eventsource 
-				{ // Second event source
-					events: [ // Second event to display pending or approved leaves of employees reporting to logged in user
-						<?php if (!empty($this->managerrequestdetails)) {
-							$color = 1;
-							foreach ($this->managerrequestdetails as $val) {
-								if ($val['from_date'] != '' && $val['to_date'] != '' && $val['to_date'] != NULL) {
-									$from_date = explode("-", $val['from_date']);
-									$from_date_year = $from_date[0];
-									$from_date_month = $from_date[1];
-									$from_date_day = $from_date[2];
-
-									$to_date = explode("-", $val['to_date']);
-									$to_date_year = $to_date[0];
-									$to_date_month = $to_date[1];
-									$to_date_day = $to_date[2];
-								} else if ($val['to_date'] == '' || $val['to_date'] == NULL) {
-									$from_date = explode("-", $val['from_date']);
-									$from_date_year = $from_date[0];
-									$from_date_month = $from_date[1];
-									$from_date_day = $from_date[2];
-
-									$to_date = explode("-", $val['from_date']);
-									$to_date_year = $to_date[0];
-									$to_date_month = $to_date[1];
-									$to_date_day = $to_date[2];
-								}
-						?>
-
-								{
-									title: '<?php echo $val['userfullname'] . ', Leave, (' . $val['status'] . ')'; ?>',
-									start: new Date(<?php echo $from_date_year; ?>, <?php echo $from_date_month - 1; ?>, <?php echo $from_date_day; ?>),
-									end: new Date(<?php echo $to_date_year; ?>, <?php echo $to_date_month - 1; ?>, <?php echo $to_date_day; ?>),
-									id: <?php echo $val['id']; ?>,
-									className: 'custom_<?php echo $color; ?>',
-								},
-						<?php
-								if ($color == 30)
-									$color = 0;
-								$color++;
+								$to_date = explode("-", $val['from_date']);
+								$to_date_year = $to_date[0];
+								$to_date_month = $to_date[1];
+								$to_date_day = $to_date[2];
 							}
+							?>
+
+							, {
+								title: '<?php echo $this->userfullname . ', Leave, (' . $val['status'] . ')'; ?>',
+								start: new Date(<?php echo $from_date_year; ?>, <?php echo $from_date_month - 1; ?>, <?php echo $from_date_day; ?>),
+								end: new Date(<?php echo $to_date_year; ?>, <?php echo $to_date_month - 1; ?>, <?php echo $to_date_day; ?>),
+								id: <?php echo $val['id']; ?>,
+
+							},
+						<?php }
+					} ?>
+				], // END - First event 
+			}, // END - First eventsource 
+			{ // Second event source
+				events: [ // Second event to display pending or approved leaves of employees reporting to logged in user
+					<?php if (!empty($this->managerrequestdetails)) {
+						$color = 1;
+						foreach ($this->managerrequestdetails as $val) {
+							if ($val['from_date'] != '' && $val['to_date'] != '' && $val['to_date'] != NULL) {
+								$from_date = explode("-", $val['from_date']);
+								$from_date_year = $from_date[0];
+								$from_date_month = $from_date[1];
+								$from_date_day = $from_date[2];
+
+								$to_date = explode("-", $val['to_date']);
+								$to_date_year = $to_date[0];
+								$to_date_month = $to_date[1];
+								$to_date_day = $to_date[2];
+							} else if ($val['to_date'] == '' || $val['to_date'] == NULL) {
+								$from_date = explode("-", $val['from_date']);
+								$from_date_year = $from_date[0];
+								$from_date_month = $from_date[1];
+								$from_date_day = $from_date[2];
+
+								$to_date = explode("-", $val['from_date']);
+								$to_date_year = $to_date[0];
+								$to_date_month = $to_date[1];
+								$to_date_day = $to_date[2];
+							}
+							?>
+
+							, {
+								title: '<?php echo $val['userfullname'] . ', Leave, (' . $val['status'] . ')'; ?>',
+								start: new Date(<?php echo $from_date_year; ?>, <?php echo $from_date_month - 1; ?>, <?php echo $from_date_day; ?>),
+								end: new Date(<?php echo $to_date_year; ?>, <?php echo $to_date_month - 1; ?>, <?php echo $to_date_day; ?>),
+								id: <?php echo $val['id']; ?>,
+								className: 'custom_<?php echo $color; ?>',
+							},
+							<?php
+							if ($color == 30)
+								$color = 0;
+							$color++;
 						}
-						?>
-					], // END - Second event 
-					//color: 'green',     // an option!
-					//textColor: 'white'
-				} // END - Second eventsource        
+					}
+					?>
+				], // END - Second event 
+				//color: 'green',     // an option!
+				//textColor: 'white'
+			} // END - Second eventsource        
 				, // Comma separation for event source
-				{ // Start - Second event source			
-					events: [ // Start - Second event to display holidays list
+			{ // Start - Second event source			
+				events: [ // Start - Second event to display holidays list
 
 
-						<?php if (!empty($this->holidayDateslistArr)) {
-							foreach ($this->holidayDateslistArr as $list) {
-								if ($list['holidaydate'] != '' && $list['holidaydate'] != NULL) {
-									$holidayname = $list['holidayname'];
-									$holdaydate = explode("-", $list['holidaydate']);
-									$holiday_date_year = $holdaydate[0];
-									$holiday_date_month = $holdaydate[1];
-									$holiday_date_day = $holdaydate[2];
-								}
-						?>
+					<?php if (!empty($this->holidayDateslistArr)) {
+						foreach ($this->holidayDateslistArr as $list) {
+							if ($list['holidaydate'] != '' && $list['holidaydate'] != NULL) {
+								$holidayname = $list['holidayname'];
+								$holdaydate = explode("-", $list['holidaydate']);
+								$holiday_date_year = $holdaydate[0];
+								$holiday_date_month = $holdaydate[1];
+								$holiday_date_day = $holdaydate[2];
+							}
+							?>
 
-								{
-									title: '<?php echo $holidayname; ?>',
-									start: new Date(<?php echo $holiday_date_year; ?>, <?php echo $holiday_date_month - 1; ?>, <?php echo $holiday_date_day; ?>),
-									end: new Date(<?php echo $holiday_date_year; ?>, <?php echo $holiday_date_month - 1; ?>, <?php echo $holiday_date_day; ?>),
+							, {
+								title: '<?php echo $holidayname; ?>',
+								start: new Date(<?php echo $holiday_date_year; ?>, <?php echo $holiday_date_month - 1; ?>, <?php echo $holiday_date_day; ?>),
+								end: new Date(<?php echo $holiday_date_year; ?>, <?php echo $holiday_date_month - 1; ?>, <?php echo $holiday_date_day; ?>),
 
-								},
+							},
 
 						<?php }
-						} ?>
-					], // END- First Event
-					color: 'pink', // an option!
-					textColor: 'white'
-				} // END- Second Event Source
+					} ?>
+				], // END- First Event
+				color: 'pink', // an option!
+				textColor: 'white'
+			} // END- Second Event Source
 
 			], // END- Main event source
 
 			// Start Event click to display leave details in popup
-			eventClick: function(calEvent, jsEvent, view) {
+			eventClick: function (calEvent, jsEvent, view) {
 				if (calEvent.id != null && typeof calEvent.id != "undefined") {
 					var url = base_url + '/leaverequest/editpopup/id/' + calEvent.id;
 					displaydeptform(url, "");
@@ -649,34 +626,36 @@
 <?php
 if ($this->loginUserId == SUPERADMIN) { ?>
 	<div class="ml-alert-1-info m1-info-set">
-		<div class="style-1-icon info"></div>You will not be able to apply for leaves
+		<div class="style-1-icon info"></div>You are the Super Admin, you will not be able to apply for leaves
 	</div>
-<?php
+	<?php
 } else if (empty($this->leavetype) || empty($this->getavailbaleleaves) || empty($this->weekendDatailsArr) || ($this->rMngr == 'No') || ($this->hremailgroup == '')) {
-?>
+	?>
 	<?php if (empty($this->getavailbaleleaves)) { ?>
-		<div class="ml-alert-1-info">
-			<div class="style-1-icon info"></div>You have not been allotted leaves for this financial year. Please contact your HR
-		</div>
+			<div class="ml-alert-1-info">
+				<div class="style-1-icon info"></div>You have not been allotted leaves for this financial year. Please contact your
+				HR
+			</div>
 	<?php } else if ($this->rMngr == 'No') { ?>
-		<div class="ml-alert-1-info">
-			<div class="style-1-icon info"></div>You have not been assigned a Reporting manager. Please contact your HR
-		</div>
+				<div class="ml-alert-1-info">
+					<div class="style-1-icon info"></div>You have not been assigned a Reporting manager. Please contact your HR
+				</div>
 	<?php } else if (empty($this->weekendDatailsArr)) { ?>
-		<div class="ml-alert-1-info">
-			<div class="style-1-icon info"></div>The leave management options for your department is not configured yet. Please contact your HR.
-		</div>
+					<div class="ml-alert-1-info">
+						<div class="style-1-icon info"></div>The leave management options for your department is not configured yet. Please
+						contact your HR.
+					</div>
 	<?php } else if (empty($this->leavetype)) { ?>
-		<div class="ml-alert-1-info">
-			<div class="style-1-icon info"></div>Leave types are not configured. Please contact your HR.
-		</div>
+						<div class="ml-alert-1-info">
+							<div class="style-1-icon info"></div>Leave types are not configured. Please contact your HR.
+						</div>
 	<?php } else if ($this->hremailgroup == '') { ?>
-		<div class="ml-alert-1-info">
-			<div class="style-1-icon info"></div>Mail will not be sent to the HR as the HR group mail is not configured.
-		</div>
+							<div class="ml-alert-1-info">
+								<div class="style-1-icon info"></div>Mail will not be sent to the HR as the HR group mail is not configured.
+							</div>
 	<?php } ?>
-<?php
-}
+	<?php
+	}
 
 ?>
 <?php if ($this->loginUserId != SUPERADMIN) { ?>
@@ -697,7 +676,7 @@ if ($this->loginUserId == SUPERADMIN) { ?>
 						else
 							$repSelected = '';
 
-					?>
+						?>
 						<option value="2" <?php echo $repSelected; ?>>Employee Reporting To Me</option>
 					<?php } ?>
 				</select>
@@ -707,19 +686,18 @@ if ($this->loginUserId == SUPERADMIN) { ?>
 <?php } ?>
 
 <div class="info_div">
-	Click on a date to apply for 1 day of leave. Click and drag on the desired dates to apply for multiple days of leave.
+	Click on a date to apply for 1 day of leave. Click and drag on the desired dates to apply for multiple days of
+	leave.
 </div>
 
-
-
 <div id='calendar' style="clear:both;"></div>
-
 
 <div id="leaverequestform" style="display:none;">
 
 	<?php sapp_Global::generateClientValidations($this->form); ?>
 	<div class="newframe-div">
-		<form name="<?php echo $this->form->getName(); ?>" id="<?php echo $this->form->getId(); ?>" action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
+		<form name="<?php echo $this->form->getName(); ?>" id="<?php echo $this->form->getId(); ?>"
+			action="<?php echo $this->form->getAction(); ?>" method="<?php echo $this->form->getMethod(); ?>">
 			<?php echo $this->form->id; ?>
 			<?php
 			$weekend_startday = '';
@@ -732,8 +710,12 @@ if ($this->loginUserId == SUPERADMIN) { ?>
 				$ishalf_day = $this->weekendDatailsArr[0]['is_halfday'];
 			}
 			?>
-			<input type="hidden" value="<?php echo $this->loggedinEmpId[0]['emailaddress']; ?>" id="employeeemail" name="employeeemail">
-			<?php if (isset($this->reportingManagerDetails[0]['emailaddress'])) { ?><input type="hidden" value="<?php echo $this->reportingManagerDetails[0]['emailaddress']; ?>" id="repmanageremail" name="repmanageremail"> <?php } ?>
+			<input type="hidden" value="<?php echo $this->loggedinEmpId[0]['emailaddress']; ?>" id="employeeemail"
+				name="employeeemail">
+			<?php if (isset($this->reportingManagerDetails[0]['emailaddress'])) { ?><input type="hidden"
+					value="<?php echo $this->reportingManagerDetails[0]['emailaddress']; ?>" id="repmanageremail"
+					name="repmanageremail">
+			<?php } ?>
 			<input type="hidden" value="<?php echo $weekend_startday; ?>" id="wkstrtday" name="wkstrtday">
 			<input type="hidden" value="<?php echo $weekend_endday; ?>" id="wkendday" name="wkendday">
 			<input type="hidden" value="<?php echo $ishalf_day; ?>" id="ishalfday" name="ishalfday">
@@ -741,125 +723,111 @@ if ($this->loginUserId == SUPERADMIN) { ?>
 
 				<div class="new-form-ui">
 					<label class="required">Available Leaves</label>
-					<div class="division"><?php echo $this->form->no_of_days; ?></div>
+					<div class="division">
+						<?php echo $this->form->no_of_days; ?>
+					</div>
 					<?php if (isset($this->msgarray['no_of_days'])) { ?>
-						<span class="errors" id="errors-<?php echo $this->form->no_of_days->getId(); ?>"><?php echo $this->msgarray['no_of_days']; ?></span>
+						<span class="errors" id="errors-<?php echo $this->form->no_of_days->getId(); ?>">
+							<?php echo $this->msgarray['no_of_days']; ?>
+						</span>
 					<?php } ?>
 				</div>
 
 				<div class="new-form-ui">
 					<label class="required">Leave Type</label>
-					<div class="division"><?php echo $this->form->leavetypeid; ?></div>
+					<div class="division">
+						<?php echo $this->form->leavetypeid; ?>
+					</div>
 					<?php if (isset($this->msgarray['leavetypeid'])) { ?>
-						<span class="errors" id="errors-<?php echo $this->form->leavetypeid->getId(); ?>"><?php echo $this->msgarray['leavetypeid']; ?></span>
+						<span class="errors" id="errors-<?php echo $this->form->leavetypeid->getId(); ?>">
+							<?php echo $this->msgarray['leavetypeid']; ?>
+						</span>
 					<?php } ?>
 				</div>
 
 				<div class="new-form-ui textareaheight">
 					<label class="required">Reason</label>
-					<div class="division"><?php echo $this->form->reason; ?></div>
+					<div class="division">
+						<?php echo $this->form->reason; ?>
+					</div>
 					<?php if (isset($this->msgarray['reason'])) { ?>
-						<span class="errors" id="errors-<?php echo $this->form->reason->getId(); ?>"><?php echo $this->msgarray['reason']; ?></span>
+						<span class="errors" id="errors-<?php echo $this->form->reason->getId(); ?>">
+							<?php echo $this->msgarray['reason']; ?>
+						</span>
 					<?php } ?>
 				</div>
 
-				<div class="new-form-ui-1" id="ca_attachment" style="width:300px;">
-							<label>&nbsp;</label>
-							<div class="division">
-								<span class="upload-attachment uploadbutsel" id="fileupload"><b class="sprite upload-icon" style="cursor:pointer;">Upload Attachment</b></span>
-								<div id="photo_gallery">
-							<?php if ($this->data['attachments']) {
-								$path = LE_FILES_PATH;
-								$attachments = json_decode($this->data['attachments'], true);
-								$i = 0;
-								foreach ($attachments as $k => $v) {
-									if (in_array(strtolower(sapp_Htmlhelper::getExtension($v["new_name"])), array('jpg', 'png', 'gif', 'jpeg'))) { ?>
-												<a href="<?php echo $path . $v["new_name"]; ?>" rel="prettyPhoto[pp_gal]" class="click_view_link_class" title="<?php echo $v["original_name"]; ?>">
-												<?php if ($i == 0) { ?>Click to view<?php } ?>
-												</a>
-										<?php } else { ?>
-												<a class="click_view_link_class" href="<?php echo $path . $v["new_name"]; ?>?iframe=true&width=80%&height=90%" rel="prettyPhoto[pp_gal]" title="<?php echo $v["original_name"]; ?>">
-												<?php if ($i == 0) { ?>Click to view<?php } ?>
-												</a>
-									<?php }
-									$i++;
-								}
-							} ?> 
-								</div>
-							<?php if (isset($this->msgarray['file_original_names']) && $this->msgarray['file_original_names'] != '') {
-
-								$org_files = explode(',', $this->msgarray['file_original_names']);
-								$new_files = explode(',', $this->msgarray['file_new_names']);
-
-								for ($i = 0; $i < count($org_files); $i++) {
-									echo '<div class="ajax-file-upload-statusbar" id="x_file_' . $i . '">
-										<div class="ajax-file-upload-filename">' . $org_files[$i] . '</div>
-										<div class="ajax-file-upload-red" onclick=deleteImages(this,"' . $org_files[$i] . '","' . $new_files[$i] . '","x_file_' . $i . '") style=""><span class="ajax-file-upload-red" style=""><i class="fa fa-times-circle"></i></span></div>
-									  </div>';
-								}
-							} ?>
-							</div>
-							<div id="loaderimgprofile" style="display:none; margin-left: 124px; top: 26px;">
-								<img src="<?php echo $this->baseUrl("public/media/images/loaderwhite_21X21.gif"); ?>" style="width:21px; height: 21px; float: none; "/>
-							</div>
-						</div>
-						<input type="hidden" name="file_original_names" id="file_original_names" value="<?php if (isset($this->msgarray['file_original_names'])) {
-							echo $this->msgarray['file_original_names'];
-						} ?>">
-						<input type="hidden" name="file_new_names" id="file_new_names" value="<?php if (isset($this->msgarray['file_new_names'])) {
-							echo $this->msgarray['file_new_names'];
-						} ?>">
-
 				<div class="new-form-ui">
-					<label class="required">From <img class="tooltip" title="<?php echo DATE_DESCRIPTION; ?>" src="<?php echo MEDIA_PATH; ?>images/help.png"></label>
-					<div class="division"><?php echo $this->form->from_date; ?></div>
-					<span class="errors" id="errors-<?php echo $this->form->from_date->getId(); ?>"><?php echo isset($this->msgarray['from_date']) ? $this->msgarray['from_date'] : ''; ?></span>
+					<label class="required">From <img class="tooltip" title="<?php echo DATE_DESCRIPTION; ?>"
+							src="<?php echo MEDIA_PATH; ?>images/help.png"></label>
+					<div class="division">
+						<?php echo $this->form->from_date; ?>
+					</div>
+					<span class="errors" id="errors-<?php echo $this->form->from_date->getId(); ?>">
+						<?php echo isset($this->msgarray['from_date']) ? $this->msgarray['from_date'] : ''; ?>
+					</span>
 				</div>
 
 				<div class="new-form-ui" id="todatediv">
-					<label class="required">To <img class="tooltip" title="<?php echo DATE_DESCRIPTION; ?>" src="<?php echo $this->baseUrl() . '/public/media/'; ?>images/help.png"></label>
-					<div class="division"><?php echo $this->form->to_date; ?></div>
-					<span class="errors" id="errors-<?php echo $this->form->to_date->getId(); ?>"><?php echo isset($this->msgarray['to_date']) ? $this->msgarray['to_date'] : ''; ?></span>
+					<label class="required">To <img class="tooltip" title="<?php echo DATE_DESCRIPTION; ?>"
+							src="<?php echo $this->baseUrl() . '/public/media/'; ?>images/help.png"></label>
+					<div class="division">
+						<?php echo $this->form->to_date; ?>
+					</div>
+					<span class="errors" id="errors-<?php echo $this->form->to_date->getId(); ?>">
+						<?php echo isset($this->msgarray['to_date']) ? $this->msgarray['to_date'] : ''; ?>
+					</span>
 				</div>
 
 				<div class="new-form-ui">
 					<label class="required">Leave For</label>
-					<div class="division"><?php echo $this->form->leaveday; ?></div>
+					<div class="division">
+						<?php echo $this->form->leaveday; ?>
+					</div>
 					<?php if (isset($this->msgarray['leaveday'])) { ?>
-						<span class="errors" id="errors-<?php echo $this->form->leaveday->getId(); ?>"><?php echo $this->msgarray['leaveday']; ?></span>
+						<span class="errors" id="errors-<?php echo $this->form->leaveday->getId(); ?>">
+							<?php echo $this->msgarray['leaveday']; ?>
+						</span>
 					<?php } ?>
 				</div>
 
 				<div class="new-form-ui">
 					<label>Days</label>
-					<div class="division"><?php echo $this->form->appliedleavesdaycount; ?></div>
+					<div class="division">
+						<?php echo $this->form->appliedleavesdaycount; ?>
+					</div>
 				</div>
 
 				<div class="new-form-ui">
 					<label class="required">Reporting</label>
-					<div class="division"><?php echo $this->form->rep_mang_id; ?></div>
+					<div class="division">
+						<?php echo $this->form->rep_mang_id; ?>
+					</div>
 					<?php if (isset($this->msgarray['rep_mang_id'])) { ?>
-						<span class="errors" id="errors-<?php echo $this->form->rep_mang_id->getId(); ?>"><?php echo $this->msgarray['rep_mang_id']; ?></span>
+						<span class="errors" id="errors-<?php echo $this->form->rep_mang_id->getId(); ?>">
+							<?php echo $this->msgarray['rep_mang_id']; ?>
+						</span>
 					<?php } ?>
 				</div>
-
-
 			</div>
 
 			<div class="new-form-ui-submit">
 				<?php echo $this->form->submit; ?>
-				<button name="Canceldialog" id="Canceldialog" onclick="closedialog('cancel');" type="button">Cancel</button>
+				<button name="Canceldialog" id="Canceldialog" onclick="closedialog('cancel');"
+					type="button">Cancel</button>
 			</div>
 		</form>
+		<style type="text/css">
+			.ajax-file-upload-red {
+				margin-top: 5px;
+			}
+		</style>
 	</div>
 </div>
 <?php echo sapp_Helper::popup_helper('leaverequest'); ?>
-
-
-
 <script type="text/javascript" language="javascript">
-	$(document).on("click", '#menu-toggle', function(e) {
-		setTimeout(function() {
+	$(document).on("click", '#menu-toggle', function (e) {
+		setTimeout(function () {
 			$('#calendar').fullCalendar('option', 'aspectRatio', 1.8);
 		}, 300);
 	});
