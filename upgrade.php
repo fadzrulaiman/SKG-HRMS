@@ -26,7 +26,7 @@ require_once 'public/constants.php';
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sentrifugo</title>
+    <title>Sawit Kinabalu HRMS</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
 	<link rel="shortcut icon" href="public/media/images/favicon.ico" />
      <link href="public/media/css/successstyle.css" rel="stylesheet">
