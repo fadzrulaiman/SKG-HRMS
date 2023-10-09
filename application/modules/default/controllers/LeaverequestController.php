@@ -27,7 +27,6 @@ class Default_LeaverequestController extends Zend_Controller_Action
 	{
 	 
 			 $ajaxContext = $this->_helper->getHelper('AjaxContext');
-			 $ajaxContext->addActionContext('uploadsave', 'json')->initContext();		
 			 $ajaxContext->addActionContext('gethalfdaydetails', 'json')->initContext();
 			 $ajaxContext->addActionContext('saveleaverequestdetails', 'json')->initContext();
 			 $ajaxContext->addActionContext('updateleavedetails', 'json')->initContext();
@@ -251,24 +250,7 @@ class Default_LeaverequestController extends Zend_Controller_Action
         		
 		$this->view->messages = $this->_helper->flashMessenger->getMessages();
     }
-	public function uploadsaveAction() 
-    {
-    	$user_id = sapp_Global::_readSession('id');
-        $filedata = array();
-        if(isset($_FILES["myfile"]))
-        {
-            $fileName = $_FILES["myfile"]["name"];
-            $fileName = preg_replace('/[^a-zA-Z0-9.\']/', '_', $fileName);			  	
-            $newName  = time().'_'.$user_id.'_'.str_replace(' ', '_', $fileName);
-
-            move_uploaded_file($_FILES["myfile"]["tmp_name"],LR_TEMP_UPLOAD_PATH.$newName);
-
-            $filedata['original_name'] = $fileName;
-            $filedata['new_name'] = $newName;
-            $this->_helper->json(array('filedata' => $filedata));
-        }
-    }
-
+	
 	public function saveleaverequestdetailsAction()
 	{
 	  $this->_helper->layout->disableLayout();
@@ -276,7 +258,6 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		if($auth->hasIdentity()){
 					$loginUserId = $auth->getStorage()->read()->id;
 		}
-		// Initiating variables
 		$constantday = '';
 		$days = '';
 		$errorflag = 'true';
@@ -305,9 +286,9 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		$usersmodel = new Default_Model_Users();
 		$employeesmodel = new Default_Model_Employees();
 		$weekdaysmodel = new Default_Model_Weekdays();
-		 if($loginUserId !='' && $loginUserId != NULL) // Check is there is user ID present when login
+		 if($loginUserId !='' && $loginUserId != NULL)
 			{
-				$loggedinEmpId = $usersmodel->getUserDetailsByID($loginUserId); // Get user details by ID
+				$loggedinEmpId = $usersmodel->getUserDetailsByID($loginUserId);
 				$loggedInEmployeeDetails = $employeesmodel->getLoggedInEmployeeDetails($loginUserId);
 				
 				if(!empty($loggedInEmployeeDetails))
@@ -388,17 +369,6 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		$id = $this->_request->getParam('id'); 
 		$reason = $this->_request->getParam('reason'); // reason
 		$leavetypeparam = $this->_request->getParam('leavetypeid');
-		$file_original_names = $this->_getParam('file_original_names',null);
-		$file_new_names = $this->_getParam('file_new_names',null);
-		$org_names = explode(',', $file_original_names);
-		$new_names = explode(',', $file_new_names);
-		$attachment_array = array();
-
-		for ($i=0; $i < count($org_names); $i++)
-		{
-			if($new_names[$i] != '')
-				$attachment_array[] = array("original_name" => $org_names[$i], "new_name" => $new_names[$i]);
-		  }
 		if(isset($leavetypeparam) && $leavetypeparam !='')
 		{
 			$leavetypeArr = explode("!@#",$this->_request->getParam('leavetypeid'));
@@ -1035,8 +1005,6 @@ class Default_LeaverequestController extends Zend_Controller_Action
 		$this->view->reject_flag = $reject_flag;
 		
 	}
-
-	
 	
 	public function updateleavedetailsAction()
 	{

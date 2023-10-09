@@ -162,7 +162,7 @@ function mail_send($tls,$smtpserver,$username,$password,$port,$auth)
                     
                     <div style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal; line-height:30px;">
                         Regards,<br />
-                        <b>Sentrifugo</b>
+                        <b>Sawit Kinabalu</b>
                     </div>
             </div>
             </div>

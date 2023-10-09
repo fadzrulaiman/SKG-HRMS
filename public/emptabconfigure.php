@@ -1,1 +1,1 @@
-<?php defined('EMPTABCONFIGS') || define('EMPTABCONFIGS','emp_leaves,emppersonaldetails,empcommunicationdetails,emp_additional');?>
+<?php defined('EMPTABCONFIGS') || define('EMPTABCONFIGS','emp_leaves');?>

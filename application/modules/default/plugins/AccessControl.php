@@ -11,17 +11,21 @@ class Default_Plugin_AccessControl extends Zend_Controller_Plugin_Abstract
 	if($role == 1)
 		$role = 'admin';
 	else if($role == 2)
-	 $role = 'MNGT';
+	 $role = 'management';
 	else if($role == 3)
-	 $role = 'MNGR';
+	 $role = 'manager';
+	else if($role == 4)
+	 $role = 'hrmanager';
 	else if($role == 5)
-	 $role = 'EMPL';
-	else if($role == 10)
-	 $role = 'HOD';
-	else if($role == 12)
-	 $role = 'HREM';
-	else if($role == 14)
-	 $role = 'SYAD';
+	 $role = 'employee';
+	else if($role == 6)
+	 $role = 'user';
+	else if($role == 7)
+	 $role = 'agency';
+	else if($role == 8)
+	 $role = 'sysadmin';
+	else if($role == 9)
+	 $role = 'lead';
 	
   	$request->getModuleName();
         $request->getControllerName();
@@ -66,19 +70,21 @@ protected function _getAcl()
 	   $acl->addRole('admin');            
 	   $acl->addRole('viewer');            
 	   
-	 $acl->addRole('MNGT');
-	 $acl->addRole('MNGR');
-	 $acl->addRole('EMPL');
-	 $acl->addRole('HOD');
-	 $acl->addRole('HREM');
-	 $acl->addRole('SYAD');
+	 $acl->addRole('management');
+	 $acl->addRole('manager');
+	 $acl->addRole('hrmanager');
+	 $acl->addRole('employee');
+	 $acl->addRole('user');
+	 $acl->addRole('agency');
+	 $acl->addRole('sysadmin');
+	 $acl->addRole('lead');
 	   $storage = new Zend_Auth_Storage_Session();
 	   $data = $storage->read();
 	   $role = $data['emprole'];
 		
 	$auth = Zend_Auth::getInstance(); 
 	$tmroleText=array();
-	$tmroleText = array('1'=>'admin','2'=>'MNGT','3'=>'MNGR','5'=>'EMPL','10'=>'HOD','12'=>'HREM','14'=>'SYAD');
+	$tmroleText = array('1'=>'admin','2'=>'management','3'=>'manager','4'=>'hrmanager','5'=>'employee','6'=>'user','7'=>'agency','8'=>'sysadmin','9'=>'lead');
 	
 		if($auth->hasIdentity())
 		{
@@ -301,7 +307,7 @@ protected function _getAcl()
                     $acl->allow('admin', 'default:leavemanagement', array('index','add','view','edit','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
-                    $acl->allow('admin', 'default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','uploadsave','uploaddelete'));
+                    $acl->allow('admin', 'default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:licensetype'));
                     $acl->allow('admin', 'default:licensetype', array('index','view','edit','delete'));
@@ -362,9 +368,6 @@ protected function _getAcl()
 
 		 $acl->addResource(new Zend_Acl_Resource('default:remunerationbasis'));
                     $acl->allow('admin', 'default:remunerationbasis', array('index','view','edit','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:reports'));
-                    $acl->allow('admin', 'default:reports', array('getrolepopup','emprolesgrouppopup','performancereport','previousappraisals','getselectedappraisaldata','getinterviewroundsdata','interviewrounds','rolesgroup','exportemprolesgroup','exportrolesgroupreport','exportinterviewrpt','exportactiveuserrpt','exportemployeereport','rolesgrouprptpdf','activeuserrptpdf','emprptpdf','interviewrptpdf','rolesgroupdata','emprolesgroup','emprolesgroupdata','activeuser','getactiveuserdata','getempreportdata','empauto','servicedeskreport','getsddata','servicedeskpdf','servicedeskexcel','employeereport','getdeptsemp','index','holidaygroupreports','getpdfreportholiday','getexcelreportholiday','leavesreport','getpdfreportleaves','getexcelreportleaves','leavesreporttabheader','leavemanagementreport','getpdfreportleavemanagement','getexcelreportleavemanagement','bunitauto','bunitcodeauto','getexcelreportbusinessunit','getbusinessunitspdf','businessunits','userlogreport','departments','exportdepartmentpdf','getexcelreportdepartment','candidaterptexcel','candidaterptpdf','getcandidatesreportdata','candidatesreport','requisitionauto','requisitionrptexcel','requisitionrptpdf','getrequisitionsstatusreportdata','requisitionstatusreport','activitylogreport','downloadreport','agencylistreport','agencynameauto','agencysebsiteauto','empscreening','getspecimennames','getagencynames','getexcelreportempscreening','getempscreeningpdf'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:roles'));
                     $acl->allow('admin', 'default:roles', array('index','view','edit','saveupdate','delete','getgroupmenu'));
@@ -535,1335 +538,1388 @@ protected function _getAcl()
 	   if($role == 2 )
            {
 		 $acl->addResource(new Zend_Acl_Resource('default:accountclasstype'));
-                            $acl->allow('MNGT', 'default:accountclasstype', array('index','addpopup','saveupdate','add','edit','delete','view','Account Class Types'));
+                            $acl->allow('management', 'default:accountclasstype', array('index','addpopup','saveupdate','add','edit','delete','view','Account Class Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:addemployeeleaves'));
-                            $acl->allow('MNGT', 'default:addemployeeleaves', array('index','add','edit','view','Add Employee Leave'));
+                            $acl->allow('management', 'default:addemployeeleaves', array('index','add','edit','view','Add Employee Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
-                            $acl->allow('MNGT', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','add','edit','delete','view','Announcements'));
+                            $acl->allow('management', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','add','edit','delete','view','Announcements'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:attendancestatuscode'));
-                            $acl->allow('MNGT', 'default:attendancestatuscode', array('index','add','edit','delete','view','Attendance Status'));
+                            $acl->allow('management', 'default:attendancestatuscode', array('index','add','edit','delete','view','Attendance Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:bankaccounttype'));
-                            $acl->allow('MNGT', 'default:bankaccounttype', array('index','addpopup','add','edit','delete','view','Bank Account Types'));
+                            $acl->allow('management', 'default:bankaccounttype', array('index','addpopup','add','edit','delete','view','Bank Account Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
-                            $acl->allow('MNGT', 'default:businessunits', array('index','getdeptnames','add','edit','delete','view','Business Units'));
+                            $acl->allow('management', 'default:businessunits', array('index','getdeptnames','add','edit','delete','view','Business Units'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:categories'));
-                            $acl->allow('MNGT', 'default:categories', array('index','addnewcategory','add','edit','delete','view','Manage Categories'));
+                            $acl->allow('management', 'default:categories', array('index','addnewcategory','add','edit','delete','view','Manage Categories'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:cities'));
                             $cities_add = 'yes';
                                 if($this->id_param == '' && $cities_add == 'yes')
-                                    $acl->allow('MNGT','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities','edit'));
+                                    $acl->allow('management','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities','edit'));
 
                                 else
-                                    $acl->allow('MNGT','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities'));
+                                    $acl->allow('management','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
-                            $acl->allow('MNGT', 'default:clients', array('index','addpopup','add','edit','delete','view','Clients'));
+                            $acl->allow('management', 'default:clients', array('index','addpopup','add','edit','delete','view','upload','uploadview','Clients'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:competencylevel'));
-                            $acl->allow('MNGT', 'default:competencylevel', array('index','addpopup','add','edit','delete','view','Competency Levels'));
+                            $acl->allow('management', 'default:competencylevel', array('index','addpopup','add','edit','delete','view','Competency Levels'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:countries'));
                             $countries_add = 'yes';
                                 if($this->id_param == '' && $countries_add == 'yes')
-                                    $acl->allow('MNGT','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries','edit'));
+                                    $acl->allow('management','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries','edit'));
 
                                 else
-                                    $acl->allow('MNGT','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries'));
+                                    $acl->allow('management','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:currency'));
-                            $acl->allow('MNGT', 'default:currency', array('index','addpopup','gettargetcurrency','add','edit','delete','view','Currencies'));
+                            $acl->allow('management', 'default:currency', array('index','addpopup','gettargetcurrency','add','edit','delete','view','Currencies'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:currencyconverter'));
-                            $acl->allow('MNGT', 'default:currencyconverter', array('index','add','edit','delete','view','Currency Conversions'));
+                            $acl->allow('management', 'default:currencyconverter', array('index','add','edit','delete','view','Currency Conversions'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
-                        $acl->allow('MNGT', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+                        $acl->allow('management', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
-                            $acl->allow('MNGT', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','add','edit','delete','view','Departments'));
+                            $acl->allow('management', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','add','edit','delete','view','Departments'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryallincidents'));
-                            $acl->allow('MNGT', 'default:disciplinaryallincidents', array('index','view','All Incidents'));
+                            $acl->allow('management', 'default:disciplinaryallincidents', array('index','view','All Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryincident'));
-                            $acl->allow('MNGT', 'default:disciplinaryincident', array('index','getemployees','add','edit','delete','view','Raise An Incident'));
+                            $acl->allow('management', 'default:disciplinaryincident', array('index','getemployees','add','edit','delete','view','upload','uploadview','Raise An Incident'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
-                            $acl->allow('MNGT', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
+                            $acl->allow('management', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
-                            $acl->allow('MNGT', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
+                            $acl->allow('management', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryviolation'));
-                            $acl->allow('MNGT', 'default:disciplinaryviolation', array('index','addpopup','add','edit','delete','view','Violation Type'));
+                            $acl->allow('management', 'default:disciplinaryviolation', array('index','addpopup','add','edit','delete','view','upload','uploadview','Violation Type'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:educationlevelcode'));
-                            $acl->allow('MNGT', 'default:educationlevelcode', array('index','add','edit','delete','view','Education Levels'));
+                            $acl->allow('management', 'default:educationlevelcode', array('index','add','edit','delete','view','Education Levels'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:eeoccategory'));
-                            $acl->allow('MNGT', 'default:eeoccategory', array('index','add','edit','delete','view','EEOC Categories'));
+                            $acl->allow('management', 'default:eeoccategory', array('index','add','edit','delete','view','EEOC Categories'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emailcontacts'));
-                            $acl->allow('MNGT', 'default:emailcontacts', array('index','getgroupoptions','getmailcnt','add','edit','delete','view','Email Contacts'));
+                            $acl->allow('management', 'default:emailcontacts', array('index','getgroupoptions','getmailcnt','add','edit','delete','view','Email Contacts'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empconfiguration'));
-                            $acl->allow('MNGT', 'default:empconfiguration', array('index','edit','Employee Tabs'));
+                            $acl->allow('management', 'default:empconfiguration', array('index','edit','Employee Tabs'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empleavesummary'));
-                            $acl->allow('MNGT', 'default:empleavesummary', array('index','statusid','view','Employee Leave Summary'));
+                            $acl->allow('management', 'default:empleavesummary', array('index','statusid','view','Employee Leave Summary'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
-                            $acl->allow('MNGT', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','add','edit','view','Employees'));
+                            $acl->allow('management', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','add','edit','view','Employees'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employeeleavetypes'));
-                            $acl->allow('MNGT', 'default:employeeleavetypes', array('index','add','edit','delete','view','Leave Types'));
+                            $acl->allow('management', 'default:employeeleavetypes', array('index','add','edit','delete','view','Leave Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employmentstatus'));
-                            $acl->allow('MNGT', 'default:employmentstatus', array('index','addpopup','add','edit','delete','view','Employment Status'));
+                            $acl->allow('management', 'default:employmentstatus', array('index','addpopup','add','edit','delete','view','Employment Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:ethniccode'));
-                            $acl->allow('MNGT', 'default:ethniccode', array('index','saveupdate','addpopup','add','edit','delete','view','Ethnic Codes'));
+                            $acl->allow('management', 'default:ethniccode', array('index','saveupdate','addpopup','add','edit','delete','view','Ethnic Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:gender'));
-                            $acl->allow('MNGT', 'default:gender', array('index','saveupdate','addpopup','add','edit','delete','view','Gender'));
+                            $acl->allow('management', 'default:gender', array('index','saveupdate','addpopup','add','edit','delete','view','Gender'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:geographygroup'));
-                            $acl->allow('MNGT', 'default:geographygroup', array('index','add','edit','delete','view','Geo Groups'));
+                            $acl->allow('management', 'default:geographygroup', array('index','add','edit','delete','view','Geo Groups'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
-                            $acl->allow('MNGT', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+                            $acl->allow('management', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','add','edit','view','Organization Hierarchy'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:holidaydates'));
-                            $acl->allow('MNGT', 'default:holidaydates', array('index','addpopup','viewpopup','editpopup','add','edit','delete','view','Manage Holidays'));
+                            $acl->allow('management', 'default:holidaydates', array('index','addpopup','viewpopup','editpopup','add','edit','delete','view','Manage Holidays'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:holidaygroups'));
-                            $acl->allow('MNGT', 'default:holidaygroups', array('index','getempnames','getholidaynames','addpopup','add','edit','delete','view','Manage Holiday Group'));
+                            $acl->allow('management', 'default:holidaygroups', array('index','getempnames','getholidaynames','addpopup','add','edit','delete','view','Manage Holiday Group'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:identitycodes'));
-                            $acl->allow('MNGT', 'default:identitycodes', array('index','addpopup','edit','Identity Codes'));
+                            $acl->allow('management', 'default:identitycodes', array('index','addpopup','add','edit','Identity Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:identitydocuments'));
-                            $acl->allow('MNGT', 'default:identitydocuments', array('index','add','edit','delete','view','Identity Documents'));
+                            $acl->allow('management', 'default:identitydocuments', array('index','add','edit','delete','view','Identity Documents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:index'));
-                        $acl->allow('MNGT', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+                        $acl->allow('management', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:jobtitles'));
-                            $acl->allow('MNGT', 'default:jobtitles', array('index','addpopup','add','edit','delete','view','Job Titles'));
+                            $acl->allow('management', 'default:jobtitles', array('index','addpopup','add','edit','delete','view','Job Titles'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:language'));
-                            $acl->allow('MNGT', 'default:language', array('index','addpopup','add','edit','delete','view','Languages'));
+                            $acl->allow('management', 'default:language', array('index','addpopup','add','edit','delete','view','Languages'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:leavemanagement'));
-                            $acl->allow('MNGT', 'default:leavemanagement', array('index','add','edit','delete','view','Leave Management Options'));
+                            $acl->allow('management', 'default:leavemanagement', array('index','add','edit','delete','view','Leave Management Options'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
                             $leaverequest_add = 'yes';
                                 if($this->id_param == '' && $leaverequest_add == 'yes')
-                                    $acl->allow('MNGT','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit','uploadsave','uploaddelete'));
+                                    $acl->allow('management','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit'));
 
                                 else
-                                    $acl->allow('MNGT','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','uploadsave','uploaddelete'));
+                                    $acl->allow('management','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:licensetype'));
-                            $acl->allow('MNGT', 'default:licensetype', array('index','add','edit','delete','view','License Types'));
+                            $acl->allow('management', 'default:licensetype', array('index','add','edit','delete','view','License Types'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:managemenus'));
+                            $acl->allow('management', 'default:managemenus', array('index','save','add','edit','delete','view','Modules'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
-                            $acl->allow('MNGT', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
+                            $acl->allow('management', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:maritalstatus'));
-                            $acl->allow('MNGT', 'default:maritalstatus', array('index','saveupdate','addpopup','add','edit','delete','view','Marital Status'));
+                            $acl->allow('management', 'default:maritalstatus', array('index','saveupdate','addpopup','add','edit','delete','view','Marital Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:militaryservice'));
-                            $acl->allow('MNGT', 'default:militaryservice', array('index','add','edit','delete','view','Military Service Types'));
+                            $acl->allow('management', 'default:militaryservice', array('index','add','edit','delete','view','Military Service Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
-                            $acl->allow('MNGT', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
+                            $acl->allow('management', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
-                            $acl->allow('MNGT', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
+                            $acl->allow('management', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
-                            $acl->allow('MNGT', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+                            $acl->allow('management', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:nationality'));
-                            $acl->allow('MNGT', 'default:nationality', array('index','addpopup','add','edit','delete','view','Nationalities'));
+                            $acl->allow('management', 'default:nationality', array('index','addpopup','add','edit','delete','view','Nationalities'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:nationalitycontextcode'));
-                            $acl->allow('MNGT', 'default:nationalitycontextcode', array('index','add','edit','delete','view','Nationality Context Codes'));
+                            $acl->allow('management', 'default:nationalitycontextcode', array('index','add','edit','delete','view','Nationality Context Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:numberformats'));
-                            $acl->allow('MNGT', 'default:numberformats', array('index','add','edit','delete','view','Number Formats'));
+                            $acl->allow('management', 'default:numberformats', array('index','add','edit','delete','view','Number Formats'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
-                            $acl->allow('MNGT', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','edit','view','Organization Info'));
+                            $acl->allow('management', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','add','edit','view','Organization Info'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:payfrequency'));
-                            $acl->allow('MNGT', 'default:payfrequency', array('index','addpopup','add','edit','delete','view','Pay Frequency'));
+                            $acl->allow('management', 'default:payfrequency', array('index','addpopup','add','edit','delete','view','Pay Frequency'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
-                            $acl->allow('MNGT', 'default:pendingleaves', array('index','delete','view','My Leave'));
+                            $acl->allow('management', 'default:pendingleaves', array('index','delete','view','My Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
-                            $acl->allow('MNGT', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','add','edit','delete','view','View/Manage Policy Documents'));
+                            $acl->allow('management', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','add','edit','delete','view','View/Manage Policy Documents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:positions'));
-                            $acl->allow('MNGT', 'default:positions', array('index','addpopup','add','edit','delete','view','Positions'));
+                            $acl->allow('management', 'default:positions', array('index','addpopup','add','edit','delete','view','Positions'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:prefix'));
-                            $acl->allow('MNGT', 'default:prefix', array('index','saveupdate','addpopup','add','edit','delete','view','Prefixes'));
+                            $acl->allow('management', 'default:prefix', array('index','saveupdate','addpopup','add','edit','delete','view','Prefixes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
-                            $acl->allow('MNGT', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','Projects'));
+                            $acl->allow('management', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','upload','uploadview','Projects'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:racecode'));
-                            $acl->allow('MNGT', 'default:racecode', array('index','saveupdate','addpopup','add','edit','delete','view','Race Codes'));
+                            $acl->allow('management', 'default:racecode', array('index','saveupdate','addpopup','add','edit','delete','view','Race Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:remunerationbasis'));
-                            $acl->allow('MNGT', 'default:remunerationbasis', array('index','add','edit','delete','view','Remuneration Basis'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:reports'));
-                            $acl->allow('MNGT', 'default:reports', array('getrolepopup','emprolesgrouppopup','performancereport','previousappraisals','getselectedappraisaldata','getinterviewroundsdata','interviewrounds','rolesgroup','exportemprolesgroup','exportrolesgroupreport','exportinterviewrpt','exportactiveuserrpt','exportemployeereport','rolesgrouprptpdf','activeuserrptpdf','emprptpdf','interviewrptpdf','rolesgroupdata','emprolesgroup','emprolesgroupdata','activeuser','getactiveuserdata','getempreportdata','empauto','servicedeskreport','getsddata','servicedeskpdf','servicedeskexcel','employeereport','getdeptsemp','index','holidaygroupreports','getpdfreportholiday','getexcelreportholiday','leavesreport','getpdfreportleaves','getexcelreportleaves','leavesreporttabheader','leavemanagementreport','getpdfreportleavemanagement','getexcelreportleavemanagement','bunitauto','bunitcodeauto','getexcelreportbusinessunit','getbusinessunitspdf','businessunits','userlogreport','departments','exportdepartmentpdf','getexcelreportdepartment','candidaterptexcel','candidaterptpdf','getcandidatesreportdata','candidatesreport','requisitionauto','requisitionrptexcel','requisitionrptpdf','getrequisitionsstatusreportdata','requisitionstatusreport','activitylogreport','downloadreport','agencylistreport','agencynameauto','agencysebsiteauto','empscreening','getspecimennames','getagencynames','getexcelreportempscreening','getempscreeningpdf','Analytics'));
+                            $acl->allow('management', 'default:remunerationbasis', array('index','add','edit','delete','view','Remuneration Basis'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:roles'));
-                            $acl->allow('MNGT', 'default:roles', array('index','saveupdate','getgroupmenu','add','edit','delete','view','Roles & Privileges'));
+                            $acl->allow('management', 'default:roles', array('index','saveupdate','getgroupmenu','add','edit','delete','view','Roles & Privileges'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:sitepreference'));
-                            $acl->allow('MNGT', 'default:sitepreference', array('index','view','add','edit','Site Preferences'));
+                            $acl->allow('management', 'default:sitepreference', array('index','view','add','edit','Site Preferences'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:states'));
                             $states_add = 'yes';
                                 if($this->id_param == '' && $states_add == 'yes')
-                                    $acl->allow('MNGT','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States','edit'));
+                                    $acl->allow('management','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States','edit'));
 
                                 else
-                                    $acl->allow('MNGT','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States'));
+                                    $acl->allow('management','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
-                            $acl->allow('MNGT', 'default:structure', array('index','Organization Structure'));
+                            $acl->allow('management', 'default:structure', array('index','Organization Structure'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:timezone'));
-                            $acl->allow('MNGT', 'default:timezone', array('index','saveupdate','addpopup','add','edit','delete','view','Time Zones'));
+                            $acl->allow('management', 'default:timezone', array('index','saveupdate','addpopup','add','edit','delete','view','Time Zones'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:usermanagement'));
-                            $acl->allow('MNGT', 'default:usermanagement', array('index','saveupdate','getemailofuser','add','edit','view','External Users'));
+                            $acl->allow('management', 'default:usermanagement', array('index','saveupdate','getemailofuser','add','edit','view','External Users'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:vendors'));
-                            $acl->allow('MNGT', 'default:vendors', array('index','addpopup','add','edit','delete','view','Vendors'));
+                            $acl->allow('management', 'default:vendors', array('index','addpopup','add','edit','delete','view','upload','uploadview','Vendors'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:veteranstatus'));
-                            $acl->allow('MNGT', 'default:veteranstatus', array('index','add','edit','delete','view','Veteran Status'));
+                            $acl->allow('management', 'default:veteranstatus', array('index','add','edit','delete','view','Veteran Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydoctypes'));
-                            $acl->allow('MNGT', 'default:workeligibilitydoctypes', array('index','addpopup','add','edit','delete','view','Work Eligibility Document Types'));
+                            $acl->allow('management', 'default:workeligibilitydoctypes', array('index','addpopup','add','edit','delete','view','Work Eligibility Document Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
-                            $acl->allow('MNGT', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
+                            $acl->allow('management', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
-                            $acl->allow('MNGT', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
+                            $acl->allow('management', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
-                            $acl->allow('MNGT', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
+                            $acl->allow('management', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
-                            $acl->allow('MNGT', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
+                            $acl->allow('management', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
-                            $acl->allow('MNGT', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
+                            $acl->allow('management', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
-                            $acl->allow('MNGT', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+                            $acl->allow('management', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
-                            $acl->allow('MNGT', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','All Exit Procedures'));
+                            $acl->allow('management', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','upload','uploadview','All Exit Procedures'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:configureexitqs'));
-                            $acl->allow('MNGT', 'exit:configureexitqs', array('index','addpopup','add','edit','delete','view','Exit Interview Questions'));
+                            $acl->allow('management', 'exit:configureexitqs', array('index','addpopup','add','edit','delete','view','upload','uploadview','Exit Interview Questions'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
-                            $acl->allow('MNGT', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','Initiate/Check Status'));
+                            $acl->allow('management', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','upload','uploadview','Initiate/Check Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exitprocsettings'));
-                            $acl->allow('MNGT', 'exit:exitprocsettings', array('index','getdepartments','add','edit','delete','view','Settings'));
+                            $acl->allow('management', 'exit:exitprocsettings', array('index','getdepartments','add','edit','delete','view','upload','uploadview','Settings'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exittypes'));
-                            $acl->allow('MNGT', 'exit:exittypes', array('index','addpopup','add','edit','delete','view','Exit Types'));
+                            $acl->allow('management', 'exit:exittypes', array('index','addpopup','add','edit','delete','view','upload','uploadview','Exit Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:processes'));
-                            $acl->allow('MNGT', 'default:processes', array('index','addpopup','editpopup','viewpopup','savecomments','displaycomments','savefeedback','index','addpopup','editpopup','viewpopup','delete','savecomments','displaycomments','savefeedback'));
+                            $acl->allow('management', 'default:processes', array('index','addpopup','editpopup','viewpopup','savecomments','displaycomments','savefeedback','index','addpopup','editpopup','viewpopup','delete','savecomments','displaycomments','savefeedback'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
-                            $acl->allow('MNGT', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('management', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empperformanceappraisal'));
-                            $acl->allow('MNGT', 'default:empperformanceappraisal', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:empperformanceappraisal', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emppayslips'));
-                            $acl->allow('MNGT', 'default:emppayslips', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:emppayslips', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empbenefits'));
-                            $acl->allow('MNGT', 'default:empbenefits', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:empbenefits', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emprequisitiondetails'));
-                            $acl->allow('MNGT', 'default:emprequisitiondetails', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:emprequisitiondetails', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empremunerationdetails'));
-                            $acl->allow('MNGT', 'default:empremunerationdetails', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:empremunerationdetails', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empsecuritycredentials'));
-                            $acl->allow('MNGT', 'default:empsecuritycredentials', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:empsecuritycredentials', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
-                            $acl->allow('MNGT', 'default:apprreqcandidates', array('index','viewpopup','index','viewpopup'));
+                            $acl->allow('management', 'default:apprreqcandidates', array('index','viewpopup','index','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
-                            $acl->allow('MNGT', 'default:emppersonaldetails', array('index','view','index','view','edit'));
+                            $acl->allow('management', 'default:emppersonaldetails', array('index','view','index','view','edit'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
-                            $acl->allow('MNGT', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
+                            $acl->allow('management', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
-                            $acl->allow('MNGT', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
+                            $acl->allow('management', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
-                            $acl->allow('MNGT', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('management', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
-                            $acl->allow('MNGT', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('management', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
-                            $acl->allow('MNGT', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('management', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
-                            $acl->allow('MNGT', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
+                            $acl->allow('management', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
-                            $acl->allow('MNGT', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
+                            $acl->allow('management', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
-                            $acl->allow('MNGT', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('management', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
-                            $acl->allow('MNGT', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
+                            $acl->allow('management', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
-                            $acl->allow('MNGT', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
+                            $acl->allow('management', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
-                            $acl->allow('MNGT', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('management', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
-                            $acl->allow('MNGT', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('management', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
-                            $acl->allow('MNGT', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
+                            $acl->allow('management', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
-                            $acl->allow('MNGT', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('management', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
-                            $acl->allow('MNGT', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
+                            $acl->allow('management', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
-                            $acl->allow('MNGT', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('management', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
-                            $acl->allow('MNGT', 'default:assetdetails', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:assetdetails', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empsalarydetails'));
-                            $acl->allow('MNGT', 'default:empsalarydetails', array('index','view','index','edit','view'));
+                            $acl->allow('management', 'default:empsalarydetails', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:logmanager'));
-                            $acl->allow('MNGT', 'default:logmanager', array('index','view','empnamewithidauto','index','view','empnamewithidauto'));
+                            $acl->allow('management', 'default:logmanager', array('index','view','empnamewithidauto','index','view','empnamewithidauto'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:userloginlog'));
-                            $acl->allow('MNGT', 'default:userloginlog', array('index','empnameauto','empidauto','empipaddressauto','empemailauto','index','empnameauto','empidauto','empipaddressauto','empemailauto'));
+                            $acl->allow('management', 'default:userloginlog', array('index','empnameauto','empidauto','empipaddressauto','empemailauto','index','empnameauto','empidauto','empipaddressauto','empemailauto'));
 }if($role == 3 )
            {
 		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
-                            $acl->allow('MNGR', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
+                            $acl->allow('manager', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
-                            $acl->allow('MNGR', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
+                            $acl->allow('manager', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
-                            $acl->allow('MNGR', 'default:clients', array('index','addpopup','add','edit','delete','view','Clients'));
+                            $acl->allow('manager', 'default:clients', array('index','addpopup','add','edit','delete','view','upload','uploadview','Clients'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
-                        $acl->allow('MNGR', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+                        $acl->allow('manager', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
-                            $acl->allow('MNGR', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
+                            $acl->allow('manager', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
-                            $acl->allow('MNGR', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
+                            $acl->allow('manager', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
-                            $acl->allow('MNGR', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
+                            $acl->allow('manager', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
-                            $acl->allow('MNGR', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
+                            $acl->allow('manager', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
-                            $acl->allow('MNGR', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+                            $acl->allow('manager', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:index'));
-                        $acl->allow('MNGR', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+                        $acl->allow('manager', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
                             $leaverequest_add = 'yes';
                                 if($this->id_param == '' && $leaverequest_add == 'yes')
-                                    $acl->allow('MNGR','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit','uploadsave','uploaddelete'));
+                                    $acl->allow('manager','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit'));
 
                                 else
-                                    $acl->allow('MNGR','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','uploadsave','uploaddelete'));
+                                    $acl->allow('manager','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
-                            $acl->allow('MNGR', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
+                            $acl->allow('manager', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
-                            $acl->allow('MNGR', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
+                            $acl->allow('manager', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
-                            $acl->allow('MNGR', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','add','edit','view','My Team'));
+                            $acl->allow('manager', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','add','edit','view','My Team'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
-                            $acl->allow('MNGR', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+                            $acl->allow('manager', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
-                            $acl->allow('MNGR', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
+                            $acl->allow('manager', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
-                            $acl->allow('MNGR', 'default:pendingleaves', array('index','delete','view','My Leave'));
+                            $acl->allow('manager', 'default:pendingleaves', array('index','delete','view','My Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
-                            $acl->allow('MNGR', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','view','View/Manage Policy Documents'));
+                            $acl->allow('manager', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','view','View/Manage Policy Documents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
-                            $acl->allow('MNGR', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','Projects'));
+                            $acl->allow('manager', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','upload','uploadview','Projects'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
-                            $acl->allow('MNGR', 'default:structure', array('index','Organization Structure'));
+                            $acl->allow('manager', 'default:structure', array('index','Organization Structure'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
-                            $acl->allow('MNGR', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
+                            $acl->allow('manager', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
-                            $acl->allow('MNGR', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
+                            $acl->allow('manager', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
-                            $acl->allow('MNGR', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
+                            $acl->allow('manager', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
-                            $acl->allow('MNGR', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
+                            $acl->allow('manager', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
-                            $acl->allow('MNGR', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
+                            $acl->allow('manager', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
-                            $acl->allow('MNGR', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+                            $acl->allow('manager', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
-                            $acl->allow('MNGR', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','All Exit Procedures'));
+                            $acl->allow('manager', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','upload','uploadview','All Exit Procedures'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
-                            $acl->allow('MNGR', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','Initiate/Check Status'));
+                            $acl->allow('manager', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','upload','uploadview','Initiate/Check Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
-                            $acl->allow('MNGR', 'default:emppersonaldetails', array('index','view'));
+                            $acl->allow('manager', 'default:emppersonaldetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
-                            $acl->allow('MNGR', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
+                            $acl->allow('manager', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
-                            $acl->allow('MNGR', 'default:empcommunicationdetails', array('index','view'));
+                            $acl->allow('manager', 'default:empcommunicationdetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
-                            $acl->allow('MNGR', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('manager', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
-                            $acl->allow('MNGR', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('manager', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
-                            $acl->allow('MNGR', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('manager', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
-                            $acl->allow('MNGR', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
+                            $acl->allow('manager', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
-                            $acl->allow('MNGR', 'default:empleaves', array('index','view','viewpopup'));
+                            $acl->allow('manager', 'default:empleaves', array('index','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
-                            $acl->allow('MNGR', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('manager', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
-                            $acl->allow('MNGR', 'default:disabilitydetails', array('index','view'));
+                            $acl->allow('manager', 'default:disabilitydetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
-                            $acl->allow('MNGR', 'default:workeligibilitydetails', array('index','view'));
+                            $acl->allow('manager', 'default:workeligibilitydetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
-                            $acl->allow('MNGR', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('manager', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
-                            $acl->allow('MNGR', 'default:creditcarddetails', array('index','view'));
+                            $acl->allow('manager', 'default:creditcarddetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
-                            $acl->allow('MNGR', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('manager', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
-                            $acl->allow('MNGR', 'default:empholidays', array('index','view','viewpopup'));
+                            $acl->allow('manager', 'default:empholidays', array('index','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
-                            $acl->allow('MNGR', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('manager', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
-                            $acl->allow('MNGR', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('manager', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
-                            $acl->allow('MNGR', 'default:assetdetails', array('index','view'));
+                            $acl->allow('manager', 'default:assetdetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
-                            $acl->allow('MNGR', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('manager', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
-                            $acl->allow('MNGR', 'default:apprreqcandidates', array('index','viewpopup'));
+                            $acl->allow('manager', 'default:apprreqcandidates', array('index','viewpopup'));
+}if($role == 4 )
+           {
+		 $acl->addResource(new Zend_Acl_Resource('default:addemployeeleaves'));
+                            $acl->allow('hrmanager', 'default:addemployeeleaves', array('index','add','edit','view','Add Employee Leave'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
+                            $acl->allow('hrmanager', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','add','edit','delete','view','Announcements'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:attendancestatuscode'));
+                            $acl->allow('hrmanager', 'default:attendancestatuscode', array('index','add','edit','view','Attendance Status'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:bankaccounttype'));
+                            $acl->allow('hrmanager', 'default:bankaccounttype', array('index','addpopup','add','edit','view','Bank Account Types'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
+                            $acl->allow('hrmanager', 'default:businessunits', array('index','getdeptnames','add','edit','delete','view','Business Units'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:categories'));
+                            $acl->allow('hrmanager', 'default:categories', array('index','addnewcategory','add','edit','delete','view','Manage Categories'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
+                            $acl->allow('hrmanager', 'default:clients', array('index','addpopup','add','edit','delete','view','upload','uploadview','Clients'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:competencylevel'));
+                            $acl->allow('hrmanager', 'default:competencylevel', array('index','addpopup','add','edit','view','Competency Levels'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
+                        $acl->allow('hrmanager', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
+                            $acl->allow('hrmanager', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','add','edit','delete','view','Departments'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryallincidents'));
+                            $acl->allow('hrmanager', 'default:disciplinaryallincidents', array('index','view','All Incidents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
+                            $acl->allow('hrmanager', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
+                            $acl->allow('hrmanager', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:educationlevelcode'));
+                            $acl->allow('hrmanager', 'default:educationlevelcode', array('index','add','edit','view','Education Levels'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:eeoccategory'));
+                            $acl->allow('hrmanager', 'default:eeoccategory', array('index','add','edit','view','EEOC Categories'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empconfiguration'));
+                            $acl->allow('hrmanager', 'default:empconfiguration', array('index','edit','Employee Tabs'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empleavesummary'));
+                            $acl->allow('hrmanager', 'default:empleavesummary', array('index','statusid','view','Employee Leave Summary'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
+                            $acl->allow('hrmanager', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','add','edit','view','Employees'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:employeeleavetypes'));
+                            $acl->allow('hrmanager', 'default:employeeleavetypes', array('index','add','edit','view','Leave Types'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:employmentstatus'));
+                            $acl->allow('hrmanager', 'default:employmentstatus', array('index','addpopup','add','edit','view','Employment Status'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
+                            $acl->allow('hrmanager', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:holidaydates'));
+                            $acl->allow('hrmanager', 'default:holidaydates', array('index','addpopup','viewpopup','editpopup','add','edit','view','Manage Holidays'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:holidaygroups'));
+                            $acl->allow('hrmanager', 'default:holidaygroups', array('index','getempnames','getholidaynames','addpopup','add','edit','view','Manage Holiday Group'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:hrwizard'));
+                            $acl->allow('hrmanager', 'default:hrwizard', array('index','configureleavetypes','configureholidays','saveholidaygroup','configureperformanceappraisal','savecategory','updatewizardcompletion','index','configureleavetypes','configureholidays','saveholidaygroup','configureperformanceappraisal','savecategory','updatewizardcompletion'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:identitydocuments'));
+                            $acl->allow('hrmanager', 'default:identitydocuments', array('index','add','edit','view','Identity Documents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:index'));
+                        $acl->allow('hrmanager', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:jobtitles'));
+                            $acl->allow('hrmanager', 'default:jobtitles', array('index','addpopup','add','edit','view','Job Titles'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:leavemanagement'));
+                            $acl->allow('hrmanager', 'default:leavemanagement', array('index','add','edit','view','Leave Management Options'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
+                            $leaverequest_add = 'yes';
+                                if($this->id_param == '' && $leaverequest_add == 'yes')
+                                    $acl->allow('hrmanager','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit'));
+
+                                else
+                                    $acl->allow('hrmanager','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request'));
+
+                                
+		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
+                            $acl->allow('hrmanager', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
+                            $acl->allow('hrmanager', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
+                            $acl->allow('hrmanager', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
+                            $acl->allow('hrmanager', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
+                            $acl->allow('hrmanager', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','edit','view','Organization Info'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:payfrequency'));
+                            $acl->allow('hrmanager', 'default:payfrequency', array('index','addpopup','add','edit','view','Pay Frequency'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
+                            $acl->allow('hrmanager', 'default:pendingleaves', array('index','delete','view','My Leave'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
+                            $acl->allow('hrmanager', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','add','edit','delete','view','View/Manage Policy Documents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:positions'));
+                            $acl->allow('hrmanager', 'default:positions', array('index','addpopup','add','edit','view','Positions'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
+                            $acl->allow('hrmanager', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','upload','uploadview','Projects'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:remunerationbasis'));
+                            $acl->allow('hrmanager', 'default:remunerationbasis', array('index','add','edit','view','Remuneration Basis'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
+                            $acl->allow('hrmanager', 'default:structure', array('index','Organization Structure'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:usermanagement'));
+                            $acl->allow('hrmanager', 'default:usermanagement', array('index','saveupdate','getemailofuser','add','edit','view','External Users'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:vendors'));
+                            $acl->allow('hrmanager', 'default:vendors', array('index','addpopup','add','edit','delete','view','upload','uploadview','Vendors'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydoctypes'));
+                            $acl->allow('hrmanager', 'default:workeligibilitydoctypes', array('index','addpopup','add','edit','view','Work Eligibility Document Types'));
+
+		 $acl->addResource(new Zend_Acl_Resource('assets:assetcategories'));
+                            $acl->allow('hrmanager', 'assets:assetcategories', array('index','addpopup','addsubcatpopup','assetuserlog','add','edit','delete','view','Asset Categories'));
+
+		 $acl->addResource(new Zend_Acl_Resource('assets:assets'));
+                            $acl->allow('hrmanager', 'assets:assets', array('index','uploadsave','uploaddelete','getsubcategories','deleteimage','downloadimage','getemployeesdata','add','edit','delete','view','Assets'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
+                            $acl->allow('hrmanager', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
+                            $acl->allow('hrmanager', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:expensecategories'));
+                            $acl->allow('hrmanager', 'expenses:expensecategories', array('index','add','edit','delete','view','Category'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
+                            $acl->allow('hrmanager', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
+                            $acl->allow('hrmanager', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:paymentmode'));
+                            $acl->allow('hrmanager', 'expenses:paymentmode', array('index','add','edit','delete','view','Payment Mode'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
+                            $acl->allow('hrmanager', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
+                            $acl->allow('hrmanager', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+
+		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
+                            $acl->allow('hrmanager', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','upload','uploadview','All Exit Procedures'));
+
+		 $acl->addResource(new Zend_Acl_Resource('exit:configureexitqs'));
+                            $acl->allow('hrmanager', 'exit:configureexitqs', array('index','addpopup','add','edit','delete','view','upload','uploadview','Exit Interview Questions'));
+
+		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
+                            $acl->allow('hrmanager', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','upload','uploadview','Initiate/Check Status'));
+
+		 $acl->addResource(new Zend_Acl_Resource('exit:exitprocsettings'));
+                            $acl->allow('hrmanager', 'exit:exitprocsettings', array('index','getdepartments','add','edit','delete','view','upload','uploadview','Settings'));
+
+		 $acl->addResource(new Zend_Acl_Resource('exit:exittypes'));
+                            $acl->allow('hrmanager', 'exit:exittypes', array('index','addpopup','add','edit','delete','view','upload','uploadview','Exit Types'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:processes'));
+                            $acl->allow('hrmanager', 'default:processes', array('index','addpopup','editpopup','viewpopup','savecomments','displaycomments','savefeedback','index','addpopup','editpopup','viewpopup','delete','savecomments','displaycomments','savefeedback'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
+                            $acl->allow('hrmanager', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empperformanceappraisal'));
+                            $acl->allow('hrmanager', 'default:empperformanceappraisal', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:emppayslips'));
+                            $acl->allow('hrmanager', 'default:emppayslips', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empbenefits'));
+                            $acl->allow('hrmanager', 'default:empbenefits', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:emprequisitiondetails'));
+                            $acl->allow('hrmanager', 'default:emprequisitiondetails', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empremunerationdetails'));
+                            $acl->allow('hrmanager', 'default:empremunerationdetails', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empsecuritycredentials'));
+                            $acl->allow('hrmanager', 'default:empsecuritycredentials', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
+                            $acl->allow('hrmanager', 'default:apprreqcandidates', array('index','viewpopup','index','viewpopup'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
+                            $acl->allow('hrmanager', 'default:emppersonaldetails', array('index','view','index','view','edit'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
+                            $acl->allow('hrmanager', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
+                            $acl->allow('hrmanager', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
+                            $acl->allow('hrmanager', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
+                            $acl->allow('hrmanager', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
+                            $acl->allow('hrmanager', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
+                            $acl->allow('hrmanager', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
+                            $acl->allow('hrmanager', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
+                            $acl->allow('hrmanager', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
+                            $acl->allow('hrmanager', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
+                            $acl->allow('hrmanager', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
+                            $acl->allow('hrmanager', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
+                            $acl->allow('hrmanager', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
+                            $acl->allow('hrmanager', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
+                            $acl->allow('hrmanager', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
+                            $acl->allow('hrmanager', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
+                            $acl->allow('hrmanager', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
+                            $acl->allow('hrmanager', 'default:assetdetails', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empsalarydetails'));
+                            $acl->allow('hrmanager', 'default:empsalarydetails', array('index','view','index','edit','view'));
 }if($role == 5 )
            {
 		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
-                            $acl->allow('EMPL', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
+                            $acl->allow('employee', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
-                            $acl->allow('EMPL', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
+                            $acl->allow('employee', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
-                            $acl->allow('EMPL', 'default:clients', array('index','addpopup','add','edit','delete','view','Clients'));
+                            $acl->allow('employee', 'default:clients', array('index','addpopup','add','edit','delete','view','upload','uploadview','Clients'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
-                        $acl->allow('EMPL', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+                        $acl->allow('employee', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
-                            $acl->allow('EMPL', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
+                            $acl->allow('employee', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
-                            $acl->allow('EMPL', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
+                            $acl->allow('employee', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
-                            $acl->allow('EMPL', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
+                            $acl->allow('employee', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
-                            $acl->allow('EMPL', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
+                            $acl->allow('employee', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
-                            $acl->allow('EMPL', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+                            $acl->allow('employee', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:index'));
-                        $acl->allow('EMPL', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+                        $acl->allow('employee', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
                             $leaverequest_add = 'yes';
                                 if($this->id_param == '' && $leaverequest_add == 'yes')
-                                    $acl->allow('EMPL','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit','uploadsave','uploaddelete'));
+                                    $acl->allow('employee','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit'));
 
                                 else
-                                    $acl->allow('EMPL','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','uploadsave','uploaddelete'));
+                                    $acl->allow('employee','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
-                            $acl->allow('EMPL', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
+                            $acl->allow('employee', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
-                            $acl->allow('EMPL', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
+                            $acl->allow('employee', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
-                            $acl->allow('EMPL', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
+                            $acl->allow('employee', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
-                            $acl->allow('EMPL', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+                            $acl->allow('employee', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
-                            $acl->allow('EMPL', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
+                            $acl->allow('employee', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
-                            $acl->allow('EMPL', 'default:pendingleaves', array('index','delete','view','My Leave'));
+                            $acl->allow('employee', 'default:pendingleaves', array('index','delete','view','My Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
-                            $acl->allow('EMPL', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','view','View/Manage Policy Documents'));
+                            $acl->allow('employee', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','view','View/Manage Policy Documents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
-                            $acl->allow('EMPL', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','Projects'));
+                            $acl->allow('employee', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','upload','uploadview','Projects'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
-                            $acl->allow('EMPL', 'default:structure', array('index','Organization Structure'));
+                            $acl->allow('employee', 'default:structure', array('index','Organization Structure'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
-                            $acl->allow('EMPL', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
+                            $acl->allow('employee', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
-                            $acl->allow('EMPL', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
+                            $acl->allow('employee', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
-                            $acl->allow('EMPL', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
+                            $acl->allow('employee', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
-                            $acl->allow('EMPL', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
+                            $acl->allow('employee', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
-                            $acl->allow('EMPL', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
+                            $acl->allow('employee', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
-                            $acl->allow('EMPL', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+                            $acl->allow('employee', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
-                            $acl->allow('EMPL', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','All Exit Procedures'));
+                            $acl->allow('employee', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','upload','uploadview','All Exit Procedures'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
-                            $acl->allow('EMPL', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','Initiate/Check Status'));
+                            $acl->allow('employee', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','upload','uploadview','Initiate/Check Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
-                            $acl->allow('EMPL', 'default:emppersonaldetails', array('index','view','index','view','edit'));
+                            $acl->allow('employee', 'default:emppersonaldetails', array('index','view','index','view','edit'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
-                            $acl->allow('EMPL', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
+                            $acl->allow('employee', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
-                            $acl->allow('EMPL', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
+                            $acl->allow('employee', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
-                            $acl->allow('EMPL', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('employee', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
-                            $acl->allow('EMPL', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('employee', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
-                            $acl->allow('EMPL', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('employee', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
-                            $acl->allow('EMPL', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
+                            $acl->allow('employee', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
-                            $acl->allow('EMPL', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
+                            $acl->allow('employee', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
-                            $acl->allow('EMPL', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('employee', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
-                            $acl->allow('EMPL', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
+                            $acl->allow('employee', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
-                            $acl->allow('EMPL', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
+                            $acl->allow('employee', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
-                            $acl->allow('EMPL', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('employee', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
-                            $acl->allow('EMPL', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('employee', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
-                            $acl->allow('EMPL', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
+                            $acl->allow('employee', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
-                            $acl->allow('EMPL', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('employee', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
-                            $acl->allow('EMPL', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
+                            $acl->allow('employee', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
-                            $acl->allow('EMPL', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('employee', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
-                            $acl->allow('EMPL', 'default:assetdetails', array('index','view','index','edit','view'));
+                            $acl->allow('employee', 'default:assetdetails', array('index','view','index','edit','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
-                            $acl->allow('EMPL', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('employee', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
-                            $acl->allow('EMPL', 'default:apprreqcandidates', array('index','viewpopup'));
-}if($role == 10 )
+                            $acl->allow('employee', 'default:apprreqcandidates', array('index','viewpopup'));
+}if($role == 6 )
            {
 		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
-                            $acl->allow('HOD', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
+                            $acl->allow('user', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
-                            $acl->allow('HOD', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
+                            $acl->allow('user', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
-                            $acl->allow('HOD', 'default:clients', array('index','addpopup','add','edit','delete','view','Clients'));
+                            $acl->allow('user', 'default:clients', array('index','addpopup','add','edit','delete','view','upload','uploadview','Clients'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
-                        $acl->allow('HOD', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+                        $acl->allow('user', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
-                            $acl->allow('HOD', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
-                            $acl->allow('HOD', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
-                            $acl->allow('HOD', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
-                            $acl->allow('HOD', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
+                            $acl->allow('user', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
-                            $acl->allow('HOD', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+                            $acl->allow('user', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:index'));
-                        $acl->allow('HOD', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
-                            $leaverequest_add = 'yes';
-                                if($this->id_param == '' && $leaverequest_add == 'yes')
-                                    $acl->allow('HOD','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit','uploadsave','uploaddelete'));
-
-                                else
-                                    $acl->allow('HOD','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','uploadsave','uploaddelete'));
-
-                                
-		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
-                            $acl->allow('HOD', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
-                            $acl->allow('HOD', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
-                            $acl->allow('HOD', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','add','edit','view','My Team'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
-                            $acl->allow('HOD', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+                        $acl->allow('user', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
-                            $acl->allow('HOD', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
-                            $acl->allow('HOD', 'default:pendingleaves', array('index','delete','view','My Leave'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
-                            $acl->allow('HOD', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','view','View/Manage Policy Documents'));
+                            $acl->allow('user', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
-                            $acl->allow('HOD', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','Projects'));
+                            $acl->allow('user', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','upload','uploadview','Projects'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
-                            $acl->allow('HOD', 'default:structure', array('index','Organization Structure'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
-                            $acl->allow('HOD', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
-                            $acl->allow('HOD', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
-                            $acl->allow('HOD', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
-                            $acl->allow('HOD', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
-                            $acl->allow('HOD', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
-                            $acl->allow('HOD', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+                            $acl->allow('user', 'default:structure', array('index','Organization Structure'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
-                            $acl->allow('HOD', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','All Exit Procedures'));
+                            $acl->allow('user', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','upload','uploadview','All Exit Procedures'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
-                            $acl->allow('HOD', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','Initiate/Check Status'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
-                            $acl->allow('HOD', 'default:emppersonaldetails', array('index','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
-                            $acl->allow('HOD', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
-                            $acl->allow('HOD', 'default:empcommunicationdetails', array('index','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
-                            $acl->allow('HOD', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
-                            $acl->allow('HOD', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
-                            $acl->allow('HOD', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
-                            $acl->allow('HOD', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
-                            $acl->allow('HOD', 'default:empleaves', array('index','view','viewpopup'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
-                            $acl->allow('HOD', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
-                            $acl->allow('HOD', 'default:disabilitydetails', array('index','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
-                            $acl->allow('HOD', 'default:workeligibilitydetails', array('index','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
-                            $acl->allow('HOD', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
-                            $acl->allow('HOD', 'default:creditcarddetails', array('index','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
-                            $acl->allow('HOD', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
-                            $acl->allow('HOD', 'default:empholidays', array('index','view','viewpopup'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
-                            $acl->allow('HOD', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
-                            $acl->allow('HOD', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
-                            $acl->allow('HOD', 'default:assetdetails', array('index','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
-                            $acl->allow('HOD', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
-                            $acl->allow('HOD', 'default:apprreqcandidates', array('index','viewpopup'));
-}if($role == 12 )
-           {
-		 $acl->addResource(new Zend_Acl_Resource('default:addemployeeleaves'));
-                            $acl->allow('HREM', 'default:addemployeeleaves', array('index','add','edit','view','Add Employee Leave'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
-                            $acl->allow('HREM', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','add','edit','delete','view','Announcements'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:attendancestatuscode'));
-                            $acl->allow('HREM', 'default:attendancestatuscode', array('index','add','edit','view','Attendance Status'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:bankaccounttype'));
-                            $acl->allow('HREM', 'default:bankaccounttype', array('index','addpopup','add','edit','view','Bank Account Types'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
-                            $acl->allow('HREM', 'default:businessunits', array('index','getdeptnames','add','edit','delete','view','Business Units'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:categories'));
-                            $acl->allow('HREM', 'default:categories', array('index','addnewcategory','add','edit','delete','view','Manage Categories'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
-                            $acl->allow('HREM', 'default:clients', array('index','addpopup','add','edit','delete','view','Clients'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:competencylevel'));
-                            $acl->allow('HREM', 'default:competencylevel', array('index','addpopup','add','edit','view','Competency Levels'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
-                        $acl->allow('HREM', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
-                            $acl->allow('HREM', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','add','edit','delete','view','Departments'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryallincidents'));
-                            $acl->allow('HREM', 'default:disciplinaryallincidents', array('index','view','All Incidents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
-                            $acl->allow('HREM', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
-                            $acl->allow('HREM', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:educationlevelcode'));
-                            $acl->allow('HREM', 'default:educationlevelcode', array('index','add','edit','view','Education Levels'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:eeoccategory'));
-                            $acl->allow('HREM', 'default:eeoccategory', array('index','add','edit','view','EEOC Categories'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empconfiguration'));
-                            $acl->allow('HREM', 'default:empconfiguration', array('index','edit','Employee Tabs'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empleavesummary'));
-                            $acl->allow('HREM', 'default:empleavesummary', array('index','statusid','view','Employee Leave Summary'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
-                            $acl->allow('HREM', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','add','edit','view','Employees'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:employeeleavetypes'));
-                            $acl->allow('HREM', 'default:employeeleavetypes', array('index','add','edit','view','Leave Types'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:employmentstatus'));
-                            $acl->allow('HREM', 'default:employmentstatus', array('index','addpopup','add','edit','view','Employment Status'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
-                            $acl->allow('HREM', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:holidaydates'));
-                            $acl->allow('HREM', 'default:holidaydates', array('index','addpopup','viewpopup','editpopup','add','edit','view','Manage Holidays'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:holidaygroups'));
-                            $acl->allow('HREM', 'default:holidaygroups', array('index','getempnames','getholidaynames','addpopup','add','edit','view','Manage Holiday Group'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:hrwizard'));
-                            $acl->allow('HREM', 'default:hrwizard', array('index','configureleavetypes','configureholidays','saveholidaygroup','configureperformanceappraisal','savecategory','updatewizardcompletion','index','configureleavetypes','configureholidays','saveholidaygroup','configureperformanceappraisal','savecategory','updatewizardcompletion'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:identitydocuments'));
-                            $acl->allow('HREM', 'default:identitydocuments', array('index','add','edit','view','Identity Documents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:index'));
-                        $acl->allow('HREM', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:jobtitles'));
-                            $acl->allow('HREM', 'default:jobtitles', array('index','addpopup','add','edit','view','Job Titles'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:leavemanagement'));
-                            $acl->allow('HREM', 'default:leavemanagement', array('index','add','edit','view','Leave Management Options'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
-                            $leaverequest_add = 'yes';
-                                if($this->id_param == '' && $leaverequest_add == 'yes')
-                                    $acl->allow('HREM','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit','uploadsave','uploaddelete'));
-
-                                else
-                                    $acl->allow('HREM','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','uploadsave','uploaddelete'));
-
-                                
-		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
-                            $acl->allow('HREM', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
-                            $acl->allow('HREM', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
-                            $acl->allow('HREM', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
-                            $acl->allow('HREM', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
-                            $acl->allow('HREM', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','edit','view','Organization Info'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:payfrequency'));
-                            $acl->allow('HREM', 'default:payfrequency', array('index','addpopup','add','edit','view','Pay Frequency'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
-                            $acl->allow('HREM', 'default:pendingleaves', array('index','delete','view','My Leave'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
-                            $acl->allow('HREM', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','add','edit','delete','view','View/Manage Policy Documents'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:positions'));
-                            $acl->allow('HREM', 'default:positions', array('index','addpopup','add','edit','view','Positions'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
-                            $acl->allow('HREM', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','Projects'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:remunerationbasis'));
-                            $acl->allow('HREM', 'default:remunerationbasis', array('index','add','edit','view','Remuneration Basis'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:reports'));
-                            $acl->allow('HREM', 'default:reports', array('getrolepopup','emprolesgrouppopup','performancereport','previousappraisals','getselectedappraisaldata','getinterviewroundsdata','interviewrounds','rolesgroup','exportemprolesgroup','exportrolesgroupreport','exportinterviewrpt','exportactiveuserrpt','exportemployeereport','rolesgrouprptpdf','activeuserrptpdf','emprptpdf','interviewrptpdf','rolesgroupdata','emprolesgroup','emprolesgroupdata','activeuser','getactiveuserdata','getempreportdata','empauto','servicedeskreport','getsddata','servicedeskpdf','servicedeskexcel','employeereport','getdeptsemp','index','holidaygroupreports','getpdfreportholiday','getexcelreportholiday','leavesreport','getpdfreportleaves','getexcelreportleaves','leavesreporttabheader','leavemanagementreport','getpdfreportleavemanagement','getexcelreportleavemanagement','bunitauto','bunitcodeauto','getexcelreportbusinessunit','getbusinessunitspdf','businessunits','userlogreport','departments','exportdepartmentpdf','getexcelreportdepartment','candidaterptexcel','candidaterptpdf','getcandidatesreportdata','candidatesreport','requisitionauto','requisitionrptexcel','requisitionrptpdf','getrequisitionsstatusreportdata','requisitionstatusreport','activitylogreport','downloadreport','agencylistreport','agencynameauto','agencysebsiteauto','empscreening','getspecimennames','getagencynames','getexcelreportempscreening','getempscreeningpdf','Analytics'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
-                            $acl->allow('HREM', 'default:structure', array('index','Organization Structure'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:usermanagement'));
-                            $acl->allow('HREM', 'default:usermanagement', array('index','saveupdate','getemailofuser','add','edit','view','External Users'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:vendors'));
-                            $acl->allow('HREM', 'default:vendors', array('index','addpopup','add','edit','delete','view','Vendors'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydoctypes'));
-                            $acl->allow('HREM', 'default:workeligibilitydoctypes', array('index','addpopup','add','edit','view','Work Eligibility Document Types'));
-
-		 $acl->addResource(new Zend_Acl_Resource('assets:assetcategories'));
-                            $acl->allow('HREM', 'assets:assetcategories', array('index','addpopup','addsubcatpopup','assetuserlog','add','edit','delete','view','Asset Categories'));
-
-		 $acl->addResource(new Zend_Acl_Resource('assets:assets'));
-                            $acl->allow('HREM', 'assets:assets', array('index','uploadsave','uploaddelete','getsubcategories','deleteimage','downloadimage','getemployeesdata','add','edit','delete','view','Assets'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
-                            $acl->allow('HREM', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
-                            $acl->allow('HREM', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:expensecategories'));
-                            $acl->allow('HREM', 'expenses:expensecategories', array('index','add','edit','delete','view','Category'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
-                            $acl->allow('HREM', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
-                            $acl->allow('HREM', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:paymentmode'));
-                            $acl->allow('HREM', 'expenses:paymentmode', array('index','add','edit','delete','view','Payment Mode'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
-                            $acl->allow('HREM', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
-
-		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
-                            $acl->allow('HREM', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
-
-		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
-                            $acl->allow('HREM', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','All Exit Procedures'));
-
-		 $acl->addResource(new Zend_Acl_Resource('exit:configureexitqs'));
-                            $acl->allow('HREM', 'exit:configureexitqs', array('index','addpopup','add','edit','delete','view','Exit Interview Questions'));
-
-		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
-                            $acl->allow('HREM', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','Initiate/Check Status'));
-
-		 $acl->addResource(new Zend_Acl_Resource('exit:exitprocsettings'));
-                            $acl->allow('HREM', 'exit:exitprocsettings', array('index','getdepartments','add','edit','delete','view','Settings'));
-
-		 $acl->addResource(new Zend_Acl_Resource('exit:exittypes'));
-                            $acl->allow('HREM', 'exit:exittypes', array('index','addpopup','add','edit','delete','view','Exit Types'));
+                            $acl->allow('user', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','upload','uploadview','Initiate/Check Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:processes'));
-                            $acl->allow('HREM', 'default:processes', array('index','addpopup','editpopup','viewpopup','savecomments','displaycomments','savefeedback','index','addpopup','editpopup','viewpopup','delete','savecomments','displaycomments','savefeedback'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
-                            $acl->allow('HREM', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empperformanceappraisal'));
-                            $acl->allow('HREM', 'default:empperformanceappraisal', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:emppayslips'));
-                            $acl->allow('HREM', 'default:emppayslips', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empbenefits'));
-                            $acl->allow('HREM', 'default:empbenefits', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:emprequisitiondetails'));
-                            $acl->allow('HREM', 'default:emprequisitiondetails', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empremunerationdetails'));
-                            $acl->allow('HREM', 'default:empremunerationdetails', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empsecuritycredentials'));
-                            $acl->allow('HREM', 'default:empsecuritycredentials', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
-                            $acl->allow('HREM', 'default:apprreqcandidates', array('index','viewpopup','index','viewpopup'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
-                            $acl->allow('HREM', 'default:emppersonaldetails', array('index','view','index','view','edit'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
-                            $acl->allow('HREM', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
-                            $acl->allow('HREM', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
-                            $acl->allow('HREM', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
-                            $acl->allow('HREM', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
-                            $acl->allow('HREM', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
-                            $acl->allow('HREM', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
-                            $acl->allow('HREM', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
-                            $acl->allow('HREM', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
-                            $acl->allow('HREM', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
-                            $acl->allow('HREM', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
-                            $acl->allow('HREM', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
-                            $acl->allow('HREM', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
-                            $acl->allow('HREM', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
-                            $acl->allow('HREM', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
-                            $acl->allow('HREM', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
-                            $acl->allow('HREM', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
-                            $acl->allow('HREM', 'default:assetdetails', array('index','view','index','edit','view'));
-
-		 $acl->addResource(new Zend_Acl_Resource('default:empsalarydetails'));
-                            $acl->allow('HREM', 'default:empsalarydetails', array('index','view','index','edit','view'));
-}if($role == 14 )
+                            $acl->allow('user', 'default:processes', array('index','editpopup','viewpopup','savecomments','displaycomments','savefeedback'));
+}if($role == 7 )
            {
-		 $acl->addResource(new Zend_Acl_Resource('default:accountclasstype'));
-                            $acl->allow('SYAD', 'default:accountclasstype', array('index','addpopup','saveupdate','add','edit','delete','view','Account Class Types'));
-
 		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
-                            $acl->allow('SYAD', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
+                            $acl->allow('agency', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
-                            $acl->allow('SYAD', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
+                            $acl->allow('agency', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
+                        $acl->allow('agency', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
+                            $acl->allow('agency', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
+                            $acl->allow('agency', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:index'));
+                        $acl->allow('agency', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
+                            $acl->allow('agency', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
+                            $acl->allow('agency', 'default:structure', array('index','Organization Structure'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:processes'));
+                            $acl->allow('agency', 'default:processes', array('index','editpopup','viewpopup','savecomments','displaycomments','savefeedback'));
+}if($role == 8 )
+           {
+		 $acl->addResource(new Zend_Acl_Resource('default:accountclasstype'));
+                            $acl->allow('sysadmin', 'default:accountclasstype', array('index','addpopup','saveupdate','add','edit','delete','view','Account Class Types'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
+                            $acl->allow('sysadmin', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
+                            $acl->allow('sysadmin', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:categories'));
-                            $acl->allow('SYAD', 'default:categories', array('index','addnewcategory','add','edit','view','Manage Categories'));
+                            $acl->allow('sysadmin', 'default:categories', array('index','addnewcategory','add','edit','view','Manage Categories'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:cities'));
                             $cities_add = 'yes';
                                 if($this->id_param == '' && $cities_add == 'yes')
-                                    $acl->allow('SYAD','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities','edit'));
+                                    $acl->allow('sysadmin','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities','edit'));
 
                                 else
-                                    $acl->allow('SYAD','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities'));
+                                    $acl->allow('sysadmin','default:cities', array('index','getcitiescand','addpopup','addnewcity','add','delete','view','Cities'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:clients'));
-                            $acl->allow('SYAD', 'default:clients', array('index','addpopup','add','edit','delete','view','Clients'));
+                            $acl->allow('sysadmin', 'default:clients', array('index','addpopup','add','edit','delete','view','upload','uploadview','Clients'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:countries'));
                             $countries_add = 'yes';
                                 if($this->id_param == '' && $countries_add == 'yes')
-                                    $acl->allow('SYAD','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries','edit'));
+                                    $acl->allow('sysadmin','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries','edit'));
 
                                 else
-                                    $acl->allow('SYAD','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries'));
+                                    $acl->allow('sysadmin','default:countries', array('index','saveupdate','getcountrycode','addpopup','addnewcountry','add','delete','view','Countries'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:currency'));
-                            $acl->allow('SYAD', 'default:currency', array('index','addpopup','gettargetcurrency','add','edit','delete','view','Currencies'));
+                            $acl->allow('sysadmin', 'default:currency', array('index','addpopup','gettargetcurrency','add','edit','delete','view','Currencies'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:currencyconverter'));
-                            $acl->allow('SYAD', 'default:currencyconverter', array('index','add','edit','delete','view','Currency Conversions'));
+                            $acl->allow('sysadmin', 'default:currencyconverter', array('index','add','edit','delete','view','Currency Conversions'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
-                        $acl->allow('SYAD', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+                        $acl->allow('sysadmin', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
-                            $acl->allow('SYAD', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
+                            $acl->allow('sysadmin', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
-                            $acl->allow('SYAD', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
+                            $acl->allow('sysadmin', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
-                            $acl->allow('SYAD', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
+                            $acl->allow('sysadmin', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emailcontacts'));
-                            $acl->allow('SYAD', 'default:emailcontacts', array('index','getgroupoptions','getmailcnt','add','edit','delete','view','Email Contacts'));
+                            $acl->allow('sysadmin', 'default:emailcontacts', array('index','getgroupoptions','getmailcnt','add','edit','delete','view','Email Contacts'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
-                            $acl->allow('SYAD', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
+                            $acl->allow('sysadmin', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:ethniccode'));
-                            $acl->allow('SYAD', 'default:ethniccode', array('index','saveupdate','addpopup','add','edit','delete','view','Ethnic Codes'));
+                            $acl->allow('sysadmin', 'default:ethniccode', array('index','saveupdate','addpopup','add','edit','delete','view','Ethnic Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:gender'));
-                            $acl->allow('SYAD', 'default:gender', array('index','saveupdate','addpopup','add','edit','delete','view','Gender'));
+                            $acl->allow('sysadmin', 'default:gender', array('index','saveupdate','addpopup','add','edit','delete','view','Gender'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:geographygroup'));
-                            $acl->allow('SYAD', 'default:geographygroup', array('index','add','edit','delete','view','Geo Groups'));
+                            $acl->allow('sysadmin', 'default:geographygroup', array('index','add','edit','delete','view','Geo Groups'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
-                            $acl->allow('SYAD', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+                            $acl->allow('sysadmin', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:identitycodes'));
-                            $acl->allow('SYAD', 'default:identitycodes', array('index','addpopup','add','edit','Identity Codes'));
+                            $acl->allow('sysadmin', 'default:identitycodes', array('index','addpopup','add','edit','Identity Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:index'));
-                        $acl->allow('SYAD', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+                        $acl->allow('sysadmin', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
                             $leaverequest_add = 'yes';
                                 if($this->id_param == '' && $leaverequest_add == 'yes')
-                                    $acl->allow('SYAD','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit','uploadsave','uploaddelete'));
+                                    $acl->allow('sysadmin','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit'));
 
                                 else
-                                    $acl->allow('SYAD','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','uploadsave','uploaddelete'));
+                                    $acl->allow('sysadmin','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:licensetype'));
-                            $acl->allow('SYAD', 'default:licensetype', array('index','add','edit','delete','view','License Types'));
+                            $acl->allow('sysadmin', 'default:licensetype', array('index','add','edit','delete','view','License Types'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
-                            $acl->allow('SYAD', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
+                            $acl->allow('sysadmin', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:maritalstatus'));
-                            $acl->allow('SYAD', 'default:maritalstatus', array('index','saveupdate','addpopup','add','edit','delete','view','Marital Status'));
+                            $acl->allow('sysadmin', 'default:maritalstatus', array('index','saveupdate','addpopup','add','edit','delete','view','Marital Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
-                            $acl->allow('SYAD', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
+                            $acl->allow('sysadmin', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
-                            $acl->allow('SYAD', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
+                            $acl->allow('sysadmin', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
-                            $acl->allow('SYAD', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+                            $acl->allow('sysadmin', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:nationality'));
-                            $acl->allow('SYAD', 'default:nationality', array('index','addpopup','add','edit','delete','view','Nationalities'));
+                            $acl->allow('sysadmin', 'default:nationality', array('index','addpopup','add','edit','delete','view','Nationalities'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:nationalitycontextcode'));
-                            $acl->allow('SYAD', 'default:nationalitycontextcode', array('index','add','edit','delete','view','Nationality Context Codes'));
+                            $acl->allow('sysadmin', 'default:nationalitycontextcode', array('index','add','edit','delete','view','Nationality Context Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:numberformats'));
-                            $acl->allow('SYAD', 'default:numberformats', array('index','add','edit','delete','view','Number Formats'));
+                            $acl->allow('sysadmin', 'default:numberformats', array('index','add','edit','delete','view','Number Formats'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
-                            $acl->allow('SYAD', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
+                            $acl->allow('sysadmin', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
-                            $acl->allow('SYAD', 'default:pendingleaves', array('index','delete','view','My Leave'));
+                            $acl->allow('sysadmin', 'default:pendingleaves', array('index','delete','view','My Leave'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
-                            $acl->allow('SYAD', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','add','edit','view','View/Manage Policy Documents'));
+                            $acl->allow('sysadmin', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','add','edit','view','View/Manage Policy Documents'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:prefix'));
-                            $acl->allow('SYAD', 'default:prefix', array('index','saveupdate','addpopup','add','edit','delete','view','Prefixes'));
+                            $acl->allow('sysadmin', 'default:prefix', array('index','saveupdate','addpopup','add','edit','delete','view','Prefixes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:projects'));
-                            $acl->allow('SYAD', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','Projects'));
+                            $acl->allow('sysadmin', 'default:projects', array('index','viewpopup','editpopup','add','edit','delete','view','upload','uploadview','Projects'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:racecode'));
-                            $acl->allow('SYAD', 'default:racecode', array('index','saveupdate','addpopup','add','edit','delete','view','Race Codes'));
+                            $acl->allow('sysadmin', 'default:racecode', array('index','saveupdate','addpopup','add','edit','delete','view','Race Codes'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:roles'));
-                            $acl->allow('SYAD', 'default:roles', array('index','saveupdate','getgroupmenu','add','edit','delete','view','Roles & Privileges'));
+                            $acl->allow('sysadmin', 'default:roles', array('index','saveupdate','getgroupmenu','add','edit','delete','view','Roles & Privileges'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:sitepreference'));
-                            $acl->allow('SYAD', 'default:sitepreference', array('index','view','add','edit','Site Preferences'));
+                            $acl->allow('sysadmin', 'default:sitepreference', array('index','view','add','edit','Site Preferences'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:states'));
                             $states_add = 'yes';
                                 if($this->id_param == '' && $states_add == 'yes')
-                                    $acl->allow('SYAD','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States','edit'));
+                                    $acl->allow('sysadmin','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States','edit'));
 
                                 else
-                                    $acl->allow('SYAD','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States'));
+                                    $acl->allow('sysadmin','default:states', array('index','getstates','getstatescand','addpopup','addnewstate','add','delete','view','States'));
 
                                 
 		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
-                            $acl->allow('SYAD', 'default:structure', array('index','Organization Structure'));
+                            $acl->allow('sysadmin', 'default:structure', array('index','Organization Structure'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:timezone'));
-                            $acl->allow('SYAD', 'default:timezone', array('index','saveupdate','addpopup','add','edit','delete','view','Time Zones'));
+                            $acl->allow('sysadmin', 'default:timezone', array('index','saveupdate','addpopup','add','edit','delete','view','Time Zones'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:usermanagement'));
-                            $acl->allow('SYAD', 'default:usermanagement', array('index','saveupdate','getemailofuser','add','edit','view','External Users'));
+                            $acl->allow('sysadmin', 'default:usermanagement', array('index','saveupdate','getemailofuser','add','edit','view','External Users'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:vendors'));
-                            $acl->allow('SYAD', 'default:vendors', array('index','addpopup','add','edit','delete','view','Vendors'));
+                            $acl->allow('sysadmin', 'default:vendors', array('index','addpopup','add','edit','delete','view','upload','uploadview','Vendors'));
 
 		 $acl->addResource(new Zend_Acl_Resource('assets:assetcategories'));
-                            $acl->allow('SYAD', 'assets:assetcategories', array('index','addpopup','addsubcatpopup','assetuserlog','add','edit','delete','view','Asset Categories'));
+                            $acl->allow('sysadmin', 'assets:assetcategories', array('index','addpopup','addsubcatpopup','assetuserlog','add','edit','delete','view','Asset Categories'));
 
 		 $acl->addResource(new Zend_Acl_Resource('assets:assets'));
-                            $acl->allow('SYAD', 'assets:assets', array('index','uploadsave','uploaddelete','getsubcategories','deleteimage','downloadimage','getemployeesdata','add','edit','delete','view','Assets'));
+                            $acl->allow('sysadmin', 'assets:assets', array('index','uploadsave','uploaddelete','getsubcategories','deleteimage','downloadimage','getemployeesdata','add','edit','delete','view','Assets'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
-                            $acl->allow('SYAD', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
+                            $acl->allow('sysadmin', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
-                            $acl->allow('SYAD', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
+                            $acl->allow('sysadmin', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
-                            $acl->allow('SYAD', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
+                            $acl->allow('sysadmin', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
-                            $acl->allow('SYAD', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
+                            $acl->allow('sysadmin', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
-                            $acl->allow('SYAD', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
+                            $acl->allow('sysadmin', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
 
 		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
-                            $acl->allow('SYAD', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+                            $acl->allow('sysadmin', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:allexitproc'));
-                            $acl->allow('SYAD', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','All Exit Procedures'));
+                            $acl->allow('sysadmin', 'exit:allexitproc', array('index','editpopup','updateexitprocess','assignquestions','add','edit','view','upload','uploadview','All Exit Procedures'));
 
 		 $acl->addResource(new Zend_Acl_Resource('exit:exitproc'));
-                            $acl->allow('SYAD', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','Initiate/Check Status'));
+                            $acl->allow('sysadmin', 'exit:exitproc', array('index','questions','savequestions','add','edit','view','upload','uploadview','Initiate/Check Status'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:managemenus'));
-                            $acl->allow('SYAD', 'default:managemenus', array('index','save','index','save'));
+                            $acl->allow('sysadmin', 'default:managemenus', array('index','save','index','save'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
-                            $acl->allow('SYAD', 'default:emppersonaldetails', array('index','view'));
+                            $acl->allow('sysadmin', 'default:emppersonaldetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
-                            $acl->allow('SYAD', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
+                            $acl->allow('sysadmin', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
-                            $acl->allow('SYAD', 'default:empcommunicationdetails', array('index','view'));
+                            $acl->allow('sysadmin', 'default:empcommunicationdetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
-                            $acl->allow('SYAD', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('sysadmin', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
-                            $acl->allow('SYAD', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('sysadmin', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
-                            $acl->allow('SYAD', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('sysadmin', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
-                            $acl->allow('SYAD', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
+                            $acl->allow('sysadmin', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
-                            $acl->allow('SYAD', 'default:empleaves', array('index','view','viewpopup'));
+                            $acl->allow('sysadmin', 'default:empleaves', array('index','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
-                            $acl->allow('SYAD', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('sysadmin', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
-                            $acl->allow('SYAD', 'default:disabilitydetails', array('index','view'));
+                            $acl->allow('sysadmin', 'default:disabilitydetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
-                            $acl->allow('SYAD', 'default:workeligibilitydetails', array('index','view'));
+                            $acl->allow('sysadmin', 'default:workeligibilitydetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
-                            $acl->allow('SYAD', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('sysadmin', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
-                            $acl->allow('SYAD', 'default:creditcarddetails', array('index','view'));
+                            $acl->allow('sysadmin', 'default:creditcarddetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
-                            $acl->allow('SYAD', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('sysadmin', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
-                            $acl->allow('SYAD', 'default:empholidays', array('index','view','viewpopup'));
+                            $acl->allow('sysadmin', 'default:empholidays', array('index','view','viewpopup'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
-                            $acl->allow('SYAD', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('sysadmin', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
-                            $acl->allow('SYAD', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+                            $acl->allow('sysadmin', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
-                            $acl->allow('SYAD', 'default:assetdetails', array('index','view'));
+                            $acl->allow('sysadmin', 'default:assetdetails', array('index','view'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
-                            $acl->allow('SYAD', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
+                            $acl->allow('sysadmin', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
 
 		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
-                            $acl->allow('SYAD', 'default:apprreqcandidates', array('index','viewpopup'));
+                            $acl->allow('sysadmin', 'default:apprreqcandidates', array('index','viewpopup'));
+}if($role == 9 )
+           {
+		 $acl->addResource(new Zend_Acl_Resource('default:announcements'));
+                            $acl->allow('lead', 'default:announcements', array('index','getdepts','uploadsave','uploaddelete','view','Announcements'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:businessunits'));
+                            $acl->allow('lead', 'default:businessunits', array('index','getdeptnames','view','Business Units'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:dashboard'));
+                        $acl->allow('lead', 'default:dashboard', array('index','saveuserdashboard','getwidgtes','upgradeapplication','emailsettings','changepassword','editpassword','update','uploadpreview','viewprofile','viewsettings','savemenuwidgets','getmenuname','fetchmenuname','getnavids','getopeningpositondate','menuwork','employeeimageupdate'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:departments'));
+                            $acl->allow('lead', 'default:departments', array('index','viewpopup','editpopup','getdepartments','getempnames','view','Departments'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disciplinarymyincidents'));
+                            $acl->allow('lead', 'default:disciplinarymyincidents', array('index','saveemployeeappeal','getdisciplinaryincidentpdf','edit','view','My Incidents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disciplinaryteamincidents'));
+                            $acl->allow('lead', 'default:disciplinaryteamincidents', array('index','view','Team Incidents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:employee'));
+                            $acl->allow('lead', 'default:employee', array('getemprequi','index','getmoreemployees','changeorghead','getdepartments','getpositions','getempreportingmanagers','makeactiveinactive','changereportingmanager','addemppopup','uploadexcel','getindividualempdetails','view','Employees'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:heirarchy'));
+                            $acl->allow('lead', 'default:heirarchy', array('index','addlist','editlist','saveadddata','saveeditdata','deletelist','Organization Hierarchy'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:index'));
+                        $acl->allow('lead', 'default:index', array('index','loginpopupsave','logout','clearsessionarray','forcelogout','browserfailure','sendpassword','updatecontactnumber','getstates','getstatesnormal','getcities','getcitiesnormal','getdepartments','getpositions','gettargetcurrency','calculatedays','calculatebusinessdays','calculatecalendardays','fromdatetodate','fromdatetodateorg','validateorgheadjoiningdate','medicalclaimdates','gettimeformat','chkcurrenttime','popup','createorremoveshortcut','sessiontour','getissuingauthority','setsessionval','checkisactivestatus','updatetheme','welcome','getmultidepts','getmultiemps'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:leaverequest'));
+                            $leaverequest_add = 'yes';
+                                if($this->id_param == '' && $leaverequest_add == 'yes')
+                                    $acl->allow('lead','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request','edit'));
+
+                                else
+                                    $acl->allow('lead','default:leaverequest', array('index','saveleaverequestdetails','gethalfdaydetails','editpopup','updateleavedetails','add','Leave Request'));
+
+                                
+		 $acl->addResource(new Zend_Acl_Resource('default:manageremployeevacations'));
+                            $acl->allow('lead', 'default:manageremployeevacations', array('index','edit','view','Employee Leave'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:mydetails'));
+                            $acl->allow('lead', 'default:mydetails', array('index','personaldetailsview','personal','communicationdetailsview','communication','skills','education','experience','leaves','holidays','salarydetailsview','certification','creditcarddetailsview','creditcard','visadetailsview','visa','medicalclaims','disabilitydetailsview','disability','dependency','workeligibilitydetailsview','workeligibility','additionaldetailsedit','jobhistory','documents','assetdetailsview','add','edit','delete','view','My Details'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:myemployees'));
+                            $acl->allow('lead', 'default:myemployees', array('index','perview','comview','skillsview','expview','eduview','trainingview','additionaldetailsview','jobhistoryview','skillsedit','jobhistoryedit','expedit','eduedit','trainingedit','additionaldetailsedit','peredit','comedit','docview','docedit','employeereport','getempreportdata','empauto','emprptpdf','exportemployeereport','downloadreport','view','My Team'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:myholidaycalendar'));
+                            $acl->allow('lead', 'default:myholidaycalendar', array('index','view','My Holiday Calendar'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:organisationinfo'));
+                            $acl->allow('lead', 'default:organisationinfo', array('index','edit_old','saveupdate','uploadpreview','validateorgstartdate','getcompleteorgdata','addorghead','Organization Info'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:pendingleaves'));
+                            $acl->allow('lead', 'default:pendingleaves', array('index','delete','view','My Leave'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:policydocuments'));
+                            $acl->allow('lead', 'default:policydocuments', array('index','uploaddoc','deletedocument','addmultiple','uploadmultipledocs','view','View/Manage Policy Documents'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:structure'));
+                            $acl->allow('lead', 'default:structure', array('index','Organization Structure'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:advances'));
+                            $acl->allow('lead', 'expenses:advances', array('index','getprojects','myadvances','viewmoreadvances','clearadvancesdata','addreturnpopup','add','edit','delete','view','Advances'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:employeeadvances'));
+                            $acl->allow('lead', 'expenses:employeeadvances', array('index','add','edit','delete','view','Employee Advances'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:expenses'));
+                            $acl->allow('lead', 'expenses:expenses', array('index','clone','addpopup','uploadsave','uploaddelete','displayreceipts','addtrippopup','submitexpense','addreceiptimage','expensestatus','listreportingmangers','viewmoremanagers','forwardexpenseto','downloadexpensepdf','bulkexpenses','getcategories','getprojects','getcurrency','uploadedfiles','add','edit','delete','view','Expenses'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:myemployeeexpenses'));
+                            $acl->allow('lead', 'expenses:myemployeeexpenses', array('index','add','edit','delete','view','My Employee Expenses'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:receipts'));
+                            $acl->allow('lead', 'expenses:receipts', array('index','downloadreceipt','downloadexpensereceipt','deletereceipt','uploadsave','displayreceipts','viewmorereceipts','listexpenses','addreceipttoexpense','viewmoreexpenses','cleardata','showreceiptspopup','listtrips','viewmoretrips','addexpensetotrip','add','edit','delete','view','Receipts'));
+
+		 $acl->addResource(new Zend_Acl_Resource('expenses:trips'));
+                            $acl->allow('lead', 'expenses:trips', array('index','addpopup','tripstatus','deleteexpense','downloadtrippdf','add','edit','delete','view','Trips'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:emppersonaldetails'));
+                            $acl->allow('lead', 'default:emppersonaldetails', array('index','view','index','view','edit'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:employeedocs'));
+                            $acl->allow('lead', 'default:employeedocs', array('index','view','save','update','uploadsave','uploaddelete','downloadfiles','index','view','save','delete','edit','update','uploadsave','uploaddelete','downloadfiles'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empcommunicationdetails'));
+                            $acl->allow('lead', 'default:empcommunicationdetails', array('index','view','index','view','edit'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:trainingandcertificationdetails'));
+                            $acl->allow('lead', 'default:trainingandcertificationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:experiencedetails'));
+                            $acl->allow('lead', 'default:experiencedetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:educationdetails'));
+                            $acl->allow('lead', 'default:educationdetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:medicalclaims'));
+                            $acl->allow('lead', 'default:medicalclaims', array('index','addpopup','viewpopup','editpopup','view','index','edit','addpopup','viewpopup','editpopup','delete','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empleaves'));
+                            $acl->allow('lead', 'default:empleaves', array('index','view','viewpopup','index','edit','view','viewpopup'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empskills'));
+                            $acl->allow('lead', 'default:empskills', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:disabilitydetails'));
+                            $acl->allow('lead', 'default:disabilitydetails', array('index','view','index','add','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:workeligibilitydetails'));
+                            $acl->allow('lead', 'default:workeligibilitydetails', array('index','view','index','add','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empadditionaldetails'));
+                            $acl->allow('lead', 'default:empadditionaldetails', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:visaandimmigrationdetails'));
+                            $acl->allow('lead', 'default:visaandimmigrationdetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:creditcarddetails'));
+                            $acl->allow('lead', 'default:creditcarddetails', array('index','view','index','add','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:dependencydetails'));
+                            $acl->allow('lead', 'default:dependencydetails', array('index','view','addpopup','editpopup','viewpopup','index','edit','view','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empholidays'));
+                            $acl->allow('lead', 'default:empholidays', array('index','view','viewpopup','index','edit','view','viewpopup'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:empjobhistory'));
+                            $acl->allow('lead', 'default:empjobhistory', array('index','view','addpopup','viewpopup','editpopup','index','edit','view','addpopup','viewpopup','editpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:assetdetails'));
+                            $acl->allow('lead', 'default:assetdetails', array('index','view','index','edit','view'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:interviewrounds'));
+                            $acl->allow('lead', 'default:interviewrounds', array('index','addpopup','editpopup','viewpopup','index','addpopup','editpopup','viewpopup','delete'));
+
+		 $acl->addResource(new Zend_Acl_Resource('default:apprreqcandidates'));
+                            $acl->allow('lead', 'default:apprreqcandidates', array('index','viewpopup'));
 }
 
      // setup acl in the registry for more
