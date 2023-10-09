@@ -637,7 +637,7 @@ class Expenses_TripsController extends Zend_Controller_Action
 				$this->view->url_link=$link;
 				$text = $view->render('expensemailtemplates/expensestatus.phtml');
 				$options['subject'] = APPLICATION_NAME.': Notification';
-				$options['header'] = 'Greetings from Sentrifugo';
+				$options['header'] = 'Greetings from Sawit Kinabalu';
 				$options['toEmail'] = $emil_id;
 				$options['toName'] = $to_name;
 				$options['message'] = $text;
