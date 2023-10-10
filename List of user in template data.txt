@@ -1,0 +1,34 @@
+Group Managing Director
+Management
+SKG001 gmd@email.com Sawit1234
+
+HEAD HR
+Head Of Department
+Human Resource
+SKG002 headhr@email.com Sawit1234
+
+Manager HR
+HR Employee
+Human Resource
+SKG003 managerhr@email.com Sawit1234
+
+Executive HR
+HR Employee
+Human Resource
+SKG004 hrstaff@email.com Sawit1234
+
+
+HEAD IT
+Head Of Department
+Information Technology
+SKG005 headit@email.com Sawit1234
+
+Manager IT
+Manager
+Information Technology
+SKG006 managerit@email.com Sawit1234
+
+Executive IT
+Employee
+Information Technology
+SKG007 itstaff@email.com Sawit1234
