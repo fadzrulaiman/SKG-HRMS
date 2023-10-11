@@ -138,8 +138,8 @@ class Default_LeaverequestController extends Zend_Controller_Action
 						    $hremailgroup = '';
 
 						/* Search Filters */    
-						$isReportingManagerFlag = 'false';
-						$searchRepFlag = 'false';
+						$isReportingManagerFlag = 'true';
+						$searchRepFlag = 'true';
 						$searchMeFlag = 'true';
 						
 				    	$filter = $this->_request->getParam('filter');
