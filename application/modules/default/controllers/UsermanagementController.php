@@ -428,7 +428,7 @@ class Default_UsermanagementController extends Zend_Controller_Action
                    
                     $options['subject'] = APPLICATION_NAME.' login credentials';
                    
-                    $options['header'] = 'Greetings from Sentrifugo';
+                    $options['header'] = 'Greetings from Sawit Kinabalu HRMS';
                     $options['toEmail'] = $emailaddress;  
                     $options['toName'] = $this->view->emp_name;
                     $options['message'] = $text;
@@ -598,7 +598,7 @@ class Default_UsermanagementController extends Zend_Controller_Action
 										<div></div>	
 										'.$agencyData['userfullname'].' agency has been activated. 
 										<div></div>											
-										<div style="padding:20px 0 10px 0;">Please <a href="'.$baseUrl.'/index/popup" target="_blank" style="color:#b3512f;">click here</a> to login  to your Sentrifugo account.</div>
+										<div style="padding:20px 0 10px 0;">Please <a href="'.$baseUrl.'/index/popup" target="_blank" style="color:#b3512f;">click here</a> to login  to your Sawit Kinabalu HRMS account.</div>
 										</div>';	
 				$options['cron'] = 'yes';
 				$result = sapp_Global::_sendEmail($options);
@@ -612,7 +612,7 @@ class Default_UsermanagementController extends Zend_Controller_Action
 									<div></div>	
 									Your agency has been activated. For further details, please contact our HR directly.
 									<div></div>	
-									<div style="padding:20px 0 10px 0;">Please <a href="'.$baseUrl.'/index/popup" target="_blank" style="color:#b3512f;">click here</a> to login  to your Sentrifugo account.</div>																			
+									<div style="padding:20px 0 10px 0;">Please <a href="'.$baseUrl.'/index/popup" target="_blank" style="color:#b3512f;">click here</a> to login  to your Sawit Kinabalu HRMS account.</div>																			
 									</div>';	
 			$options['cron'] = 'yes';
 			$result = sapp_Global::_sendEmail($options);
@@ -638,7 +638,7 @@ class Default_UsermanagementController extends Zend_Controller_Action
 										<div></div>	
 										'.$agencyData['userfullname'].' agency has been deleted. 
 										<div></div>
-										<div style="padding:20px 0 10px 0;">Please <a href="'.$baseUrl.'/index/popup" target="_blank" style="color:#b3512f;">click here</a> to login  to your Sentrifugo account.</div>											
+										<div style="padding:20px 0 10px 0;">Please <a href="'.$baseUrl.'/index/popup" target="_blank" style="color:#b3512f;">click here</a> to login  to your Sawit Kinabalu HRMS account.</div>											
 										</div>';	
 				$options['cron'] = 'yes';
 				$result = sapp_Global::_sendEmail($options);

@@ -1,23 +1,4 @@
 <?php
-/********************************************************************************* 
- *  This file is part of Sentrifugo.
- *  Copyright (C) 2015 Sapplica
- *   
- *  Sentrifugo is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  Sentrifugo is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Sentrifugo.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Sentrifugo Support <support@sentrifugo.com>
- ********************************************************************************/
 
 class Default_EmployeeController extends Zend_Controller_Action
 {
@@ -711,7 +692,7 @@ class Default_EmployeeController extends Zend_Controller_Action
 							$this->view->base_url=$base_url;
 							$text = $view->render('mailtemplates/newpassword.phtml');
 							$options['subject'] = APPLICATION_NAME.': Login Credentials';
-							$options['header'] = 'Greetings from Sentrifugo';
+							$options['header'] = 'Greetings from Sawit Kinabalu HRMS';
 							$options['toEmail'] = $emailaddress;
 							$options['toName'] = $this->view->emp_name;
 							$options['message'] = $text;
@@ -2753,7 +2734,7 @@ public function editappraisal($id,$performanceflag,$ff_flag)
 					$this->view->base_url=$base_url;
 					$text = $view->render('mailtemplates/newpassword.phtml');
 					$options['subject'] = APPLICATION_NAME.' login Credentials';
-					$options['header'] = 'Greetings from Sentrifugo';
+					$options['header'] = 'Greetings from Sawit Kinabalu HRMS';
 					$options['toEmail'] = $emailaddress;
 					$options['toName'] = $this->view->emp_name;
 					$options['message'] = $text;

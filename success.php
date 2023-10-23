@@ -1,23 +1,4 @@
 <?php
-/********************************************************************************* 
- *  This file is part of Sentrifugo.
- *  Copyright (C) 2014 Sapplica
- *   
- *  Sentrifugo is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  Sentrifugo is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  You should have received a copy of the GNU General Public License
- *  along with Sentrifugo.  If not, see <http://www.gnu.org/licenses/>.
- *
- *  Sentrifugo Support <support@sentrifugo.com>
- ********************************************************************************/ 
 $filepath = 'install';  
 require_once 'public/db_constants.php';
 require_once 'public/constants.php';
@@ -112,7 +93,7 @@ function sendconfirmationmail($content,$encodedPswd)
 			                    <div style="font-family:Arial, Helvetica, sans-serif; font-size:16px; font-weight:normal; line-height:30px; margin:0 0 20px 0;">
 			                       <div>
 										<div>Dear Super Admin,</div><br/>
-										<div>Sentrifugo has been successfully installed. Following are the Super Admin login credentials for '.APPLICATION_NAME.':</div><br/>
+										<div>Sawit Kinabalu HRMS has been successfully installed. Following are the Super Admin login credentials for '.APPLICATION_NAME.':</div><br/>
 										<div>Username : empp0001</div>
 										<div>Password : '.$encodedPswd.'</div><br/><br/>
 										<div>'.$content.'</div>
